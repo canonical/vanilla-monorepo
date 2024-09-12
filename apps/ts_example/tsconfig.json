@@ -1,0 +1,7 @@
+{
+  "extends": "@canonical/vanilla-config-typescript/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist"
+  },
+  "include": ["src/**/*.ts"]
+}

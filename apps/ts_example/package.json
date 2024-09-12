@@ -1,5 +1,5 @@
 {
-  "name": "vanilla-monorepo",
+  "name": "@canonical/vanilla-ts-test",
   "version": "0.0.1",
   "description": "Vanilla as a monorepo",
   "author": {
@@ -15,11 +15,11 @@
     "url": "https://github.com/canonical/vanilla-monorepo/issues"
   },
   "homepage": "https://github.com/canonical/vanilla-monorepo#readme",
-  "workspaces": [
-    "packages/config/typescript",
-    "apps/ts_example"
-  ],
   "scripts": {
+    "emit": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@canonical/vanilla-config-typescript": "0.0.1"
   }
 }

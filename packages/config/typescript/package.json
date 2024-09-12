@@ -1,7 +1,7 @@
 {
-  "name": "vanilla-monorepo",
+  "name": "@canonical/vanilla-config-typescript",
   "version": "0.0.1",
-  "description": "Vanilla as a monorepo",
+  "description": "Vanilla's Typescript configuration",
   "author": {
     "email": "webteam@canonical.com",
     "name": "Canonical Webteam"
@@ -15,10 +15,6 @@
     "url": "https://github.com/canonical/vanilla-monorepo/issues"
   },
   "homepage": "https://github.com/canonical/vanilla-monorepo#readme",
-  "workspaces": [
-    "packages/config/typescript",
-    "apps/ts_example"
-  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   }
