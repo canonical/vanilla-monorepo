@@ -16,8 +16,9 @@
   },
   "homepage": "https://github.com/canonical/vanilla-monorepo#readme",
   "workspaces": [
-    "packages/config/typescript",
-    "apps/ts_example"
+    "configs/*",
+    "packages/*",
+    "apps/*"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
