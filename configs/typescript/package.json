@@ -1,5 +1,5 @@
 {
-  "name": "@canonical/vanilla-config-typescript",
+  "name": "@canonical/config-typescript",
   "version": "0.0.1",
   "description": "Vanilla's Typescript configuration",
   "author": {

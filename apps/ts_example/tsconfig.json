@@ -1,5 +1,5 @@
 {
-  "extends": "@canonical/vanilla-config-typescript/tsconfig.json",
+  "extends": "@canonical/config-typescript",
   "compilerOptions": {
     "outDir": "./dist"
   },
