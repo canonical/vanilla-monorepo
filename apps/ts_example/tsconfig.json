@@ -1,7 +1,12 @@
 {
-  "extends": "@canonical/config-typescript",
+  "extends": "@canonical/typescript-config-base",
   "compilerOptions": {
-    "outDir": "./dist"
+    "baseUrl": "src",
+    "outDir": "dist"
   },
-  "include": ["src/**/*.ts"]
+  "include":["src"],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

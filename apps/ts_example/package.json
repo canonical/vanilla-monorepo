@@ -17,9 +17,15 @@
   "homepage": "https://github.com/canonical/vanilla-monorepo#readme",
   "scripts": {
     "emit": "tsc",
+    "lint": "bun lint-eslint",
+    "lint-fix": "bun lint-eslint-fix",
+    "lint-eslint": "eslint --ext .mjs,.js,.tsx,.ts src/",
+    "lint-eslint-fix": "eslint --ext .mjs,.js,.tsx,.ts src/ --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@canonical/config-typescript": "0.0.1"
+    "@canonical/eslint-config-base": "0.0.1",
+    "@canonical/typescript-config-base": "0.0.1",
+    "eslint": "^7.32.0 || ^8.2.0"
   }
 }

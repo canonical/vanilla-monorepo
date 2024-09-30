@@ -1,7 +1,8 @@
 {
-  "name": "@canonical/typescript-config-base",
+  "name": "@canonical/eslint-config-base",
   "version": "0.0.1",
-  "description": "Canonical's Typescript configuration",
+  "description": "Canonical's ESLint configuration",
+  "main": "index.js",
   "author": {
     "email": "webteam@canonical.com",
     "name": "Canonical Webteam"
@@ -19,6 +20,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "typescript": ">=5.0.0 <=5.6.0"
+    "@typescript-eslint/eslint-plugin": "^7.7.1",
+    "@typescript-eslint/parser": "^7.7.1",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^18.0.0"
   }
 }

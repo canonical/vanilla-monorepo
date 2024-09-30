@@ -1,16 +1,25 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "lib": [
+      "es2022",
+      "dom"
+    ],
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
+    "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "removeComments": true,
-    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
     "strictNullChecks": true,
-    "outDir": "static/js",
-    "sourceMap": true,
-    "moduleResolution": "bundler"
+    "target": "ES2022",
+    "allowJs": false
   }
 }
