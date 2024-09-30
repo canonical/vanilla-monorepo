@@ -1,0 +1,16 @@
+{
+  "extends": "@canonical/typescript-config-base/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "src",
+    "outDir": "dist",
+    "types": [
+      "react",
+      "react-dom"
+    ]
+  },
+  "include":["src"],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

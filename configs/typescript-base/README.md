@@ -6,17 +6,17 @@ This package provides a central configuration for Canonical's TypeScript project
 
 #### Bun
 ```bash
-    bun add -d @canonical/typescript-config-base
+    bun add -d @canonical/typescript-config-base typescript
 ```
 
 #### NPM
 ```bash
-    npm install --save-dev @canonical/typescript-config-base
+    npm install --save-dev @canonical/typescript-config-base typescript
 ```
 
 #### Yarn
 ```bash
-    yarn add --dev @canonical/typescript-config-base
+    yarn add --dev @canonical/typescript-config-base typescript
 ```
 
 ### Usage
@@ -24,6 +24,6 @@ Create a `tsconfig.json` file in the root of your project and extend the configu
 
 ```json
 {
-    "extends": "@canonical/typescript-config"
+    "extends": "@canonical/typescript-config-base"
 }
 ```

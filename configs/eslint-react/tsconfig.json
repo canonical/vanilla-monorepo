@@ -1,0 +1,10 @@
+{
+  "extends": "@canonical/typescript-config-base/tsconfig.json",
+  "include": [
+    "./index.js",
+    ".eslintrc.js"
+  ],
+  "compilerOptions": {
+    "allowJs": true
+  }
+}

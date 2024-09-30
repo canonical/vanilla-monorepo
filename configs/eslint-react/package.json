@@ -1,7 +1,8 @@
 {
-  "name": "@canonical/vanilla-ts-test",
+  "name": "@canonical/eslint-config-react",
   "version": "0.0.1",
-  "description": "Vanilla as a monorepo",
+  "description": "Canonical's React ESLint configuration",
+  "main": "index.js",
   "author": {
     "email": "webteam@canonical.com",
     "name": "Canonical Webteam"
@@ -16,16 +17,17 @@
   },
   "homepage": "https://github.com/canonical/vanilla-monorepo#readme",
   "scripts": {
-    "emit": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "bun lint-eslint",
     "lint-fix": "bun lint-eslint-fix",
-    "lint-eslint": "eslint --ext .mjs,.js,.tsx,.ts src/",
-    "lint-eslint-fix": "eslint --ext .mjs,.js,.tsx,.ts src/ --fix",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint-eslint": "eslint --ext .js .",
+    "lint-eslint-fix": "eslint --ext .js . --fix"
   },
-  "devDependencies": {
+  "peerDependencies": {
     "@canonical/eslint-config-base": "0.0.1",
-    "@canonical/typescript-config-base": "0.0.1",
-    "eslint": "^7.32.0 || ^8.2.0"
+    "eslint-plugin-jsx-a11y": "^6.10.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-react": "^7.37.0",
+    "eslint-plugin-react-hooks": "^4.6.2"
   }
 }

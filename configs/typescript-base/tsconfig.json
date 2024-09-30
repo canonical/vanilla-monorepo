@@ -18,8 +18,12 @@
     "noUnusedParameters": true,
     "removeComments": true,
     "skipLibCheck": true,
+    "jsx": "react-jsx",
     "strictNullChecks": true,
     "target": "ES2022",
     "allowJs": false
-  }
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }
