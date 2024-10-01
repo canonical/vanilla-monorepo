@@ -1,5 +1,6 @@
 {
   "name": "@canonical/vanilla-ts-test",
+  "private": true,
   "version": "0.0.1",
   "description": "Vanilla as a monorepo",
   "author": {
