@@ -14,12 +14,12 @@ export interface HeaderProps {
   onCreateAccount?: () => void;
 }
 
-export const Header:React.FC = ({
+export const Header = ({
   user,
   onLogin,
   onLogout,
   onCreateAccount,
-}: HeaderProps) => (
+}: HeaderProps): React.ReactElement => (
   <header>
     <div className="storybook-header">
       <div>

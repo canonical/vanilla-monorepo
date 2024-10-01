@@ -16,13 +16,13 @@ export interface ButtonProps {
 }
 
 /** Primary UI component for user interaction */
-export const Button: React.FC = ({
+export const Button = ({
   primary = false,
   size = "medium",
   backgroundColor,
   label,
   ...props
-}: ButtonProps) => {
+}: ButtonProps): React.ReactElement => {
   const mode = primary
     ? "storybook-button--primary"
     : "storybook-button--secondary";
