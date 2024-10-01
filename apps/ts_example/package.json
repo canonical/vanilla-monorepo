@@ -17,9 +17,12 @@
   "homepage": "https://github.com/canonical/vanilla-monorepo#readme",
   "scripts": {
     "emit": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint":"biome lint src/*.ts",
+    "format":"biome format src/*.ts"
   },
   "devDependencies": {
-    "@canonical/typescript-config-base": "0.0.1"
+    "@canonical/biome-config": "^0.0.1",
+    "@canonical/typescript-config-base": "^0.0.1"
   }
 }
