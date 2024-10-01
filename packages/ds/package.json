@@ -5,7 +5,7 @@
   "types": "dist/types/index.d.ts",
   "scripts": {
     "dev": "vite",
-    "emit-declaration":"tsc --emitDeclarationOnly",
+    "emit-declaration": "tsc --emitDeclarationOnly",
     "lint": "biome lint src/**/*.{ts,tsx}",
     "format": "biome format src/**/*.{ts,tsx}",
     "check": "biome check src/**/*.{ts,tsx}",
@@ -27,6 +27,7 @@
     "@storybook/addon-interactions": "^8.3.4",
     "@storybook/addon-links": "^8.3.4",
     "@storybook/addon-onboarding": "^8.3.4",
+    "@storybook/addon-themes": "^8.3.4",
     "@storybook/blocks": "^8.3.4",
     "@storybook/react": "^8.3.4",
     "@storybook/react-vite": "^8.3.4",
@@ -45,8 +46,6 @@
     "vite": "^5.4.1"
   },
   "eslintConfig": {
-    "extends": [
-      "plugin:storybook/recommended"
-    ]
+    "extends": ["plugin:storybook/recommended"]
   }
 }
