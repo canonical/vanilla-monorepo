@@ -18,10 +18,11 @@
   "scripts": {
     "emit": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint":"biome lint src/*.ts",
-    "format":"biome format src/*.ts",
-    "check":"biome check src/*.ts",
-    "check:write":"biome check --write src/*.ts"
+    "lint": "biome lint src/*.ts",
+    "format": "biome format src/*.ts",
+    "check": "biome check src/*.ts",
+    "check:write": "biome check --write src/*.ts",
+    "check-json:write": "biome check --write *.json"
   },
   "devDependencies": {
     "@canonical/biome-config": "^0.0.1",

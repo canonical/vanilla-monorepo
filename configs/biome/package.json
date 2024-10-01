@@ -4,5 +4,8 @@
   "main": "biome.json",
   "devDependencies": {
     "@biomejs/biome": "^1.9.2"
+  },
+  "peerDependencies":{
+    "@biomejs/biome": "^1.9.2"
   }
 }
