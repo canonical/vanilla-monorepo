@@ -18,10 +18,12 @@
   "scripts": {
     "emit": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "biome lint src/*.ts",
-    "format": "biome format src/*.ts",
-    "check": "biome check src/*.ts",
-    "check:write": "biome check --write src/*.ts",
+    "lint:biome": "biome lint src/*.ts",
+    "format:biome": "biome format src/*.ts",
+    "check": "bun run check:biome",
+    "check:write": "bun run check:biome:write",
+    "check:biome": "biome check src/*.ts",
+    "check:biome:write": "biome check --write src/*.ts",
     "check-json:write": "biome check --write *.json"
   },
   "devDependencies": {

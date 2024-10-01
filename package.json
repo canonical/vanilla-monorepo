@@ -21,6 +21,15 @@
     "apps/*"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "lerna run build --parallel",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "check": "lerna run check --parallel",
+    "check:fix": "lerna run check:fix --parallel",
+    "check:biome": "lerna run check:biome --parallel",
+    "check:biome:fix": "lerna run check:biome:fix --parallel",
+    "lint": "lerna run lint --parallel"
+  },
+  "devDependencies": {
+    "lerna": "^8.1.8"
   }
 }

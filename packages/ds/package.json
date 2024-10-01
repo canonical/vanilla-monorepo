@@ -6,13 +6,17 @@
   "scripts": {
     "dev": "vite",
     "emit-declaration": "tsc --emitDeclarationOnly",
-    "lint": "biome lint src/**/*.{ts,tsx}",
-    "format": "biome format src/**/*.{ts,tsx}",
-    "check": "biome check src/**/*.{ts,tsx}",
-    "check-write": "biome check --write src/**/*.{ts,tsx}",
+    "format:biome": "biome format src/**/*.{ts,tsx}",
     "type-check": "tsc --noEmit",
     "storybook": "storybook dev -p 6006 --no-open --host 0.0.0.0",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "build": "bun run build-storybook",
+    "lint": "bun run lint:biome",
+    "lint:biome": "biome lint src/**/*.{ts,tsx}",
+    "check": "bun run check:biome",
+    "check:fix": "bun run check:biome:fix",
+    "check:biome": "biome check src/**/*.{ts,tsx}",
+    "check:biome:fix": "biome check --write src/**/*.{ts,tsx}"
   },
   "dependencies": {
     "react": "^18.3.1",
