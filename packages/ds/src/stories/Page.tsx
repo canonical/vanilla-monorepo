@@ -74,6 +74,8 @@ export const Page = (): React.ReactElement => {
             height="10"
             viewBox="0 0 12 12"
             xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Viewports addon logo"
           >
             <g fill="none" fillRule="evenodd">
               <path
