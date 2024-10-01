@@ -2,8 +2,10 @@
   "name": "@canonical/ds",
   "version": "0.0.1",
   "type": "module",
+  "types": "dist/types/index.d.ts",
   "scripts": {
     "dev": "vite",
+    "emit-declaration":"tsc --emitDeclarationOnly",
     "lint": "biome lint src/**/*.{ts,tsx}",
     "format": "biome format src/**/*.{ts,tsx}",
     "check": "biome check src/**/*.{ts,tsx}",
