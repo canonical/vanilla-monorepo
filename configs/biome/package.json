@@ -1,0 +1,10 @@
+{
+  "name": "@canonical/biome-config",
+  "main": "biome.json",
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
