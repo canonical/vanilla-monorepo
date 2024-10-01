@@ -22,7 +22,7 @@
   ],
   "scripts": {
     "build": "lerna run build --parallel",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "bun run check",
     "check": "lerna run check --parallel",
     "check:fix": "lerna run check:fix --parallel",
     "check:biome": "lerna run check:biome --parallel",
