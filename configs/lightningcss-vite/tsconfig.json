@@ -1,0 +1,11 @@
+{
+  "extends": "@canonical/typescript-config-base",
+  "compilerOptions": {
+    "outDir": "dist",
+    "declaration": true,
+    "types": ["vite/client"],
+    "moduleResolution": "Node"
+  },
+  "include": ["index.ts", "vite.config.ts"],
+  "exclude": ["node_modules"]
+}
