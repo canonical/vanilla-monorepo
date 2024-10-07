@@ -5,21 +5,18 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "lib": [
-      "es2022",
+      "es2023",
       "dom"
     ],
-    "module": "ESNext",
+    "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "removeComments": true,
     "skipLibCheck": true,
     "strictNullChecks": true,
-    "target": "ES2022",
+    "target": "ES2023",
     "allowJs": true,
   }
 }

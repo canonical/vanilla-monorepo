@@ -1,9 +1,7 @@
-import lightningcssVite from "@canonical/lightningcss-config-vite";
+import { getShareableLightningCssConfig } from "@canonical/lightningcss-config-vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  ...lightningcssVite,
-});
+export default defineConfig(getShareableLightningCssConfig({
+  plugins: react()
+}));
