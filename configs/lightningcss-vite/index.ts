@@ -1,18 +1,34 @@
 import {browserslistToTargets, Targets} from "lightningcss";
 import type {UserConfig} from "vite";
-import {readFileSync} from "fs";
+import {readFileSync, existsSync} from "fs";
 import {join} from "path";
 import browserslist from "browserslist";
 
 function getBrowserslistTargets(): Targets {
+  const defaultTargets: Targets = browserslistToTargets(browserslist(browserslist.defaults));
   try {
-    // Check the user's package.json for a browserslist or browsers field, use it if found - otherwise use the defaults
     const packageJsonPath = join(process.cwd(), "package.json");
-    const packageJson = JSON.parse(readFileSync(packageJsonPath, "utf-8"));
-    const browsers = packageJson.browserslist || packageJson.browsers || browserslist('defaults');
-    return browserslistToTargets(browsers);
+    const browserslistRcPath = join(process.cwd(), ".browserslistrc");
+    let browsers;
+
+    // Check if .browserslistrc exists and use it if found
+    if (existsSync(browserslistRcPath)) {
+      browsers = browserslist.loadConfig({ path: process.cwd() });
+    }
+    // Otherwise, check package.json for browserslist config
+    else if (existsSync(packageJsonPath)) {
+      const packageJson = JSON.parse(readFileSync(packageJsonPath, "utf-8"));
+      browsers = packageJson.browserslist;
+    }
+
+    // Fallback to defaultBrowsers if neither are found
+    if (!browsers?.length) {
+     return defaultTargets;
+    }
+
+    return browserslistToTargets(browserslist(browsers));
   } catch (error) {
-    return browserslistToTargets(browserslist('defaults'));
+    return defaultTargets;
   }
 }
 
