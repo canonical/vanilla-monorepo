@@ -1,10 +1,5 @@
 {
   "extends": "@canonical/typescript-config-react",
-  "compilerOptions": {
-    "outDir": "./dist",
-    "baseUrl": "src",
-    "declarationDir": "dist/types"
-  },
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
