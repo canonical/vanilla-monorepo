@@ -4,7 +4,6 @@
   "type": "module",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "dev": "vite",
     "emit-declaration": "tsc --emitDeclarationOnly",
     "lint": "biome lint src/**/*.{ts,tsx}",
     "format": "biome format src/**/*.{ts,tsx}",
