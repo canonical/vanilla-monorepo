@@ -6,7 +6,7 @@
 		"isolatedModules": true,
 		"lib": ["es2022", "dom"],
 		"module": "NodeNext",
-		"moduleResolution": "nodenext",
+		"moduleResolution": "NodeNext",
 		"noFallthroughCasesInSwitch": true,
 		"noImplicitAny": true,
 		"noImplicitReturns": true,
@@ -16,7 +16,7 @@
 		"removeComments": true,
 		"skipLibCheck": true,
 		"strictNullChecks": true,
-		"target": "ES2022",
+		"target": "ES2023",
 		"allowJs": true
 	}
 }

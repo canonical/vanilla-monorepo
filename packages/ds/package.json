@@ -2,31 +2,31 @@
   "name": "@canonical/ds",
   "version": "0.0.1",
   "type": "module",
+  "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "dev": "vite",
+    "build": "tsc && bun run build-storybook",
+    "clean": "rm -rf dist storybook-static node_modules",
     "emit-declaration": "tsc --emitDeclarationOnly",
+    "lint": "biome lint src/**/*.{ts,tsx}",
+    "format": "bun run format:biome",
     "format:biome": "biome format src/**/*.{ts,tsx}",
-    "type-check": "tsc --noEmit",
-    "storybook": "storybook dev -p 6006 --no-open --host 0.0.0.0",
-    "build-storybook": "storybook build",
-    "build": "bun run build-storybook",
-    "lint": "bun run lint:biome",
-    "lint:biome": "biome lint src/**/*.{ts,tsx}",
-    "check": "bun run check:biome",
+    "check": "bun run check:biome && bun run check:ts",
     "check:fix": "bun run check:biome:fix",
-    "check:biome": "biome check src/**/*.{ts,tsx}",
-    "check:biome:fix": "biome check --write src/**/*.{ts,tsx}"
+    "check:biome": "biome check src/**/*.{ts,tsx} *.json",
+    "check:biome:fix": "biome check --write src/**/*.{ts,tsx} *.json",
+    "check:ts": "tsc --noEmit",
+    "storybook": "storybook dev -p 6006 --no-open --host 0.0.0.0",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "^19.0.0-rc-1460d67c-20241003",
+    "react-dom": "^19.0.0-rc-1460d67c-20241003"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
     "@canonical/biome-config": "^0.0.1",
     "@canonical/typescript-config-react": "^0.0.1",
-    "@eslint/js": "^9.9.0",
     "@storybook/addon-essentials": "^8.3.4",
     "@storybook/addon-interactions": "^8.3.4",
     "@storybook/addon-links": "^8.3.4",
@@ -36,20 +36,10 @@
     "@storybook/react": "^8.3.4",
     "@storybook/react-vite": "^8.3.4",
     "@storybook/test": "^8.3.4",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
-    "eslint": "^9.9.0",
-    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
-    "eslint-plugin-react-refresh": "^0.4.9",
-    "eslint-plugin-storybook": "^0.9.0",
     "globals": "^15.9.0",
     "storybook": "^8.3.4",
     "typescript": "^5.5.3",
-    "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1"
-  },
-  "eslintConfig": {
-    "extends": ["plugin:storybook/recommended"]
   }
 }

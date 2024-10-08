@@ -1,9 +1,7 @@
 {
-	"extends": "@canonical/typescript-config-base/tsconfig.json",
+	"extends": "@canonical/typescript-config-base",
 	"compilerOptions": {
 		"lib": ["dom"],
-		"allowImportingTsExtensions": true,
-		"jsx": "react-jsx",
-		"types": ["react", "react-dom"]
+		"jsx": "react-jsx"
 	}
 }

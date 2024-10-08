@@ -27,6 +27,7 @@
     "check:fix": "lerna run check:fix --parallel",
     "check:biome": "lerna run check:biome --parallel",
     "check:biome:fix": "lerna run check:biome:fix --parallel",
+    "clean": "lerna run clean --parallel && rm -rf node_modules",
     "lint": "lerna run lint --parallel",
     "publish": "lerna publish -from-package --yes"
   },
