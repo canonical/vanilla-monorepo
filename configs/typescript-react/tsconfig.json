@@ -1,5 +1,5 @@
 {
-  "extends": "@canonical/typescript-config-base/tsconfig.json",
+  "extends": "@canonical/typescript-config-base",
   "compilerOptions": {
     "lib": ["dom"],
     "jsx": "react-jsx",

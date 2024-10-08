@@ -1,0 +1,42 @@
+{
+  "name": "@canonical/ds",
+  "version": "0.0.1",
+  "type": "module",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "dev": "vite",
+    "emit-declaration": "tsc --emitDeclarationOnly",
+    "lint": "biome lint src/**/*.{ts,tsx}",
+    "format": "biome format src/**/*.{ts,tsx}",
+    "check": "biome check src/**/*.{ts,tsx}",
+    "check-write": "biome check --write src/**/*.{ts,tsx}",
+    "type-check": "tsc --noEmit",
+    "storybook": "storybook dev -p 6006 --no-open --host 0.0.0.0",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^1.9.0",
+    "@canonical/biome-config": "^0.0.1",
+    "@canonical/typescript-config-react": "^0.0.1",
+    "@storybook/addon-essentials": "^8.3.4",
+    "@storybook/addon-interactions": "^8.3.4",
+    "@storybook/addon-links": "^8.3.4",
+    "@storybook/addon-onboarding": "^8.3.4",
+    "@storybook/addon-themes": "^8.3.4",
+    "@storybook/blocks": "^8.3.4",
+    "@storybook/react": "^8.3.4",
+    "@storybook/react-vite": "^8.3.4",
+    "@storybook/test": "^8.3.4",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "globals": "^15.9.0",
+    "storybook": "^8.3.4",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.1"
+  }
+}
