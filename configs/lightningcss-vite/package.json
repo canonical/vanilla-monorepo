@@ -3,9 +3,11 @@
   "version": "0.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "type": "module",
   "declarations": "dist/types/index.d.ts",
   "scripts": {
     "build": "tsc",
+    "prepare": "bun run build",
     "lint": "biome lint ./*.ts",
     "format": "biome format ./*.ts",
     "check": "biome check ./*.ts",
