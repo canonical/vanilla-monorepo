@@ -4,7 +4,6 @@
   "type": "module",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "dev": "vite",
     "emit-declaration": "tsc --emitDeclarationOnly",
     "lint": "biome lint src/**/*.{ts,tsx}",
     "format": "biome format src/**/*.{ts,tsx}",
@@ -15,13 +14,12 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "^19.0.0-rc-1460d67c-20241003",
+    "react-dom": "^19.0.0-rc-1460d67c-20241003"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
     "@canonical/biome-config": "^0.0.1",
-    "@canonical/lightningcss-config-vite": "^0.0.1",
     "@canonical/typescript-config-react": "^0.0.1",
     "@storybook/addon-essentials": "^8.3.4",
     "@storybook/addon-interactions": "^8.3.4",
@@ -32,11 +30,8 @@
     "@storybook/react": "^8.3.4",
     "@storybook/react-vite": "^8.3.4",
     "@storybook/test": "^8.3.4",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
     "globals": "^15.9.0",
-    "lightningcss": "^1.27.0",
     "storybook": "^8.3.4",
     "typescript": "^5.5.3",
     "vite": "^5.4.1"

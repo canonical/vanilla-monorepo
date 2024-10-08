@@ -30,6 +30,6 @@ const config: StorybookConfig = {
   typescript: {
     check: true,
   },
-  staticDirs: [{ from: "../src/assets", to: "/assets" }],
+  staticDirs: ["../src/assets"],
 };
 export default config;
