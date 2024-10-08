@@ -7,8 +7,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
       - name: Setup environment
-        uses: .github/actions/setup-env
+        uses: ./.github/actions/setup-env
 
       - name: Build all packages
         run: bun run build
