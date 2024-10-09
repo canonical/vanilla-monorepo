@@ -1,7 +1,7 @@
 {
-  "extends": "@canonical/typescript-config-base",
-  "compilerOptions": {
-    "lib": ["dom"],
-    "jsx": "react-jsx"
-  }
+	"extends": "@canonical/typescript-config-base",
+	"compilerOptions": {
+		"lib": ["dom"],
+		"jsx": "react-jsx"
+	}
 }

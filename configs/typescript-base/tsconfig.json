@@ -1,24 +1,22 @@
 {
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "declaration": true,
-    "esModuleInterop": true,
-    "isolatedModules": true,
-    "lib": [
-      "es2022",
-      "dom"
-    ],
-    "module": "ESNext",
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "removeComments": true,
-    "skipLibCheck": true,
-    "strictNullChecks": true,
-    "target": "ES2022",
-    "allowJs": true,
-  }
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"declaration": true,
+		"esModuleInterop": true,
+		"isolatedModules": true,
+		"lib": ["es2022", "dom"],
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitAny": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"removeComments": true,
+		"skipLibCheck": true,
+		"strictNullChecks": true,
+		"target": "ES2023",
+		"allowJs": true
+	}
 }

@@ -1,5 +1,6 @@
 {
   "name": "@canonical/vanilla-ts-test",
+  "private": true,
   "version": "0.0.1",
   "description": "Vanilla as a monorepo",
   "type": "module",
@@ -19,13 +20,15 @@
   },
   "homepage": "https://github.com/canonical/vanilla-monorepo#readme",
   "scripts": {
-    "emit": "tsc",
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "biome lint src/*.ts",
-    "format": "biome format src/*.ts",
-    "check": "biome check src/*.ts",
-    "check:write": "biome check --write src/*.ts",
-    "check-json:write": "biome check --write *.json"
+    "lint:biome": "biome lint src/*.ts",
+    "format:biome": "biome format src/*.ts",
+    "check": "bun run check:biome && bun run check:ts",
+    "check:fix": "bun run check:biome:fix",
+    "check:biome": "biome check src/*.ts *.json",
+    "check:biome:fix": "biome check --write src/*.ts *.json",
+    "check:ts": "tsc --noEmit"
   },
   "devDependencies": {
     "@canonical/biome-config": "^0.0.1",
