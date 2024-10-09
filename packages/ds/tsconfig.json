@@ -3,8 +3,7 @@
   "compilerOptions": {
     "baseUrl": "src",
     "outDir": "dist/esm",
-    "declarationDir": "dist/types",
-    "module": "NodeNext"
+    "skipLibCheck": true
   },
   "include": [
     "src/**/*.ts",
