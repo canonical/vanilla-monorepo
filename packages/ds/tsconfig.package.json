@@ -2,7 +2,9 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "declaration": true,
-    "declarationDir": "dist/types"
+    "declarationDir": "dist/types",
+    "declarationMap": true,
+    "sourceMap": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+  "include": ["src/ui/**/*.ts", "src/ui/**/*.tsx"]
 }

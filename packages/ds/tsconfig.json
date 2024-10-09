@@ -1,9 +1,10 @@
 {
   "extends": "@canonical/typescript-config-react",
   "compilerOptions": {
-    "baseUrl": "src",
+    "baseUrl": "src/",
     "outDir": "dist/esm",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "src/**/*.ts",
