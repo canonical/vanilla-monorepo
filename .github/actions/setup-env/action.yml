@@ -1,10 +1,14 @@
 name: Setup environment
 description: Installs build tools and dependencies
+inputs:
+  BUN_VERSION: 
+    default: "latest"
+    description: "Version of Bun to use"
 runs:
   using: composite
   steps:
     - name: Setup Bun
-      uses: oven-sh/setup-bun@v2
+      uses: oven-sh/setup-bun@v${{ inputs.BUN_VERSION }}
 
     - name: Install dependencies
       shell: bash
