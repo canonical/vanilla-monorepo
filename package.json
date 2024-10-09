@@ -24,10 +24,7 @@
     "build": "lerna run build --parallel",
     "test": "bun run check",
     "check": "lerna run check --parallel",
-    "check:fix": "lerna run check:fix --parallel",
-    "check:biome": "lerna run check:biome --parallel",
-    "check:biome:fix": "lerna run check:biome:fix --parallel",
-    "lint": "lerna run lint --parallel"
+    "check:fix": "lerna run check:fix --parallel"
   },
   "devDependencies": {
     "lerna": "^8.1.8"
