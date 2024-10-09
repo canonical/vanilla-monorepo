@@ -5,18 +5,21 @@
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "bun run build-package",
+    "build-storybook": "storybook build",
+    "build-package": "tsc -p tsconfig.package.json",
     "emit-declaration": "tsc --emitDeclarationOnly",
     "lint": "biome lint src/**/*.{ts,tsx}",
     "format": "bun run format:biome",
     "format:biome": "biome format src/**/*.{ts,tsx}",
     "check": "bun run check:biome && bun run check:ts",
     "check:fix": "bun run check:biome:fix",
-    "check:biome": "biome check src/**/*.{ts,tsx} *.json",
-    "check:biome:fix": "biome check --write src/**/*.{ts,tsx} *.json",
-    "check:ts": "tsc --noEmit",
-    "storybook": "storybook dev -p 6006 --no-open --host 0.0.0.0",
-    "build-storybook": "storybook build"
+    "check:biome": "biome check src/**/*.{ts,tsx,mdx} *.json",
+    "check:biome:fix": "biome check --write src/**/*.{ts,tsx,mdx} *.json",
+    "check:ts": "bun run check:ts:package && bun run check:ts:storybook",
+    "check:ts:package": "tsc -p tsconfig.package.json --noEmit",
+    "check:ts:storybook": "tsc --noEmit",
+    "storybook": "storybook dev -p 6006 --no-open --host 0.0.0.0"
   },
   "dependencies": {
     "react": "^19.0.0-rc-1460d67c-20241003",
