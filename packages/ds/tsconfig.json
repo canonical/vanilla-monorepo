@@ -3,7 +3,8 @@
   "compilerOptions": {
     "baseUrl": "src",
     "outDir": "dist/esm",
-    "declarationDir": "dist/types"
+    "declarationDir": "dist/types",
+    "module": "NodeNext"
   },
   "include": [
     "src/**/*.ts",
