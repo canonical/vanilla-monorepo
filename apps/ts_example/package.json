@@ -21,7 +21,6 @@
   "homepage": "https://github.com/canonical/vanilla-monorepo#readme",
   "scripts": {
     "build": "bun run emit",
-    "clean": "rm -rf dist node_modules",
     "emit": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:biome": "biome lint src/*.ts",

@@ -6,7 +6,6 @@
   "types": "dist/types/index.d.ts",
   "scripts": {
     "build": "tsc && bun run build-storybook",
-    "clean": "rm -rf dist storybook-static node_modules",
     "emit-declaration": "tsc --emitDeclarationOnly",
     "lint": "biome lint src/**/*.{ts,tsx}",
     "format": "bun run format:biome",
