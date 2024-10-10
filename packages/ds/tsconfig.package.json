@@ -6,5 +6,6 @@
     "declarationMap": true,
     "sourceMap": true
   },
-  "include": ["src/ui/**/*.ts", "src/ui/**/*.tsx"]
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["src/**/*.stories.ts", "src/**/*.stories.tsx"]
 }
