@@ -8,7 +8,7 @@
     "build": "bun run build:package",
     "build:storybook": "storybook build",
     "build:package": "bun run build:package:bun",
-    "build:package:bun": "cd src && bun build ui/**/*.{ts,tsx} --outdir ../dist/esm --sourcemap=linked --minify && cd .. && bun run emit",
+    "build:package:bun": "bun build src/**/**/*.{ts,tsx} --outdir dist/esm --sourcemap=linked --external '*' && bun run emit",
     "build:package:tsc": "tsc",
     "emit": "tsc -p tsconfig.package.json --emitDeclarationOnly",
     "lint": "biome lint src/**/*.{ts,tsx}",
