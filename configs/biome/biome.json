@@ -26,6 +26,7 @@
   "javascript": {
     "formatter": {
       "quoteStyle": "double"
-    }
+    },
+    "jsxRuntime": "reactClassic"
   }
 }

@@ -1,4 +1,4 @@
-import type React from "react";
+import React from "react";
 
 import "./button.css";
 
@@ -16,7 +16,7 @@ export interface ButtonProps {
 }
 
 /** Primary UI component for user interaction */
-export const Button = ({
+const Button = ({
   primary = false,
   size = "medium",
   backgroundColor,
@@ -39,3 +39,5 @@ export const Button = ({
     </button>
   );
 };
+
+export default Button;
