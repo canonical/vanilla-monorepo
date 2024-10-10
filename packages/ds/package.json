@@ -9,7 +9,7 @@
     "build:storybook": "bun run build-storybook",
     "build-storybook": "storybook build",
     "build:package": "bun run build:package:tsc && bun run build:package:copycss",
-    "build:package:bun": "bun build --root src src/**/**/*.{ts,tsx} --outdir dist/esm --sourcemap=linked --external '*' && bun run emit",
+    "build:package:bun": "bun build --root src src/**/**/*.{ts,tsx} --outdir dist/esm --sourcemap=linked --external '*' && tsc -p tsconfig.build.json --emitDeclarationOnly",
     "build:package:copycss": "copyfiles -u 1 src/ui/**/*.css dist/esm",
     "build:package:tsc": "tsc -p tsconfig.build.json",
     "lint": "biome lint src/**/*.{ts,tsx}",
