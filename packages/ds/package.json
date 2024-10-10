@@ -6,6 +6,8 @@
   "types": "dist/types/index.d.ts",
   "scripts": {
     "build": "bun run build:package",
+    "build:storybook": "bun run build-storybook",
+    "build-storybook": "storybook build",
     "build:package": "bun run build:package:tsc && bun run build:package:copycss",
     "build:package:bun": "bun build --root src src/**/**/*.{ts,tsx} --outdir dist/esm --sourcemap=linked --external '*' && bun run emit",
     "build:package:copycss": "copyfiles -u 1 src/ui/**/*.css dist/esm",
@@ -19,8 +21,7 @@
     "check:biome:old": "biome check src/**/*.{ts,tsx,mdx} *.json",
     "check:biome:fix": "biome check --write src/**/* *.json",
     "check:ts": "tsc --noEmit",
-    "storybook": "storybook dev -p 6006 --no-open --host 0.0.0.0",
-    "build-storybook": "bun run build:storybook"
+    "storybook": "storybook dev -p 6006 --no-open --host 0.0.0.0"
   },
   "dependencies": {
     "react": "^19.0.0-rc-1460d67c-20241003",
