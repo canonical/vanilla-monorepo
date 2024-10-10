@@ -1,3 +1,3 @@
-export { default as Button, type ButtonProps } from "ui/Button";
-export { default as Header, type HeaderProps } from "ui/Header";
-export { default as Page } from "ui/Page";
+export { Button, type ButtonProps } from "./Button/index.js";
+export { Header, type HeaderProps } from "./Header/index.js";
+export { Page } from "./Page/index.js";
