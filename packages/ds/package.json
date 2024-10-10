@@ -7,10 +7,10 @@
   "scripts": {
     "build": "bun run build:package",
     "build:storybook": "storybook build",
-    "build:package": "bun run build:package:bun",
+    "build:package": "bun run build:package:tsc",
     "build:package:bun": "bun build --root src src/**/**/*.{ts,tsx} --outdir dist/esm --sourcemap=linked --external '*' && bun run emit",
-    "build:package:copycss":"copyfiles -u 1 src/ui/**/*.css dist/esm",
-    "build:package:tsc": "tsc",
+    "build:package:copycss": "copyfiles -u 1 src/ui/**/*.css dist/esm",
+    "build:package:tsc": "tsc -p tsconfig.package.json && bun run build:package:copycss",
     "emit": "tsc -p tsconfig.package.json --emitDeclarationOnly",
     "lint": "biome lint src/**/*.{ts,tsx}",
     "format": "bun run format:biome",
