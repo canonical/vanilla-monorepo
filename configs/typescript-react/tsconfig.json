@@ -2,6 +2,6 @@
 	"extends": "@canonical/typescript-config-base",
 	"compilerOptions": {
 		"lib": ["ES2023", "dom"],
-		"jsx": "react"
+		"jsx": "react-jsx"
 	}
 }
