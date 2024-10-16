@@ -16,4 +16,3 @@ Create `biome.json` in your project
   "extends": ["@canonical/biome-config"]
 }
 ```
-
