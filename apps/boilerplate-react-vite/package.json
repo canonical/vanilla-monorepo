@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "lint": "biome lint src/**/*.{ts,tsx}",
     "format": "bun run format:biome",
@@ -23,6 +23,7 @@
   "devDependencies": {
     "@biomejs/biome": "^1.9.2",
     "@canonical/biome-config": "^0.0.1",
+    "@canonical/ds": "^0.0.1",
     "@canonical/typescript-config-react": "^0.0.1",
     "@vitejs/plugin-react": "^4.3.2",
     "globals": "^15.9.0",
