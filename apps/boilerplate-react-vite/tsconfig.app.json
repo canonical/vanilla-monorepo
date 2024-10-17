@@ -1,0 +1,13 @@
+{
+  "extends": "@canonical/typescript-config-react",
+  "compilerOptions": {
+    "composite": true,
+    "baseUrl": "src",
+    "rootDir": "src",
+    "outDir": "dist/esm",
+    "declaration": true,
+    "declarationDir": "dist/types"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}

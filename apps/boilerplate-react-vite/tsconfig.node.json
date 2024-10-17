@@ -1,0 +1,7 @@
+{
+  "extends": "@canonical/typescript-config-react",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": ["vite.config.ts"]
+}
