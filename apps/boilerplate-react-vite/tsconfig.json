@@ -1,5 +1,4 @@
 {
-  "extends": "@canonical/typescript-config-react",
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
