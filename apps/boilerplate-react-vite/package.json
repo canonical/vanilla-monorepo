@@ -1,5 +1,5 @@
 {
-  "name": "boilerplate-react",
+  "name": "@canonical/boilerplate-react-vite",
   "private": true,
   "version": "0.0.0",
   "type": "module",
