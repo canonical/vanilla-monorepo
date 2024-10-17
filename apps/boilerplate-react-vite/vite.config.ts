@@ -7,10 +7,5 @@ export default defineConfig({
     react({
       include: "src/**/*.tsx",
     })
-  ],
-  server: {
-    watch: {
-      usePolling: true
-    }
-  }
+  ]
 })
