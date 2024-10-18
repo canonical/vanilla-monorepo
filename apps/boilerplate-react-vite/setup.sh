@@ -38,6 +38,11 @@ mv "$SUBPACKAGE_PATH/"* .  # Move all files and folders from the subpackage
 git remote remove upstream
 rm -rf apps setup.sh 
 
+# If inside a monorepo, there is already a git context; remove the subcontext to avoid git tracking errors
+if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+  rm -rf .git
+fi
+
 # Update package.json with the project name and version
 PACKAGE_JSON_PATH="./package.json"
 if [ -f "$PACKAGE_JSON_PATH" ]; then
