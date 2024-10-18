@@ -2,7 +2,6 @@
 
 REPO_URL="https://github.com/canonical/vanilla-monorepo"
 SUBPACKAGE_PATH="apps/boilerplate-react-vite"
-# This is temporarily using the feature branch, it can be changed once merged
 BRANCH="wd-15812-vite-boilerplate"
 
 # Prompt for the project directory name
@@ -12,6 +11,13 @@ read -p "Enter your project's name: " PROJECT_NAME
 if [ -z "$PROJECT_NAME" ]; then
   echo "You must provide a project name."
   exit 1
+fi
+
+# Check if inside a monorepo (Git context already exists)
+if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+  IS_IN_MONOREPO=true
+else
+  IS_IN_MONOREPO=false
 fi
 
 # Initialize a new Git repository and configure sparse-checkout
@@ -39,7 +45,7 @@ git remote remove upstream
 rm -rf apps setup.sh 
 
 # If inside a monorepo, there is already a git context; remove the subcontext to avoid git tracking errors
-if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+if [ "$IS_IN_MONOREPO" = true ]; then
   rm -rf .git
 fi
 
