@@ -2,7 +2,7 @@
 
 REPO_URL="https://github.com/canonical/vanilla-monorepo"
 SUBPACKAGE_PATH="apps/boilerplate-react-vite"
-BRANCH="wd-15812-vite-boilerplate"
+BRANCH="main"
 
 # Prompt for the project directory name
 read -p "Enter your project's name: " PROJECT_NAME
