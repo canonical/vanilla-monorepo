@@ -64,3 +64,7 @@ env[23]/
 # Project-specific ignores
 js/app.js.map
 static/js/modules
+
+# monorepo tool caches
+**/.nx/
+**/.turbo/

@@ -1,6 +1,7 @@
 {
   "name": "vanilla-monorepo",
   "version": "0.0.1",
+  "private": true,
   "description": "Vanilla as a monorepo",
   "author": {
     "email": "webteam@canonical.com",
@@ -22,7 +23,6 @@
   ],
   "scripts": {
     "build": "lerna run build",
-    "prepare": "bun run build",
     "test": "bun run check",
     "check": "lerna run check --parallel",
     "check:fix": "lerna run check:fix --parallel"
