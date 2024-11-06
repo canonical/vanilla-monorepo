@@ -1,0 +1,21 @@
+## Done
+
+[List of work items including drive-bys]
+
+Fixes [list issues/bugs if needed]
+
+## QA
+
+- [Add QA steps]
+
+### PR readiness check
+
+If this PR contains Vanilla SCSS code changes, it should contain the following changes to make sure it's ready for the release:
+
+- [ ] PR should have one of the following labels to automatically categorise it in release notes:
+  - `Feature 🎁`, `Breaking Change 💣`, `Bug 🐛`, `Documentation 📝`, `Maintenance 🔨`.
+- [ ] All packages define the required scripts in `package.json`: `build`, `check`, and `check:fix`.
+
+## Screenshots
+
+[if relevant, include a screenshot or screen capture]
