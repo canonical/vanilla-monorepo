@@ -7,11 +7,19 @@ This is the successor to [Vanilla framework](https://vanillaframework.io).
 
 1. Install [NodeJS](https://nodejs.org/en/download/package-manager) version 20 or later.
 2. Install the [bun package manager](https://bun.sh/).
-3. Configure your local git client to read Bun lockfiles as text: `git config diff.lockb.textconv bun && git config diff.lockb.binary true`.
-   1. This will no longer be necessary once Bun [switches to a text-based lockfile](https://github.com/oven-sh/bun/issues/11863)
-4. Install Node dependencies: `bun install`.
+3. Install Node dependencies: `bun install`.
 
 The monorepo's dependencies should now be installed.
+
+### Binary bun lockfile
+
+Bun's lockfile (`bun.lockb`) is currently binary. 
+This can cause issues with resolving git conflicts when switching branches or pulling changes from remote.
+
+You can mitigate this issue locally by configuring your 
+git client to read Bun lockfiles as text: `git config diff.lockb.textconv bun && git config diff.lockb.binary true`.
+
+This will no longer be necessary once Bun [switches to a text-based lockfile](https://github.com/oven-sh/bun/issues/11863).
 
 ## Structure
 
