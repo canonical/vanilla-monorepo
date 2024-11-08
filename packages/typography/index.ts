@@ -1,6 +1,9 @@
 import { readFileSync } from "fs"
 import * as opentype from "opentype.js"
 
+
+const baselineHeight = .4
+
 // Define a function to calculate the nudges based on font metrics
 function calculateNudges(fontPath: string, cssLineHeight: number): void {
     // Load and parse the font
@@ -23,7 +26,12 @@ function calculateNudges(fontPath: string, cssLineHeight: number): void {
 
     const baselinePos = (cssLineHeight - lineHeightScale) / 2 + ascenderScale
 
+    const topNudge = baselineHeight - baselinePos % baselineHeight 
+
     console.log("baselinePos", baselinePos)
+    console.log("topNudge", topNudge)
+    // TODO bottom nudge
+    
 }
 
 // Read font path from command line arguments and call the function
