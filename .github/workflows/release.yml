@@ -1,0 +1,29 @@
+name: Release changed packages
+
+on:
+  push:
+    tags:
+      - "v*"
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup environment
+        uses: ./.github/actions/setup-env
+
+        # TODO add Nx and only build the packages that have changed since last tag
+      - name: Build
+        run: bun run build
+
+      - name: Run Lerna Publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          # Run Lerna publish in CI mode to avoid prompts
+          npx lerna publish --yes from-package
