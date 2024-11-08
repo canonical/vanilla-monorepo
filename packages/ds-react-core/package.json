@@ -4,6 +4,20 @@
   "type": "module",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
+  "files": ["dist"],
+  "author": {
+    "email": "webteam@canonical.com",
+    "name": "Canonical Webteam"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/canonical/vanilla-monorepo"
+  },
+  "license": "LGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/canonical/vanilla-monorepo/issues"
+  },
+  "homepage": "https://github.com/canonical/vanilla-monorepo#readme",
   "scripts": {
     "build": "bun run build:package",
     "build:storybook": "bun run build-storybook",
