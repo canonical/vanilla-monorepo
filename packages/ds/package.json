@@ -1,5 +1,5 @@
 {
-  "name": "@canonical/ds",
+  "name": "@canonical/ds-react-core",
   "version": "0.0.1",
   "type": "module",
   "module": "dist/esm/index.js",
