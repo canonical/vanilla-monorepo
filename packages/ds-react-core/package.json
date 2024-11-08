@@ -1,10 +1,12 @@
 {
   "name": "@canonical/ds-react-core",
-  "version": "0.0.1-experimental.1",
+  "version": "0.0.1-experimental.2",
   "type": "module",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "author": {
     "email": "webteam@canonical.com",
     "name": "Canonical Webteam"
@@ -42,7 +44,7 @@
     "react-dom": "^19.0.0-rc-1460d67c-20241003"
   },
   "devDependencies": {
-    "@canonical/biome-config": "^0.0.1-experimental.0",
+    "@canonical/biome-config": "^0.0.1-experimental.2",
     "@canonical/typescript-config-react": "^0.0.1-experimental.0",
     "@chromatic-com/storybook": "^1.9.0",
     "@storybook/addon-essentials": "^8.3.4",
