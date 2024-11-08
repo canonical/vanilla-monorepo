@@ -1,6 +1,6 @@
 {
   "name": "@canonical/ds-react-core",
-  "version": "0.0.1-experimental.2",
+  "version": "0.0.1-experimental.3",
   "type": "module",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
