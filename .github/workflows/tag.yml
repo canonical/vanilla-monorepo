@@ -64,7 +64,7 @@ jobs:
             VERSION_ARGS="${{ github.event.inputs.update_type }}"
           fi
 
-          lerna version $VERSION_ARGS --conventional-commits --no-git-tag-version --no-push --yes
+          lerna version $VERSION_ARGS --no-git-tag-version --no-push --yes
 
           # Get the updated version from lerna.json
           VERSION=$(jq -r '.version' lerna.json)
