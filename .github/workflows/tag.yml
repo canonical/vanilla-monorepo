@@ -31,6 +31,13 @@ jobs:
     outputs:
       VERSION: ${{ steps.lerna_version.outputs.VERSION }}
     steps:
+      - name: Validate input
+        run: |
+          if [[ "${{ github.ref }}" != "refs/heads/main" ]]; then
+            echo "This action can only be run on the main branch"
+            exit 1
+          fi
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
