@@ -50,28 +50,12 @@ jobs:
       - name: Run tests
         run: bun run test
 
-      - name: Determine version bump
+      - name: Bump package versions
         id: lerna_version
-        run: |
-          # Set the version command based on input
-          if [ "${{ github.event.inputs.update_type }}" = "prerelease" ]; then
-            if [ -z "${{ github.event.inputs.prerelease_identifier }}" ]; then
-              echo "Error: prerelease identifier is required for prerelease bumps."
-              exit 1
-            fi
-            VERSION_ARGS="prerelease --preid ${{ github.event.inputs.prerelease_identifier }}"
-          else
-            VERSION_ARGS="${{ github.event.inputs.update_type }}"
-          fi
-
-          lerna version $VERSION_ARGS --no-git-tag-version --no-push --yes
-
-          # Get the updated version from lerna.json
-          VERSION=$(jq -r '.version' lerna.json)
-          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
-
-      - name: Apply formatting fixes to versioning output
-        run: bun run check:fix
+        uses: ./.github/actions/lerna-version
+        with:
+          update_type: ${{ github.event.inputs.update_type }}
+          prerelease_identifier: ${{ github.event.inputs.prerelease_identifier }}
 
       - name: Commit and tag v${{ steps.lerna_version.outputs.VERSION }}
         env:
