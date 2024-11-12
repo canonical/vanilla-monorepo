@@ -1,6 +1,6 @@
 {
   "name": "@canonical/ds-react-core",
-  "version": "0.0.1-experimental.3",
+  "version": "0.0.1-experimental.4",
   "type": "module",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
@@ -42,9 +42,9 @@
     "react-dom": "^19.0.0-rc-1460d67c-20241003"
   },
   "devDependencies": {
-    "@canonical/biome-config": "^0.0.1-experimental.2",
-    "@canonical/typescript-config-react": "^0.0.1-experimental.0",
     "@chromatic-com/storybook": "^3.0.0",
+    "@canonical/typescript-config-react": "^0.0.1-experimental.4",
+    "@canonical/biome-config": "^0.0.1-experimental.4",
     "@storybook/addon-essentials": "^8.3.4",
     "@storybook/addon-interactions": "^8.3.4",
     "@storybook/addon-links": "^8.3.4",
