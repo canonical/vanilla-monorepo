@@ -40,3 +40,14 @@ To generate a new publishing token:
 4. Set the package scopes to "Read and write" for the `@canonical` organisation.
 
 The tokens last for 1 year. The current token will expire on 3 November 2025.
+
+#### Formatting
+
+`lerna version` currently applies some JSON formatting to `package.json`.
+Without intervention, this casues Biome's linting to fail due to formatting errors.
+
+To resolve this, we execute `bun run check:fix` after writing package updates
+and before committing the new tag to avoid pushing a tag that will fail linting.
+
+This has been filed as a bug with Lerna [here](https://github.com/lerna/lerna/issues/4117).
+The issue includes an example for issue reproduction.
