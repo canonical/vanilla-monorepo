@@ -2,22 +2,21 @@
 name: Publish packages
 description: Publishes packages.
 inputs:
-  NPM_TOKEN:
+  NODE_AUTH_TOKEN:
     description: "NPM automation token with publish access for the @canonical npmjs org"
     required: true
 runs:
   using: composite
   steps:
-    - name: Set up NPM registry authentication
-      shell: bash
-      run: echo "//registry.npmjs.org/:_authToken=${{ inputs.NPM_TOKEN }}" > .npmrc
+    # Consumes NODE_AUTH_TOKEN from the environment to authenticate with NPM
+    - name: Authenticate with NPM registry
+      uses: actions/setup-node@v4.1.0
+      with:
+        node-version: 22
+        registry-url: https://registry.npmjs.org
+      env:
+        NODE_AUTH_TOKEN: ${{ inputs.NODE_AUTH_TOKEN }}
 
     - name: Publish packages
       shell: bash
-      env:
-        NODE_AUTH_TOKEN: ${{ inputs.NPM_TOKEN }}
       run: lerna publish --yes --no-private from-package
-
-    - name: Cleanup NPM registry authentication
-      shell: bash
-      run: rm .npmrc

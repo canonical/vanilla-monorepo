@@ -30,7 +30,7 @@ Click the "Run workflow" button to open a workflow triggering window.
 
 #### NPM Token
 
-The `NPM_TOKEN` GitHub secret is used to publish to NPM.
+The `NODE_AUTH_TOKEN` GitHub secret is used to publish to NPM.
 
 To generate a new publishing token:
 
