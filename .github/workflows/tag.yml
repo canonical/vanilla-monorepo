@@ -40,14 +40,11 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
 
       - name: Setup environment
         uses: ./.github/actions/setup-env
-
-      - name: Setup Git CLI
-        uses: ./.github/actions/setup-git
-        with:
-          name: ${{ github.actor }}
 
         # TODO add Nx and only build the packages that have changed since last tag
       - name: Build all packages
@@ -64,9 +61,12 @@ jobs:
           update_type: ${{ github.event.inputs.update_type }}
           prerelease_identifier: ${{ github.event.inputs.prerelease_identifier }}
 
+      - name: Setup Git CLI
+        uses: ./.github/actions/setup-git
+        with:
+          name: ${{ github.actor }}
+
       - name: Commit and tag v${{ steps.lerna_version.outputs.VERSION }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git add .
           git commit -m "chore: version bump to ${{ steps.lerna_version.outputs.VERSION }}"
