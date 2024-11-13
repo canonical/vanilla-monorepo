@@ -73,8 +73,25 @@ jobs:
           git tag "v${{ steps.lerna_version.outputs.VERSION }}"
           git push && git push --tags
 
-      - name: Publish packages
-        if: ${{ github.event.inputs.publish_packages }}
+  publish:
+    name: Publish packages
+    runs-on: ubuntu-latest
+    needs: version
+    if: ${{ github.event.inputs.publish_packages }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          ref: v${{ needs.version.outputs.VERSION }}
+
+      - name: Setup Environment
+        uses: ./.github/actions/setup-env
+
+      - name: Build
+        run: bun run build
+
+      - name: Publish
         uses: ./.github/actions/publish
         with:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
