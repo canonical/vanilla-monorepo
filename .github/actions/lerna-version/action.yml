@@ -1,4 +1,4 @@
-name: Verion packages
+name: Version packages
 description: Updates package version numbers for changed packages.
 inputs:
   update_type:
