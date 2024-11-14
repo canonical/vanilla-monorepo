@@ -1,8 +1,8 @@
 {
-  "name": "@canonical/vanilla-ts-test",
+  "name": "@canonical/ds25-ts-test",
   "private": true,
-  "version": "0.0.1",
-  "description": "Vanilla as a monorepo",
+  "version": "0.1.0-experimental.0",
+  "description": "TypeScript test project",
   "type": "module",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
@@ -12,13 +12,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/canonical/vanilla-monorepo"
+    "url": "https://github.com/canonical/ds25"
   },
   "license": "LGPL-3.0",
   "bugs": {
-    "url": "https://github.com/canonical/vanilla-monorepo/issues"
+    "url": "https://github.com/canonical/ds25/issues"
   },
-  "homepage": "https://github.com/canonical/vanilla-monorepo#readme",
+  "homepage": "https://github.com/canonical/ds25#readme",
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -31,7 +31,7 @@
     "check:ts": "tsc --noEmit"
   },
   "devDependencies": {
-    "@canonical/biome-config": "^0.0.1",
-    "@canonical/typescript-config-base": "^0.0.1"
+    "@canonical/biome-config": "^0.1.0-experimental.0",
+    "@canonical/typescript-config-base": "^0.1.0-experimental.0"
   }
 }

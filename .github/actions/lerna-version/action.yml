@@ -1,0 +1,27 @@
+name: Version packages
+description: Updates package version numbers for changed packages.
+inputs:
+  update_type:
+    description: "Semver version update type"
+    required: true
+    default: "prepatch"
+  prerelease_identifier:
+    description: "Prerelease identifier"
+    default: "experimental"
+    required: false
+outputs:
+  VERSION:
+    description: "The new latest version number across all packages"
+    value: ${{ steps.lerna_version.outputs.VERSION }}
+runs:
+  using: composite
+  steps:
+    - name: Version packages
+      shell: bash
+      id: lerna_version
+      run: ${{ github.action_path }}/version.sh "${{ inputs.update_type }}" "${{ inputs.prerelease_identifier }}"
+
+      # Lerna may introuce slight formatting changes to the package.json files
+    - name: Format files
+      shell: bash
+      run: bun run check:fix
