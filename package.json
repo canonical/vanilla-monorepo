@@ -23,6 +23,7 @@
   ],
   "scripts": {
     "build": "lerna run build --parallel",
+    "lerna": "lerna",
     "test": "bun run check",
     "check": "lerna run check --parallel",
     "check:fix": "lerna run check:fix --parallel"
