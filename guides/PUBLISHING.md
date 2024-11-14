@@ -14,7 +14,7 @@ The versioning workflow does the following:
   - If a package has a dependency that is updated, it will also be incremented by the same semver level.
 - Commits the version changes to the `main` branch
 - Commits a new tag
-- If requested, publishes the affected packages.
+- Publishes the affected packages (unless specified otherwise)
 
 #### Running the workflow
 
