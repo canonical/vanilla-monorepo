@@ -1,20 +1,22 @@
 name: Update package versions
-
 on:
   workflow_dispatch:
     inputs:
       update_type:
-        description: "Specify version update type (major, minor, patch, or prerelease)"
+        description: "Verion update type"
         required: true
-        default: "prerelease"
+        # Change to minor once project is stable
+        default: "prepatch"
         type: choice
         options:
           - patch
           - minor
           - major
-          - prerelease
+          - prepatch
+          - preminor
+          - premajor
       prerelease_identifier:
-        description: "Custom prerelease identifier (required if update_type is 'prerelease')"
+        description: "Pre-release identifier, used for pre(patch|minor|major) versions"
         default: "experimental"
         required: false
         type: string
@@ -23,6 +25,8 @@ on:
         required: false
         default: false
         type: boolean
+env:
+  MAIN_BRANCH: "refs/heads/main"
 
 jobs:
   build:
@@ -31,7 +35,7 @@ jobs:
     steps:
       - name: Validate input
         run: |
-          if [[ "${{ github.ref }}" != "refs/heads/main" ]]; then
+          if [[ "${{ github.ref }}" != "${{ env.MAIN_BRANCH }}" ]]; then
             echo "This action can only be run on the main branch"
             exit 1
           fi

@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Input validation and setting version arguments
-if [ "$1" = "prerelease" ]; then
+# Require prerelease identifer for pre(patch,minor,major) bumps
+if [ "${1:0:3}" = "pre" ]; then
   if [ -z "$2" ]; then
     echo "Error: prerelease identifier is required for prerelease bumps."
     exit 1
   fi
-  VERSION_ARGS="prerelease --preid $2"
+  VERSION_ARGS="$1 --preid $2"
 else
   VERSION_ARGS="$1"
 fi

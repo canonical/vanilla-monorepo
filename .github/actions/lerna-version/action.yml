@@ -2,11 +2,11 @@ name: Version packages
 description: Updates package version numbers for changed packages.
 inputs:
   update_type:
-    description: "Semver version update type (major, minor, patch, or prerelease)"
+    description: "Semver version update type"
     required: true
-    default: "prerelease"
+    default: "prepatch"
   prerelease_identifier:
-    description: "Custom prerelease identifier (required if update_type is 'prerelease')"
+    description: "Prerelease identifier"
     default: "experimental"
     required: false
 outputs:
