@@ -18,7 +18,7 @@ The versioning workflow does the following:
 
 #### Running the workflow
 
-Open the [Tag workflow action](https://github.com/canonical/vanilla-monorepo/actions/workflows/tag.yml).
+Open the [Tag workflow action](https://github.com/canonical/ds25/actions/workflows/tag.yml).
 Click the "Run workflow" button to open a workflow triggering window.
 
 ![Versioning triggering window. Contains options for version update type (major, minor, patch, prerelease, defaults to prerelease), prerelease identifier (defaults to experimental), and creating a release after performing versioning](https://assets.ubuntu.com/v1/0d0ebe3c-wd-ds25-versioning-workflow-workflow-dispatch.png)

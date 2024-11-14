@@ -11,13 +11,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/canonical/vanilla-monorepo"
+    "url": "https://github.com/canonical/ds25"
   },
   "license": "LGPL-3.0",
   "bugs": {
-    "url": "https://github.com/canonical/vanilla-monorepo/issues"
+    "url": "https://github.com/canonical/ds25/issues"
   },
-  "homepage": "https://github.com/canonical/vanilla-monorepo#readme",
+  "homepage": "https://github.com/canonical/ds25#readme",
   "scripts": {
     "build": "bun run build:package",
     "build:storybook": "bun run build-storybook",

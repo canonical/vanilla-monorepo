@@ -1,7 +1,7 @@
 {
 	"name": "@canonical/typescript-config-react",
 	"version": "0.0.1-experimental.8",
-	"description": "Vanilla's Typescript configuration",
+	"description": "Canonical's standard TypeScript configuration for React projects",
 	"main": "tsconfig.json",
 	"author": {
 		"email": "webteam@canonical.com",
@@ -9,13 +9,13 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/canonical/vanilla-monorepo"
+		"url": "https://github.com/canonical/ds25"
 	},
 	"license": "LGPL-3.0",
 	"bugs": {
-		"url": "https://github.com/canonical/vanilla-monorepo/issues"
+		"url": "https://github.com/canonical/ds25/issues"
 	},
-	"homepage": "https://github.com/canonical/vanilla-monorepo#readme",
+	"homepage": "https://github.com/canonical/ds25#readme",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"check": "bun run check:biome",
