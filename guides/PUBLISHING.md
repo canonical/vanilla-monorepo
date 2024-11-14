@@ -24,7 +24,7 @@ Click the "Run workflow" button to open a workflow triggering window.
 ![Versioning triggering window. Contains options for version update type (major, minor, patch, prerelease, defaults to prerelease), prerelease identifier (defaults to experimental), and creating a release after performing versioning](https://assets.ubuntu.com/v1/0d0ebe3c-wd-ds25-versioning-workflow-workflow-dispatch.png)
 
 - Update type: the type of semantic versioning update you wish to perform.
-- Prerelease identifier: if "prerelease" is chosen for update type, this is used as the prelease identifier (e.g., 0.0.1-experimental.1).
+- Prerelease identifier: if a prerelease is chosen for update type, this is used as the prelease identifier (e.g., 0.0.1-experimental.1).
 - Release after versioning: if this is checked, the affected packages will
   be published after their tags have been updated.
 
