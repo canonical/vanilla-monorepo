@@ -3,7 +3,7 @@
 ## Install
 
 ```sh
-bun i -d @canonical/biome-config
+bun add -d @canonical/biome-config
 ```
 
 ## Consume
