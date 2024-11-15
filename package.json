@@ -1,21 +1,21 @@
 {
-  "name": "vanilla-monorepo",
+  "name": "ds25",
   "private": true,
   "version": "0.0.1",
-  "description": "Vanilla as a monorepo",
+  "description": "Canonical's Design System",
   "author": {
     "email": "webteam@canonical.com",
     "name": "Canonical Webteam"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/canonical/vanilla-monorepo"
+    "url": "https://github.com/canonical/ds25"
   },
   "license": "LGPL-3.0",
   "bugs": {
-    "url": "https://github.com/canonical/vanilla-monorepo/issues"
+    "url": "https://github.com/canonical/ds25/issues"
   },
-  "homepage": "https://github.com/canonical/vanilla-monorepo#readme",
+  "homepage": "https://github.com/canonical/ds25#readme",
   "workspaces": [
     "configs/*",
     "packages/*",
@@ -24,6 +24,7 @@
   "scripts": {
     "build": "lerna run build",
     "prepare": "bun run build",
+    "lerna": "lerna",
     "test": "bun run check",
     "check": "lerna run check --parallel",
     "check:fix": "lerna run check:fix --parallel"
