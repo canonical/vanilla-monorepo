@@ -13,7 +13,7 @@ fi
 
 # Run lerna version with the specified arguments
 # Do not commit or tag as we need to re-format the package files before committing
-bunx lerna version $VERSION_ARGS --no-git-tag-version --no-push --yes
+bun run lerna version $VERSION_ARGS --no-git-tag-version --no-push --yes
 
 # Extract the updated version from lerna.json
 VERSION=$(jq -r '.version' lerna.json)

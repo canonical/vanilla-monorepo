@@ -14,14 +14,14 @@ The versioning workflow does the following:
   - If a package has a dependency that is updated, it will also be incremented by the same semver level.
 - Commits the version changes to the `main` branch
 - Commits a new tag
-- If requested, publishes the affected packages.
+- Publishes the affected packages
 
 #### Running the workflow
 
 Open the [Tag workflow action](https://github.com/canonical/ds25/actions/workflows/tag.yml).
 Click the "Run workflow" button to open a workflow triggering window.
 
-![Versioning triggering window. Contains options for version update type (major, minor, patch, prerelease, defaults to prerelease), prerelease identifier (defaults to experimental), and creating a release after performing versioning](https://assets.ubuntu.com/v1/0d0ebe3c-wd-ds25-versioning-workflow-workflow-dispatch.png)
+![Versioning triggering window. Contains options for version update type (major, minor, patch, prerelease, defaults to prerelease), prerelease identifier (defaults to experimental)](https://assets.ubuntu.com/v1/0d0ebe3c-wd-ds25-versioning-workflow-workflow-dispatch.png)
 
 - Update type: the type of semantic versioning update you wish to perform.
 - Prerelease identifier: if a prerelease is chosen for update type, this is used as the prelease identifier (e.g., 0.0.1-experimental.1).
