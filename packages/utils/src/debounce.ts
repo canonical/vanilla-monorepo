@@ -3,8 +3,8 @@
  * delay from the last invocation.
  *
  * @template F The type of the function to debounce
- * @param {F} fn - The function to debounce.
- * @param {number} delay - The time in milliseconds to wait before calling the function after the last call.
+ * @param fn - The function to debounce.
+ * @param delay - The time in milliseconds to wait before calling the function after the last call.
  * @returns A debounced version of the function that returns a promise.
  *
  * @example

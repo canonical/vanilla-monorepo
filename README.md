@@ -60,3 +60,7 @@ Each package should define the following scripts in `package.json`:
 
 By creating these scripts in each package, the build and check tasks will be
 included in the monorepo's CI workflow, helping to avoid build errors later.
+
+## Documentation
+
+JavaScript documentation should be written with [TSDoc](https://tsdoc.org/).

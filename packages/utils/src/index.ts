@@ -1,2 +1,2 @@
-export * from "./debounce.js";
-export * from "./throttle.js";
+export { default as debounce } from "./debounce.js";
+export { default as throttle } from "./throttle.js";
