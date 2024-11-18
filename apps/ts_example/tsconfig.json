@@ -4,8 +4,7 @@
     "baseUrl": "src",
     "outDir": "dist/esm",
     "declaration": true,
-    "declarationDir": "dist/types",
-    "skipLibCheck": true
+    "declarationDir": "dist/types"
   },
   "include": ["src/**/*.ts"]
 }
