@@ -7,15 +7,15 @@
   background-color: var(--ds-color-background-default);
   border-color: var(--ds-color-border-high-contrast);
   border-style: solid;
-  border-width: 1px; /* TODO: extract */
-  font-size: 1rem;
-  font-weight: 400; /* TODO: extract */
+  border-width: var(--ds-spacing-border-width);
+  font-size: var(--ds-font-size-default);
+  font-weight: var(--ds-font-weight-default);
+  line-height: var(--ds-line-height-default);
+  margin-block-end: var(--ds-spacing-input-margin-bottom);
+  margin-inline-end: var(--ds-spacing-horizontal-large);
+  padding-block: var(--ds-spacing-input-padding-vertical);
+  padding-inline: var(--ds-spacing-horizontal-large);
 
-  line-height: 1.5rem; /* TODO: extract */
-  margin: 0 var(--ds-spacing-horizontal-large)
-    var(--ds-spacing-input-margin-bottom) 0;
-  padding: var(--ds-spacing-input-padding-vertical)
-    var(--ds-spacing-horizontal-large);
   text-align: left;
   text-decoration: none;
 
@@ -31,18 +31,18 @@
   }
 
   &.ds-button--positive {
-    background-color: rgba(14, 132, 32, 1);
-    color: rgba(255, 255, 255, 1);
-    border-color: rgba(14, 132, 32, 1);
+    background-color: var(--ds-color-background-positive-default);
+    color: var(--ds-color-text-button-positive);
+    border-color: var(--ds-color-background-positive-default);
 
     &:hover {
-      background-color: rgba(12, 109, 26, 1);
-      border-color: rgba(12, 109, 26, 1);
+      background-color: var(--ds-color-background-positive-hover);
+      border-color: var(--ds-color-background-positive-hover);
     }
 
     &:active {
-      background-color: rgba(10, 95, 23, 1);
-      border-color: rgba(10, 95, 23, 1);
+      background-color: var(--ds-color-background-positive-active);
+      border-color: var(--ds-color-background-positive-active);
     }
   }
 }

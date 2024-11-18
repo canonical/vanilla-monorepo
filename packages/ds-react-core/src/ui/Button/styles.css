@@ -7,6 +7,10 @@
     --ds-button-margin-bottom: bottom margin of the button
     --ds-button-padding-vertical: vertical padding of the button
     --ds-button-padding-horizontal: horizontal padding of the button
+    --ds-button-border-width: border width of the button
+    --ds-button-font-size: font size of the button
+    --ds-button-font-weight: font weight of the button
+    --ds-button-line-height: line height of the button
 */
 .ds-button {
   --ds-button-background-color: var(--ds-color-background-default);
@@ -18,6 +22,11 @@
   --ds-button-margin-bottom: var(--ds-spacing-input-margin-bottom); /* TODO: do we want any margin? */
   --ds-button-padding-vertical: var(--ds-spacing-input-padding-vertical);
   --ds-button-padding-horizontal: var(--ds-spacing-horizontal-large);
+
+  --ds-button-border-width: var(--ds-spacing-border-width);
+  --ds-button-font-size: var(--ds-font-size-default);
+  --ds-button-font-weight: var(--ds-font-weight-default);
+  --ds-button-line-height: var(--ds-line-height-default);
 
   /* component states */
   &:hover {
@@ -31,20 +40,19 @@
   }
 }
 
-/* TODO: remove hardcoded colors */
 .ds-button--positive {
-  --ds-button-background-color: rgba(14, 132, 32, 1);
-  --ds-button-text-color: rgba(255, 255, 255, 1);
-  --ds-button-border-color: rgba(14, 132, 32, 1);
+  --ds-button-background-color: var(--ds-color-background-positive-default);
+  --ds-button-text-color: var(--ds-color-text-button-positive);
+  --ds-button-border-color: var(--ds-color-background-positive-default);
 
   &:hover {
-    --ds-button-background-color: rgba(12, 109, 26, 1);
-    --ds-button-border-color: rgba(12, 109, 26, 1);
+    --ds-button-background-color: var(--ds-color-background-positive-hover);
+    --ds-button-border-color: var(--ds-color-background-positive-hover);
   }
 
   &:active {
-    --ds-button-background-color: rgba(10, 95, 23, 1);
-    --ds-button-border-color: rgba(10, 95, 23, 1);
+    --ds-button-background-color: var(--ds-color-background-positive-active);
+    --ds-button-border-color: var(--ds-color-background-positive-active);
   }
 }
 
@@ -57,13 +65,14 @@
   background-color: var(--ds-button-background-color);
   border-color: var(--ds-button-border-color);
   border-style: solid;
-  border-width: 1px; /* TODO: extract */
-  font-size: 1rem;
-  font-weight: 400; /* TODO: extract */
-
-  line-height: 1.5rem; /* TODO: extract */
-  margin: 0 var(--ds-button-margin-left) var(--ds-button-margin-bottom) 0;
-  padding: var(--ds-button-padding-vertical) var(--ds-button-padding-horizontal);
+  border-width: var(--ds-button-border-width);
+  font-size: var(--ds-button-font-size);
+  font-weight: var(--ds-button-font-weight);
+  line-height: var(--ds-button-line-height);
+  margin-block-end: var(--ds-spacing-input-margin-bottom);
+  margin-inline-end: var(--ds-spacing-horizontal-large);
+  padding-block: var(--ds-spacing-input-padding-vertical);
+  padding-inline: var(--ds-spacing-horizontal-large);
   text-align: left;
   text-decoration: none;
 }
