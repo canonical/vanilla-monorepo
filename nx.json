@@ -1,4 +1,7 @@
 {
+  "cli": {
+    "packageManager": "bun"
+  },
   "cacheableOperations": ["build", "test", "check", "check:fix"],
   "targetDefaults": {
     "build": {
