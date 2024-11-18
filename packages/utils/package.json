@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/canonical/ds25#readme",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json",
     "lint": "biome lint src/*.{ts,tsx}",
     "format": "bun run format:biome",
     "format:biome": "biome format src/*.{ts,tsx}",

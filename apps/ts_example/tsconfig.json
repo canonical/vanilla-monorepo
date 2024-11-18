@@ -1,10 +1,7 @@
 {
   "extends": "@canonical/typescript-config-base",
   "compilerOptions": {
-    "baseUrl": "src",
-    "outDir": "dist/esm",
-    "declaration": true,
-    "declarationDir": "dist/types"
+    "baseUrl": "src"
   },
   "include": ["src/**/*.ts"]
 }
