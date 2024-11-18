@@ -25,14 +25,18 @@ export interface ButtonProps {
   onClick?: () => void;
 }
 
+// combine custom props with all native button element attributes
+export type ButtonPropsType = ButtonProps &
+  React.ButtonHTMLAttributes<HTMLButtonElement>;
+
 /** Buttons are clickable elements used to perform an action. */
 const Button = ({
   id,
   className,
   appearance = "default",
   label,
-  ...props // TODO: allow other props - currently we spead all props, but they are not allowed by the type
-}: ButtonProps): React.ReactElement => {
+  ...props
+}: ButtonPropsType): React.ReactElement => {
   return (
     <button
       id={id}

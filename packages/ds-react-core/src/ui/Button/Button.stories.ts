@@ -39,3 +39,14 @@ export const Positive: Story = {
     appearance: "positive",
   },
 };
+
+/**
+ * Custom button props can be passed to the button component.
+ */
+export const Custom: Story = {
+  args: {
+    label: "Button",
+    className: "custom-class",
+    style: { backgroundColor: "lightblue" },
+  },
+};
