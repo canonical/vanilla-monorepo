@@ -7,6 +7,14 @@ const meta = {
   title: "Example/Button",
   component: Button,
   tags: ["autodocs"],
+  // if using enum for appearance, you can use the following to generate controls
+  // argTypes: {
+  //   appearance: {
+  //      control: 'select',
+  //      mapping: ButtonAppearance,
+  //      options: Object.keys(ButtonAppearance),
+  //   }
+  // },
   args: { onClick: fn() }, // allows the onClick function to be spyed on
 } satisfies Meta<typeof Button>;
 

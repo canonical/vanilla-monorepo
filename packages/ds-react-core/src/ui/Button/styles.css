@@ -1,17 +1,3 @@
-/**
- notes/todo
- - should we have native element button styles (outside of the component)?
- - bottom margin?
- - how to implement states (across variants)?
- - how to implement disabled, state?
- - focus state - was centralised in Vanilla, shared via mixin
-
-- difficulty - migrating from Vanilla to DS
-
-- color-mix: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix
-- color: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color
-*/
-
 /* component variables
     --ds-button-background-color: background color of the button
     --ds-button-text-color: text color of the button
@@ -28,7 +14,7 @@
   --ds-button-border-color: var(--ds-color-border-high-contrast);
 
   --ds-button-margin-left: var(--ds-spacing-horizontal-large);
-  /* TODO: why is button using "input" spacing? what should it consume from foundation? generic "token" values (small padding, etc) or component specific values (button padding) */
+  /* TODO: In Vanilla we used "input" spacing for button. what should it consume from foundation? generic "token" values (small padding, etc) or component specific values (button padding) */
   --ds-button-margin-bottom: var(--ds-spacing-input-margin-bottom); /* TODO: do we want any margin? */
   --ds-button-padding-vertical: var(--ds-spacing-input-padding-vertical);
   --ds-button-padding-horizontal: var(--ds-spacing-horizontal-large);

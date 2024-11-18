@@ -2,6 +2,16 @@ import type React from "react";
 
 import "./styles.css";
 
+// TODO: this is how appearance could work as enum
+//
+// export enum ButtonAppearance {
+//   DEFAULT = "default",
+//   BASE = "base",
+//   POSITIVE = "positive",
+//   NEGATIVE = "negative",
+//   LINK = "link",
+// }
+
 export interface ButtonProps {
   /* A unique identifier for the button */
   id?: string;
@@ -14,17 +24,6 @@ export interface ButtonProps {
   /** Optional click handler */
   onClick?: () => void;
 }
-
-/*
-  TODO: decide on coding conventions for props
-    - listing values in types:
-      - unions vs TS enums vs object with ValuesOf
-    - "variants": variant / modifier / appearance
-    - using children vs prop:
-        - when there is a list of children:
-          items (?) <Navigation items=> <Accordion items=>
-    - flags : adjective/participate (disabled) or fully boolean isDisabled
- */
 
 /** Buttons are clickable elements used to perform an action. */
 const Button = ({

@@ -1,17 +1,3 @@
-/**
- notes/todo
- - should we have native element button styles (outside of the component)?
- - bottom margin?
- - how to implement states (across variants)?
- - how to implement disabled, state?
- - focus state - was centralised in Vanilla, shared via mixin
-
-- difficulty - migrating from Vanilla to DS
-
-- color-mix: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix
-- color: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color
-*/
-
 /* component styles */
 .ds-button {
   display: inline-block;
