@@ -15,13 +15,20 @@ Currently, two official plugins are available:
 
 #### Skip library check
 
-We use [skipLibCheck](https://www.typescriptlang.org/tsconfig/#skipLibCheck) to 
-skip type checking of declaration files. This is needed for compatibility with 
-vite dependencies. If this option is not enabled, the following error occurs:
+We use [skipLibCheck](https://www.typescriptlang.org/tsconfig/#skipLibCheck) to
+skip type checking of declaration files. This is needed for compatibility with
+storybook dependencies. If this option is not enabled, the following error occurs:
 
 ```
 The current file is a CommonJS module whose imports will produce 'require' calls; however, the referenced file is an ECMAScript module and cannot be imported with 'require'. Consider writing a dynamic 'import("storybook/internal/types")' call instead.
 ```
+
+Library checking is only disabled for Storybook files. This is due to 
+Storybook dependencies using CommonJS modules alongside ECMAScript modules, 
+which causes issues when TypeScript tries to type-check them together.
+
+Storybook files are excluded from builds in [tsconfig.build.json](tsconfig.build.json).
+Library type-checking is enabled for builds.
 
 
 ### Bun
