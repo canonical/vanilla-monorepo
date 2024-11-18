@@ -1,2 +1,2 @@
-export * from "./debounce/index.js";
-export * from "./throttle/index.js";
+export * from "./debounce.js";
+export * from "./throttle.js";
