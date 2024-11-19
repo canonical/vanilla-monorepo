@@ -41,10 +41,10 @@ const Button = ({
     <button
       id={id}
       className={[
-        className,
         "ds",
         "button",
         appearance !== "default" && appearance,
+        className,
       ]
         .filter(Boolean)
         .join(" ")}
