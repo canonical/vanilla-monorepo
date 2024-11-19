@@ -4,7 +4,9 @@
   "type": "module",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "author": {
     "email": "webteam@canonical.com",
     "name": "Canonical Webteam"
@@ -61,6 +63,7 @@
     "globals": "^15.9.0",
     "storybook": "^8.3.4",
     "typescript": "^5.6.2",
-    "vite": "^5.4.1"
+    "vite": "^5.4.1",
+    "vite-tsconfig-paths": "^5.1.2"
   }
 }
