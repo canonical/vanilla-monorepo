@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 
-import Button from "./Button.js";
+import Component from "./Button.js";
 
 const meta = {
-  title: "Example/Button",
-  component: Button,
+  title: "Button",
+  component: Component,
   tags: ["autodocs"],
   // if using enum for appearance, you can use the following to generate controls
   // argTypes: {
@@ -16,7 +16,7 @@ const meta = {
   //   }
   // },
   args: { onClick: fn() }, // allows the onClick function to be spyed on
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof Component>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -26,7 +26,7 @@ type Story = StoryObj<typeof meta>;
  */
 export const Default: Story = {
   args: {
-    label: "Button",
+    label: "Contact us",
   },
 };
 
@@ -35,7 +35,7 @@ export const Default: Story = {
  */
 export const Positive: Story = {
   args: {
-    label: "Button",
+    label: "Confirm",
     appearance: "positive",
   },
 };
@@ -45,7 +45,7 @@ export const Positive: Story = {
  */
 export const Custom: Story = {
   args: {
-    label: "Button",
+    label: "Custom",
     className: "custom-class",
     style: { backgroundColor: "lightblue" },
   },
