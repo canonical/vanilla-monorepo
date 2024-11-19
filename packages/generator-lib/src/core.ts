@@ -27,6 +27,7 @@ export type ScenarioArgList = {
  */
 export interface Scenario {
   args: ScenarioArgList;
+  description: string;
   /** Execute the scenario with the provided arguments */
   execute(
     args: Record<string, unknown>,
@@ -43,37 +44,39 @@ export function defineGenerators({
 }: {
   scenarios: Record<string, Scenario>;
 }) {
-  console.log("Defining generators...");
-
   for (const [scenarioName, scenario] of Object.entries(scenarios)) {
     // Define the command for the scenario
-    program
+    const scenarioCmd = program
       .command(scenarioName)
-      .description(`Generate a new ${scenarioName}`)
+      .description(scenario.description);
 
-      // Add options to the program for this specific scenario
-      .action(() => {
-        const args = program.opts();
-        const transformedArgs: Record<string, unknown> = {};
+    const allArgs: Record<string, unknown> = {};
+    const transformedArgs: Record<string, unknown> = {};
 
-        for (const [
-          argName,
-          { description, defaultValue, required, transform },
-        ] of Object.entries(scenario.args)) {
-          const argValue = args[argName];
-          program.option(`--${argName} <value>`, description, defaultValue);
+    for (const [argName, arg] of Object.entries(scenario.args)) {
+      console.log("adding arg", { argName, arg });
+      scenarioCmd
+        .option(`--${argName} <${argName}>`, arg.description)
+        .action((args) => {
+          let value = args[argName];
+          allArgs[argName] = value;
 
-          // TBD should we check for required before or after applying transformations?
-          if (required && (argValue === undefined || argValue === "")) {
-            console.error(`Missing required option: ${argName}`);
+          value ||= arg.defaultValue;
+
+          if (arg.required && !value && value !== 0) {
+            console.error(`Missing required argument: ${argName}`);
             process.exit(1);
           }
 
-          transformedArgs[argName] = transform ? transform(argValue) : argValue;
-        }
+          if (arg.transform) {
+            value = arg.transform(value);
+          }
 
-        scenario.execute(args, transformedArgs);
-      });
+          console.log("set arg value", { argName, value });
+          transformedArgs[argName] = value;
+        });
+    }
+    // scenario.execute(allArgs, transformedArgs);
   }
 
   program.parse(process.argv);

@@ -7,6 +7,7 @@ import {
 export default defineGenerators({
   scenarios: {
     component: {
+      description: "Generate a new React component",
       args: {
         name: {
           description: "The name of the React component",
