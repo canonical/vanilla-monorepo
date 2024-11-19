@@ -42,8 +42,9 @@ const Button = ({
       id={id}
       className={[
         className,
-        "ds-button",
-        appearance !== "default" && `ds-button--${appearance}`,
+        "ds",
+        "button",
+        appearance !== "default" && appearance,
       ]
         .filter(Boolean)
         .join(" ")}

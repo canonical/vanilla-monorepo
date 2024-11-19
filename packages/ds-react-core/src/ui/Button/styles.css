@@ -12,14 +12,16 @@
     --ds-button-font-weight: font weight of the button
     --ds-button-line-height: line height of the button
 */
-.ds-button {
+.ds.button {
   --ds-button-background-color: var(--ds-color-background-default);
   --ds-button-text-color: var(--ds-color-text-default);
   --ds-button-border-color: var(--ds-color-border-high-contrast);
 
   --ds-button-margin-left: var(--ds-spacing-horizontal-large);
   /* TODO: In Vanilla we used "input" spacing for button. what should it consume from foundation? generic "token" values (small padding, etc) or component specific values (button padding) */
-  --ds-button-margin-bottom: var(--ds-spacing-input-margin-bottom); /* TODO: do we want any margin? */
+  --ds-button-margin-bottom: var(
+    --ds-spacing-input-margin-bottom
+  ); /* TODO: do we want any margin? */
   --ds-button-padding-vertical: var(--ds-spacing-input-padding-vertical);
   --ds-button-padding-horizontal: var(--ds-spacing-horizontal-large);
 
@@ -40,7 +42,7 @@
   }
 }
 
-.ds-button--positive {
+.ds.button.positive {
   --ds-button-background-color: var(--ds-color-background-positive-default);
   --ds-button-text-color: var(--ds-color-text-button-positive);
   --ds-button-border-color: var(--ds-color-background-positive-default);
@@ -57,7 +59,7 @@
 }
 
 /* component styles */
-.ds-button {
+.ds.button {
   display: inline-block;
   cursor: pointer;
 

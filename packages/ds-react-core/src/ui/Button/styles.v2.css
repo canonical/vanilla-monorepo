@@ -1,5 +1,5 @@
 /* component styles */
-.ds-button {
+.ds.button {
   display: inline-block;
   cursor: pointer;
 
@@ -30,7 +30,7 @@
     border-color: var(--ds-color-border-high-contrast);
   }
 
-  &.ds-button--positive {
+  &.positive {
     background-color: var(--ds-color-background-positive-default);
     color: var(--ds-color-text-button-positive);
     border-color: var(--ds-color-background-positive-default);
