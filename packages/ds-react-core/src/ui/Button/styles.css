@@ -19,9 +19,7 @@
 
   --ds-button-margin-left: var(--ds-spacing-horizontal-large);
   /* TODO: In Vanilla we used "input" spacing for button. what should it consume from foundation? generic "token" values (small padding, etc) or component specific values (button padding) */
-  --ds-button-margin-bottom: var(
-    --ds-spacing-input-margin-bottom
-  ); /* TODO: do we want any margin? */
+  --ds-button-margin-bottom: var(--ds-spacing-input-margin-bottom); /* TODO: do we want any margin? */
   --ds-button-padding-vertical: var(--ds-spacing-input-padding-vertical);
   --ds-button-padding-horizontal: var(--ds-spacing-horizontal-large);
 
