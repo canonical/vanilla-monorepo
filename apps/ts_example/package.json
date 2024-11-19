@@ -25,7 +25,7 @@
     "lint:biome": "biome lint src/*.ts",
     "format:biome": "biome format src/*.ts",
     "check": "bun run check:biome && bun run check:ts",
-    "check:fix": "bun run check:biome:fix",
+    "check:fix": "bun run check:biome:fix && bun run check:ts",
     "check:biome": "biome check src/*.ts *.json",
     "check:biome:fix": "biome check --write src/*.ts *.json",
     "check:ts": "tsc --noEmit"
