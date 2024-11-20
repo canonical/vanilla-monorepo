@@ -2,7 +2,7 @@
   "name": "@canonical/ds25-ts-test",
   "private": true,
   "version": "0.1.1-experimental.0",
-  "description": "TypeScript test project",
+  "description": "Typescript test project",
   "type": "module",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",

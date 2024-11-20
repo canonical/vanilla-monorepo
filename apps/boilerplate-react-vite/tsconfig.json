@@ -1,0 +1,7 @@
+{
+  "extends": "@canonical/typescript-config-react",
+  "compilerOptions": {
+    "baseUrl": "src"
+  },
+  "include": ["src", "vite.config.ts"]
+}
