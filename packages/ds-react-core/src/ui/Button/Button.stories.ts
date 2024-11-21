@@ -47,6 +47,12 @@ export const Custom: Story = {
   args: {
     label: "Custom",
     className: "custom-class",
-    style: { backgroundColor: "lightblue" },
+    style: {
+      "--button-background-color": "lightblue",
+      "--button-text-color": "midnightblue",
+      "--button-border-color": "midnightblue",
+      "--button-background-color-hover": "lightskyblue",
+      "--button-background-color-active": "skyblue",
+    } as React.CSSProperties,
   },
 };

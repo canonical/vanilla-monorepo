@@ -1,7 +1,13 @@
+/* component styles */
+
 /* component variables
     --button-background-color: background color of the button
+    --button-background-color-hover: background color of the button on hover
+    --button-background-color-active: background color of the button on active
     --button-text-color: text color of the button
     --button-border-color: border color of the button
+    --button-border-color-hover: border color of the button on hover
+    --button-border-color-active: border color of the button on active
 
     --button-margin-left: left margin of the button
     --button-margin-bottom: bottom margin of the button
@@ -13,69 +19,74 @@
     --button-line-height: line height of the button
 */
 .ds.button {
-  --button-background-color: var(--color-background-default);
-  --button-text-color: var(--color-text-default);
-  --button-border-color: var(--color-border-high-contrast);
-
-  --button-margin-left: var(--spacing-horizontal-large);
-  /* TODO: In Vanilla we used "input" spacing for button. what should it consume from foundation? generic "token" values (small padding, etc) or component specific values (button padding) */
-  --button-margin-bottom: var(--spacing-input-margin-bottom); /* TODO: do we want any margin? */
-  --button-padding-vertical: var(--spacing-input-padding-vertical);
-  --button-padding-horizontal: var(--spacing-horizontal-large);
-
-  --button-border-width: var(--spacing-border-width);
-  --button-font-size: var(--font-size-default);
-  --button-font-weight: var(--font-weight-default);
-  --button-line-height: var(--line-height-default);
-
-  /* component states */
-  &:hover {
-    --button-background-color: var(--color-background-hover);
-    --button-border-color: var(--color-border-high-contrast);
-  }
-
-  &:active {
-    --button-background-color: var(--color-background-active);
-    --button-border-color: var(--color-border-high-contrast);
-  }
-}
-
-/* .ds.button.positive {
-  --button-background-color: var(--color-background-positive-default);
-  --button-text-color: var(--color-text-button-positive);
-  --button-border-color: var(--color-background-positive-default);
-
-  &:hover {
-    --button-background-color: var(--color-background-positive-hover);
-    --button-border-color: var(--color-background-positive-hover);
-  }
-
-  &:active {
-    --button-background-color: var(--color-background-positive-active);
-    --button-border-color: var(--color-background-positive-active);
-  }
-} */
-
-/* component styles */
-.ds.button {
   display: inline-block;
   cursor: pointer;
 
-  color: var(--button-text-color);
+  color: var(--button-text-color, var(--color-text-default));
   background-color: var(
-    --state-background-color,
-    var(--button-background-color)
+    --button-background-color,
+    var(--color-background-default)
   );
-  border-color: var(--button-border-color);
+  border-color: var(--button-border-color, var(--color-border-high-contrast));
   border-style: solid;
-  border-width: var(--button-border-width);
-  font-size: var(--button-font-size);
-  font-weight: var(--button-font-weight);
-  line-height: var(--button-line-height);
-  margin-block-end: var(--spacing-input-margin-bottom);
-  margin-inline-end: var(--spacing-horizontal-large);
-  padding-block: var(--spacing-input-padding-vertical);
-  padding-inline: var(--spacing-horizontal-large);
+  border-width: var(--button-border-width, var(--spacing-border-width));
+  font-size: var(--button-font-size, var(--font-size-default));
+  font-weight: var(--button-font-weight, var(--font-weight-default));
+  line-height: var(--button-line-height, var(--line-height-default));
+  margin-block-end: var(
+    --button-margin-bottom,
+    var(--spacing-input-margin-bottom)
+  );
+  margin-inline-end: var(--button-margin-left, var(--spacing-horizontal-large));
+  padding-block: var(
+    --button-padding-vertical,
+    var(--spacing-input-padding-vertical)
+  );
+  padding-inline: var(
+    --button-padding-horizontal,
+    var(--spacing-horizontal-large)
+  );
+
   text-align: left;
   text-decoration: none;
+
+  /* component states */
+  &:hover {
+    background-color: var(
+      --button-background-color-hover,
+      var(--color-background-hover)
+    );
+    border-color: var(
+      --button-border-color-hover,
+      var(--color-border-high-contrast)
+    );
+  }
+
+  &:active {
+    background-color: var(
+      --button-background-color-active,
+      var(--color-background-active)
+    );
+    border-color: var(
+      --button-border-color-active,
+      var(--color-border-high-contrast)
+    );
+  }
+
+  /* TODO: move to separate state/intent classes file */
+  &.positive {
+    background-color: var(--color-background-positive-default);
+    color: var(--color-text-button-positive);
+    border-color: var(--color-background-positive-default);
+
+    &:hover {
+      background-color: var(--color-background-positive-hover);
+      border-color: var(--color-background-positive-hover);
+    }
+
+    &:active {
+      background-color: var(--color-background-positive-active);
+      border-color: var(--color-background-positive-active);
+    }
+  }
 }
