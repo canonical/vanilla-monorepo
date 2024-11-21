@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 
 import Component from "./Button.js";
+import Button from "./Button.js";
 
 const meta = {
   title: "Button",
@@ -64,5 +65,35 @@ export const Custom: Story = {
       "--button-background-color-hover": "lightskyblue",
       "--button-background-color-active": "skyblue",
     } as React.CSSProperties,
+  },
+};
+
+/**
+ * There is a flaw in the idea of having "intents" implemented globally like states.
+ * Intent variables are inherited with CSS, so will be applied to all child elements. For example, if there is a "positive" notification, the child buttons without "intent" (default) will also be positive.
+ *
+ * This is probably OK for states, because it's likely that all child elements will be in the same state. But it's not OK for intents, because we can't assume all child elements share the same intent.
+ */
+export const BrokenIntents: Story = {
+  decorators: [
+    (Story) => (
+      <div
+        className="positive"
+        style={{
+          border: "2px solid var(--intent-color)",
+          padding: "1rem",
+        }}
+      >
+        <p>I'm a wrapper with <code>positive</code> intent class name.</p>
+        <Button label="This should be a default button" />
+        <Button
+          label="This should be a negative button"
+          appearance="negative"
+        />
+      </div>
+    ),
+  ],
+  args: {
+    label: "Broken",
   },
 };
