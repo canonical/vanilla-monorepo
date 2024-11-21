@@ -2,8 +2,11 @@
 :root {
   /* color tokens */
   /* based on: https://docs.google.com/spreadsheets/d/1AY6BLFU-Cnj48ggHUnNVlWRxwWZ6Z-66s7jxJC1HLSU/edit?gid=1738212977#gid=1738212977 */
-  --color-background-default: #fff;
-  --color-text-default: #000;
+  --color-palette-white: #fff;
+  --color-palette-black: #000;
+
+  --color-background-default: var(--color-palette-white);
+  --color-text-default: var(--color-palette-black);
   --color-background-hover: rgba(242, 242, 242, 1);
   --color-background-active: rgba(235, 235, 235, 1);
   --color-border-high-contrast: rgba(0, 0, 0, 0.56);
@@ -11,7 +14,12 @@
   --color-background-positive-default: rgba(14, 132, 32, 1);
   --color-background-positive-hover: rgba(12, 109, 26, 1);
   --color-background-positive-active: rgba(10, 95, 23, 1);
-  --color-text-button-positive: rgba(255, 255, 255, 1);
+  --color-background-positive-text: var(--color-palette-white); /* text on positive background */
+
+  --color-background-negative-default: rgba(199, 22, 43, 1);
+  --color-background-negative-hover: rgba(176, 19, 38, 1);
+  --color-background-negative-active: rgba(162, 18, 35, 1);
+  --color-background-negative-text: var(--color-palette-white); /* text on positive background */
 
   /* spacing tokens */
   --spacing-horizontal-small: 0.5rem;

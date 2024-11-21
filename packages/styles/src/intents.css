@@ -1,7 +1,13 @@
 .positive {
-  --color: green;
+  --intent-color: var(--color-background-positive-default);
+  --intent-color-hover: var(--color-background-positive-hover);
+  --intent-color-active: var(--color-background-positive-active);
+  --intent-color-text: var(--color-background-positive-text);
 }
 
 .negative {
-  --color: red;
+  --intent-color: var(--color-background-negative-default);
+  --intent-color-hover: var(--color-background-negative-hover);
+  --intent-color-active: var(--color-background-negative-active);
+  --intent-color-text: var(--color-background-negative-text);
 }

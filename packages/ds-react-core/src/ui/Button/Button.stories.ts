@@ -41,11 +41,21 @@ export const Positive: Story = {
 };
 
 /**
+ * A negative button can be used to indicate a negative action that is destructive or permanent.
+ */
+export const Negative: Story = {
+  args: {
+    label: "Delete",
+    appearance: "negative",
+  },
+};
+
+/**
  * Custom button props can be passed to the button component.
  */
 export const Custom: Story = {
   args: {
-    label: "Custom",
+    label: "Customize",
     className: "custom-class",
     style: {
       "--button-background-color": "lightblue",

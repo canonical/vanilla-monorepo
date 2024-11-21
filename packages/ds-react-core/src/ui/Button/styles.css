@@ -22,12 +22,18 @@
   display: inline-block;
   cursor: pointer;
 
-  color: var(--button-text-color, var(--color-text-default));
+  color: var(
+    --button-text-color,
+    var(--intent-color-text, var(--color-text-default))
+  );
   background-color: var(
     --button-background-color,
-    var(--color-background-default)
+    var(--intent-color, var(--color-background-default))
   );
-  border-color: var(--button-border-color, var(--color-border-high-contrast));
+  border-color: var(
+    --button-border-color,
+    var(--intent-color, var(--color-border-high-contrast))
+  );
   border-style: solid;
   border-width: var(--button-border-width, var(--spacing-border-width));
   font-size: var(--button-font-size, var(--font-size-default));
@@ -54,39 +60,22 @@
   &:hover {
     background-color: var(
       --button-background-color-hover,
-      var(--color-background-hover)
+      var(--intent-color-hover, var(--color-background-hover))
     );
     border-color: var(
       --button-border-color-hover,
-      var(--color-border-high-contrast)
+      var(--intent-color-hover, var(--color-border-high-contrast))
     );
   }
 
   &:active {
     background-color: var(
       --button-background-color-active,
-      var(--color-background-active)
+      var(--intent-color-active, var(--color-background-active))
     );
     border-color: var(
       --button-border-color-active,
-      var(--color-border-high-contrast)
+      var(--intent-color-active, var(--color-border-high-contrast))
     );
-  }
-
-  /* TODO: move to separate state/intent classes file */
-  &.positive {
-    background-color: var(--color-background-positive-default);
-    color: var(--color-text-button-positive);
-    border-color: var(--color-background-positive-default);
-
-    &:hover {
-      background-color: var(--color-background-positive-hover);
-      border-color: var(--color-background-positive-hover);
-    }
-
-    &:active {
-      background-color: var(--color-background-positive-active);
-      border-color: var(--color-background-positive-active);
-    }
   }
 }
