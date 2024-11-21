@@ -3,51 +3,56 @@ import { fn } from "@storybook/test";
 
 import Component from "./Button.js";
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "Example/Button",
+  title: "Button",
   component: Component,
-  parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-    layout: "centered",
-  },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
-  // More on argTypes: https://storybook.js.org/docs/api/argtypes
-  argTypes: {
-    backgroundColor: { control: "color" },
-  },
-  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
-  args: { onClick: fn() },
+  // if using enum for appearance, you can use the following to generate controls
+  // argTypes: {
+  //   appearance: {
+  //      control: 'select',
+  //      mapping: ButtonAppearance,
+  //      options: Object.keys(ButtonAppearance),
+  //   }
+  // },
+  args: { onClick: fn() }, // allows the onClick function to be spyed on
 } satisfies Meta<typeof Component>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary: Story = {
+/**
+ * A default button can be used to indicate a positive action that isn't necessarily the main call-to-action.
+ */
+export const Default: Story = {
   args: {
-    primary: true,
-    label: "Button",
+    label: "Contact us",
   },
 };
 
-export const Secondary: Story = {
+/**
+ * A positive button can be used to indicate a positive action that is the main call-to-action.
+ */
+export const Positive: Story = {
   args: {
-    label: "Button",
+    label: "Confirm",
+    appearance: "positive",
   },
 };
 
-export const Large: Story = {
+/**
+ * Custom button props can be passed to the button component.
+ */
+export const Custom: Story = {
   args: {
-    size: "large",
-    label: "Button",
-  },
-};
-
-export const Small: Story = {
-  args: {
-    size: "small",
-    label: "Button",
+    label: "Custom",
+    className: "custom-class",
+    style: {
+      "--button-background-color": "lightblue",
+      "--button-text-color": "midnightblue",
+      "--button-border-color": "midnightblue",
+      "--button-background-color-hover": "lightskyblue",
+      "--button-background-color-active": "skyblue",
+    } as React.CSSProperties,
   },
 };

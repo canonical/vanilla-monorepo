@@ -1,39 +1,55 @@
 import type React from "react";
 
-import "./button.css";
+import "./styles.css";
+
+// TODO: this is how appearance could work as enum
+//
+// export enum ButtonAppearance {
+//   DEFAULT = "default",
+//   BASE = "base",
+//   POSITIVE = "positive",
+//   NEGATIVE = "negative",
+//   LINK = "link",
+// }
 
 export interface ButtonProps {
-  /** Is this the principal call to action on the page? */
-  primary?: boolean;
-  /** What background color to use */
-  backgroundColor?: string;
-  /** How large should the button be? */
-  size?: "small" | "medium" | "large";
+  /* A unique identifier for the button */
+  id?: string;
+  /** Additional CSS classes */
+  className?: string;
+  /** The visual style of the button */
+  appearance?: "default" | "base" | "positive" | "negative" | "link";
   /** Button contents */
   label: string;
   /** Optional click handler */
   onClick?: () => void;
 }
 
-/** Primary UI component for user interaction */
+// combine custom props with all native button element attributes
+export type ButtonPropsType = ButtonProps &
+  React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+/** Buttons are clickable elements used to perform an action. */
 const Button = ({
-  primary = false,
-  size = "medium",
-  backgroundColor,
+  id,
+  className,
+  appearance = "default",
   label,
   ...props
-}: ButtonProps): React.ReactElement => {
-  const mode = primary
-    ? "storybook-button--primary"
-    : "storybook-button--secondary";
+}: ButtonPropsType): React.ReactElement => {
   return (
     <button
-      type="button"
-      className={["storybook-button", `storybook-button--${size}`, mode].join(
-        " ",
-      )}
-      style={{ backgroundColor }}
+      id={id}
+      className={[
+        "ds",
+        "button",
+        appearance !== "default" && appearance,
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
       {...props}
+      aria-label={label}
     >
       {label}
     </button>

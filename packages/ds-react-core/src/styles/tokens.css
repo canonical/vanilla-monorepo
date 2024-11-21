@@ -1,0 +1,31 @@
+/* base tokens */
+:root {
+  /* color tokens */
+  /* based on: https://docs.google.com/spreadsheets/d/1AY6BLFU-Cnj48ggHUnNVlWRxwWZ6Z-66s7jxJC1HLSU/edit?gid=1738212977#gid=1738212977 */
+  --color-background-default: #fff;
+  --color-text-default: #000;
+  --color-background-hover: rgba(242, 242, 242, 1);
+  --color-background-active: rgba(235, 235, 235, 1);
+  --color-border-high-contrast: rgba(0, 0, 0, 0.56);
+
+  --color-background-positive-default: rgba(14, 132, 32, 1);
+  --color-background-positive-hover: rgba(12, 109, 26, 1);
+  --color-background-positive-active: rgba(10, 95, 23, 1);
+  --color-text-button-positive: rgba(255, 255, 255, 1);
+
+  /* spacing tokens */
+  --spacing-horizontal-small: 0.5rem;
+  --spacing-horizontal-large: 1.5rem;
+
+  --spacing-vertical-small: 0.5rem;
+
+  --spacing-input-margin-bottom: 0.5rem; /* TODO: needs baseline alignment https://github.com/canonical/vanilla-framework/blob/main/scss/_settings_spacing.scss#L122 */
+  --spacing-input-padding-vertical: 0.5rem; /* TODO: needs to take baseline into account https://github.com/canonical/vanilla-framework/blob/main/scss/_settings_spacing.scss#L124 */
+
+  --spacing-border-width: 1.5px; /* TODO: 1.5px was causing some baseline issues in Vanilla */
+
+  /* font tokens */
+  --font-size-default: 1rem;
+  --font-weight-default: 400;
+  --line-height-default: 1.5rem;
+}
