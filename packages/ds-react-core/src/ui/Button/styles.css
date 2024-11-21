@@ -1,78 +1,81 @@
 /* component variables
-    --ds-button-background-color: background color of the button
-    --ds-button-text-color: text color of the button
-    --ds-button-border-color: border color of the button
+    --button-background-color: background color of the button
+    --button-text-color: text color of the button
+    --button-border-color: border color of the button
 
-    --ds-button-margin-left: left margin of the button
-    --ds-button-margin-bottom: bottom margin of the button
-    --ds-button-padding-vertical: vertical padding of the button
-    --ds-button-padding-horizontal: horizontal padding of the button
-    --ds-button-border-width: border width of the button
-    --ds-button-font-size: font size of the button
-    --ds-button-font-weight: font weight of the button
-    --ds-button-line-height: line height of the button
+    --button-margin-left: left margin of the button
+    --button-margin-bottom: bottom margin of the button
+    --button-padding-vertical: vertical padding of the button
+    --button-padding-horizontal: horizontal padding of the button
+    --button-border-width: border width of the button
+    --button-font-size: font size of the button
+    --button-font-weight: font weight of the button
+    --button-line-height: line height of the button
 */
 .ds.button {
-  --ds-button-background-color: var(--ds-color-background-default);
-  --ds-button-text-color: var(--ds-color-text-default);
-  --ds-button-border-color: var(--ds-color-border-high-contrast);
+  --button-background-color: var(--color-background-default);
+  --button-text-color: var(--color-text-default);
+  --button-border-color: var(--color-border-high-contrast);
 
-  --ds-button-margin-left: var(--ds-spacing-horizontal-large);
+  --button-margin-left: var(--spacing-horizontal-large);
   /* TODO: In Vanilla we used "input" spacing for button. what should it consume from foundation? generic "token" values (small padding, etc) or component specific values (button padding) */
-  --ds-button-margin-bottom: var(--ds-spacing-input-margin-bottom); /* TODO: do we want any margin? */
-  --ds-button-padding-vertical: var(--ds-spacing-input-padding-vertical);
-  --ds-button-padding-horizontal: var(--ds-spacing-horizontal-large);
+  --button-margin-bottom: var(--spacing-input-margin-bottom); /* TODO: do we want any margin? */
+  --button-padding-vertical: var(--spacing-input-padding-vertical);
+  --button-padding-horizontal: var(--spacing-horizontal-large);
 
-  --ds-button-border-width: var(--ds-spacing-border-width);
-  --ds-button-font-size: var(--ds-font-size-default);
-  --ds-button-font-weight: var(--ds-font-weight-default);
-  --ds-button-line-height: var(--ds-line-height-default);
+  --button-border-width: var(--spacing-border-width);
+  --button-font-size: var(--font-size-default);
+  --button-font-weight: var(--font-weight-default);
+  --button-line-height: var(--line-height-default);
 
   /* component states */
   &:hover {
-    --ds-button-background-color: var(--ds-color-background-hover);
-    --ds-button-border-color: var(--ds-color-border-high-contrast);
+    --button-background-color: var(--color-background-hover);
+    --button-border-color: var(--color-border-high-contrast);
   }
 
   &:active {
-    --ds-button-background-color: var(--ds-color-background-active);
-    --ds-button-border-color: var(--ds-color-border-high-contrast);
+    --button-background-color: var(--color-background-active);
+    --button-border-color: var(--color-border-high-contrast);
   }
 }
 
-.ds.button.positive {
-  --ds-button-background-color: var(--ds-color-background-positive-default);
-  --ds-button-text-color: var(--ds-color-text-button-positive);
-  --ds-button-border-color: var(--ds-color-background-positive-default);
+/* .ds.button.positive {
+  --button-background-color: var(--color-background-positive-default);
+  --button-text-color: var(--color-text-button-positive);
+  --button-border-color: var(--color-background-positive-default);
 
   &:hover {
-    --ds-button-background-color: var(--ds-color-background-positive-hover);
-    --ds-button-border-color: var(--ds-color-background-positive-hover);
+    --button-background-color: var(--color-background-positive-hover);
+    --button-border-color: var(--color-background-positive-hover);
   }
 
   &:active {
-    --ds-button-background-color: var(--ds-color-background-positive-active);
-    --ds-button-border-color: var(--ds-color-background-positive-active);
+    --button-background-color: var(--color-background-positive-active);
+    --button-border-color: var(--color-background-positive-active);
   }
-}
+} */
 
 /* component styles */
 .ds.button {
   display: inline-block;
   cursor: pointer;
 
-  color: var(--ds-button-text-color);
-  background-color: var(--ds-button-background-color);
-  border-color: var(--ds-button-border-color);
+  color: var(--button-text-color);
+  background-color: var(
+    --state-background-color,
+    var(--button-background-color)
+  );
+  border-color: var(--button-border-color);
   border-style: solid;
-  border-width: var(--ds-button-border-width);
-  font-size: var(--ds-button-font-size);
-  font-weight: var(--ds-button-font-weight);
-  line-height: var(--ds-button-line-height);
-  margin-block-end: var(--ds-spacing-input-margin-bottom);
-  margin-inline-end: var(--ds-spacing-horizontal-large);
-  padding-block: var(--ds-spacing-input-padding-vertical);
-  padding-inline: var(--ds-spacing-horizontal-large);
+  border-width: var(--button-border-width);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: var(--button-line-height);
+  margin-block-end: var(--spacing-input-margin-bottom);
+  margin-inline-end: var(--spacing-horizontal-large);
+  padding-block: var(--spacing-input-padding-vertical);
+  padding-inline: var(--spacing-horizontal-large);
   text-align: left;
   text-decoration: none;
 }
