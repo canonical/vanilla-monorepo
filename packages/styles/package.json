@@ -1,0 +1,37 @@
+{
+  "name": "@canonical/styles",
+  "description": "Standard utility functions for Canonical's Web Engineering team",
+  "version": "0.0.0-experimental.0",
+  "main": "src/index.css",
+  "files": ["src"],
+  "author": {
+    "email": "webteam@canonical.com",
+    "name": "Canonical Webteam"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/canonical/ds25"
+  },
+  "license": "LGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/canonical/ds25/issues"
+  },
+  "homepage": "https://github.com/canonical/ds25#readme",
+  "scripts": {
+    "lint": "biome lint src/*.{css}",
+    "format": "bun run format:biome",
+    "format:biome": "biome format src/*.{css}",
+    "check": "bun run check:biome && bun run check:ts",
+    "check:fix": "bun run check:biome:fix",
+    "check:biome": "biome check src/* *.json",
+    "check:biome:fix": "biome check --write src/* *.json",
+    "check:ts": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.2",
+    "@canonical/biome-config": "^0.1.1-experimental.0"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  }
+}
