@@ -73,20 +73,30 @@
     );
   }
 
-  /* TODO: move to separate state/intent classes file */
   &.positive {
-    background-color: var(--color-background-positive-default);
-    color: var(--color-text-button-positive);
-    border-color: var(--color-background-positive-default);
+    --button-background-color: var(--color-background-positive-default);
+    --button-background-color-hover: var(--color-background-positive-hover);
+    --button-background-color-active: var(--color-background-positive-active);
+    --button-border-color: var(--color-background-positive-default);
+    --button-border-color-hover: var(--color-background-positive-hover);
+    --button-border-color-active: var(--color-background-positive-active);
+    --button-text-color: var(--color-text-on-positive);
+  }
 
-    &:hover {
-      background-color: var(--color-background-positive-hover);
-      border-color: var(--color-background-positive-hover);
-    }
+  &.negative {
+    --button-background-color: var(--color-background-negative-default);
+    --button-background-color-hover: var(--color-background-negative-hover);
+    --button-background-color-active: var(--color-background-negative-active);
+    --button-border-color: var(--color-background-negative-default);
+    --button-border-color-hover: var(--color-background-negative-hover);
+    --button-border-color-active: var(--color-background-negative-active);
+    --button-text-color: var(--color-text-on-negative);
+  }
 
-    &:active {
-      background-color: var(--color-background-positive-active);
-      border-color: var(--color-background-positive-active);
-    }
+  &.base {
+    --button-background-color: transparent;
+    --button-border-color: transparent;
+    --button-border-color-hover: transparent;
+    --button-border-color-active: transparent;
   }
 }
