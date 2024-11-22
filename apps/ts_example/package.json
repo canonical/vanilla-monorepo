@@ -1,7 +1,7 @@
 {
   "name": "@canonical/ds25-ts-test",
   "private": true,
-  "version": "0.2.0-experimental.0",
+  "version": "0.2.1-experimental.0",
   "description": "Typescript test project",
   "type": "module",
   "module": "dist/esm/index.js",
@@ -31,11 +31,11 @@
     "check:ts": "tsc --noEmit"
   },
   "dependencies": {
-    "@canonical/utils": "^0.2.0-experimental.0"
+    "@canonical/utils": "^0.2.1-experimental.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.2",
-    "@canonical/biome-config": "^0.2.0-experimental.0",
-    "@canonical/typescript-config-base": "^0.2.0-experimental.0"
+    "@canonical/biome-config": "^0.2.1-experimental.0",
+    "@canonical/typescript-config-base": "^0.2.1-experimental.0"
   }
 }
