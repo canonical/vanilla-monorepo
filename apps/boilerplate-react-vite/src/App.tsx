@@ -27,7 +27,6 @@ function App() {
       <div className="card">
         <Button
           label={`Count: ${count}`}
-          primary={true}
           onClick={() => setCount((count) => count + 1)}
         ></Button>
         <p>
