@@ -5,8 +5,8 @@
     "outDir": "generators",
     "rootDir": "src",
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "types": ["node"]
   },
   "include": ["src"],
-  "exclude": ["node_modules", "src/*/templates", "generators"]
+  "exclude": ["node_modules", "src/templates", "generators"]
 }

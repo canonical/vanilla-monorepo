@@ -2,5 +2,5 @@
 
 ## Getting Started
 
-1. Install [Yeoman](https://yeoman.io/): `bun add -g yeoman-generator`
-2. Run the generator: `yo @canonical/canonical-ds`
+1. Install [Yeoman](https://yeoman.io/): `bun add -g yo`
+2. Run the generator: `yo @canonical/canonical-ds:<subgenerator name>`
