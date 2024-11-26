@@ -1,6 +1,6 @@
 {
   "name": "@canonical/styles",
-  "description": "Standard utility functions for Canonical's Web Engineering team",
+  "description": "Canonical's base styles",
   "version": "0.0.0-experimental.0",
   "main": "src/index.css",
   "files": ["src"],
