@@ -1,8 +1,7 @@
----
 name: Setup environment
 description: Installs build tools and dependencies
 inputs:
-  bun-version:
+  bun-version: 
     default: latest
     description: Version of Bun to use
 runs:
@@ -10,13 +9,10 @@ runs:
   steps:
     - name: Setup Bun
       uses: oven-sh/setup-bun@v2
-      with:
+      with: 
         bun-version: ${{ inputs.bun-version }}
 
       # "prepare" hook on `bun install` runs `bun run build`
     - name: Install dependencies
       shell: bash
       run: bun install --frozen-lockfile
-    - name: Build monorepo
-      shell: bash
-      run: bun run build
