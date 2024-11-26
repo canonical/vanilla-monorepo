@@ -39,7 +39,8 @@
   },
   "dependencies": {
     "react": "^19.0.0-rc-1460d67c-20241003",
-    "react-dom": "^19.0.0-rc-1460d67c-20241003"
+    "react-dom": "^19.0.0-rc-1460d67c-20241003",
+    "@canonical/styles": "0.0.0-experimental.0"
   },
   "devDependencies": {
     "@canonical/biome-config": "^0.2.1-experimental.0",
