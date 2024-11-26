@@ -37,7 +37,7 @@ Example `package.json` scripts are provided below.
 
 ## Configuration
 
-This configuration enables the following behavior
+This configuration enables the following behavior:
 
 1. Formatting Rules
    1. Two-space indentation
