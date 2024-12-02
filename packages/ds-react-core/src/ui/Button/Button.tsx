@@ -18,7 +18,7 @@ export interface ButtonProps {
   /** Additional CSS classes */
   className?: string;
   /** The visual style of the button */
-  appearance?: "default" | "base" | "positive" | "negative" | "link";
+  appearance?: "neutral" | "base" | "positive" | "negative" | "link";
   /** Button contents */
   label: string;
   /** Optional click handler */
@@ -33,19 +33,14 @@ export type ButtonPropsType = ButtonProps &
 const Button = ({
   id,
   className,
-  appearance = "default",
+  appearance,
   label,
   ...props
 }: ButtonPropsType): React.ReactElement => {
   return (
     <button
       id={id}
-      className={[
-        "ds",
-        "button",
-        appearance !== "default" && appearance,
-        className,
-      ]
+      className={["ds", "button", appearance, className]
         .filter(Boolean)
         .join(" ")}
       {...props}

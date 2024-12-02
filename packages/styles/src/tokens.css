@@ -1,3 +1,5 @@
+/* TODO: this should potentially be part of the theme definition, as it implements design decisions specific to the theme */
+
 /* base tokens */
 :root {
   /* color tokens */
@@ -36,4 +38,24 @@
   --font-size-default: 1rem;
   --font-weight-default: 400;
   --line-height-default: 1.5rem;
+}
+
+/* component semantic tokens */
+:root {
+  --button-color-background: var(--color-background-default);
+  --button-color-background-hover: var(--color-background-hover);
+  --button-color-background-active: var(--color-background-active);
+  --button-color-text: var(--color-text-default);
+  --button-color-border: var(--color-border-high-contrast);
+  --button-color-border-hover: var(--button-color-border);
+  --button-color-border-active: var(--button-color-border);
+
+  --button-margin-left: var(--spacing-horizontal-large);
+  --button-margin-bottom: var(--spacing-input-margin-bottom);
+  --button-padding-vertical: var(--spacing-input-padding-vertical);
+  --button-padding-horizontal: var(--spacing-horizontal-large);
+  --button-border-width: var(--spacing-border-width);
+  --button-font-size: var(--font-size-default);
+  --button-font-weight: var(--font-weight-default);
+  --button-line-height: var(--line-height-default);
 }

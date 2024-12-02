@@ -59,22 +59,20 @@ export const Custom: Story = {
     label: "Customize",
     className: "custom-class",
     style: {
-      "--button-background-color": "lightblue",
-      "--button-text-color": "midnightblue",
-      "--button-border-color": "midnightblue",
-      "--button-background-color-hover": "lightskyblue",
-      "--button-background-color-active": "skyblue",
+      "--button-color-background": "lightblue",
+      "--button-color-text": "midnightblue",
+      "--button-color-border": "midnightblue",
+      "--button-color-background-hover": "lightskyblue",
+      "--button-color-background-active": "skyblue",
     } as React.CSSProperties,
   },
 };
 
 /**
- * There is a flaw in the idea of having "intents" implemented globally like states.
- * Intent variables are inherited with CSS, so will be applied to all child elements. For example, if there is a "positive" notification, the child buttons without "intent" (default) will also be positive.
- *
- * This is probably OK for states, because it's likely that all child elements will be in the same state. But it's not OK for intents, because we can't assume all child elements share the same intent.
+ * Intent variables are inherited with CSS, so will be applied to all child elements. For example, if there is a "positive" notification, the child buttons without "intent" will also be positive.
+ * For the child element to have a different intent, the intent class name should be explicitly added.
  */
-export const BrokenIntents: Story = {
+export const IntentsInheritance: Story = {
   decorators: [
     (Story) => (
       <div
@@ -84,12 +82,12 @@ export const BrokenIntents: Story = {
           padding: "1rem",
         }}
       >
-        <p>I'm a wrapper with <code>positive</code> intent class name.</p>
-        <Button label="This should be a default button" />
-        <Button
-          label="This should be a negative button"
-          appearance="negative"
-        />
+        <p>
+          I'm a wrapper with <code>positive</code> intent class name.
+        </p>
+        <Button label="This is a neutral button" appearance="neutral" />
+        <Button label="This is a negative button" appearance="negative" />
+        <Button label="This button inherits the intent from parent" />
       </div>
     ),
   ],
