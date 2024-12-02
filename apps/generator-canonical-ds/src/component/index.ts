@@ -1,7 +1,7 @@
 import path from "node:path";
 import type Generator from "yeoman-generator";
 import BaseGenerator from "../app/index.js";
-import casing from "../app/utils/casing.js";
+import casing from "../app/utils/casing";
 
 interface Answers {
   /** The path for the component's root directory, relative to the callers, working directory. */
@@ -71,36 +71,28 @@ export default class ComponentGenerator extends BaseGenerator {
   }
 
   /**
-   * Resolve back to the directory for the component destination
-   * Assumes that `answers.path` has been set.
-   * @param inPath - The path to resolve, relative to the component's destination directory
+   * Gets the path to the component's directory relative to the current working directory.
+   * Pascal-cases the final directory name to match React component naming conventions.
+   * @param inPath - The path to resolve, relative to the current working directory
+   * @return Path to the component's directory relative to the current working directory
+   * @example
+   * destinationPath("path/to/button/index.ts") // => "/path/to/Button/index.ts"
    */
   destinationPath(...inPath: string[]): string {
-    const rawPath = path.resolve(
-      path.join(process.cwd(), this.answers?.path || "", ...inPath),
+    const rawPath = super.destinationPath(...inPath);
+    const dirName = path.dirname(rawPath);
+
+    // Replace the last segment of the path with the Pascal-cased version
+    const componentFolder = path.resolve(
+      dirName,
+      "..",
+      casing.toPascalCase(path.basename(dirName)),
     );
 
-    // Pascal-case the final directory name
-    const pathParts = rawPath.split("/");
-    // There is no directory, return the path as-is
-    if (pathParts.length === 0) return rawPath;
-    // A final directory was found, pascal-case it
-    const deepestDirectory = pathParts[pathParts.length - 2];
-    pathParts[pathParts.length - 2] = casing.toPascalCase(deepestDirectory);
+    // Append the original file name to the new path
+    const fileName = path.basename(rawPath);
 
-    return super.destinationPath(path.resolve(pathParts.join("/")));
-  }
-
-  /**
-   * Get the component name from the path
-   * @param componentPath - The path to the component's root directory
-   * @returns The component name (extracted from the final path segment and pascal cased)
-   * @example
-   * componentName("src/components/my-component") // "MyComponent"
-   */
-  componentName(componentPath: string): string {
-    const finalPathSegment = componentPath?.split("/")?.pop() || componentPath;
-    return casing.toPascalCase(finalPathSegment);
+    return path.join(componentFolder, fileName);
   }
 
   writing(): void {
@@ -108,47 +100,59 @@ export default class ComponentGenerator extends BaseGenerator {
 
     const templateData = {
       ...this.config.getAll(),
-      componentName: this.componentName(this.answers.path),
+      componentName: casing.toPascalCase(path.basename(this.answers.path)),
       ...this.answers,
     };
 
     this.fs.copyTpl(
-      this.templatePath("Component.tsx"),
-      this.destinationPath(`${templateData.componentName}.tsx`),
+      this.templatePath("Component.tsx.ejs"),
+      this.destinationPath(
+        `${this.answers.path}/${templateData.componentName}.tsx`,
+      ),
       templateData,
     );
 
     this.fs.copyTpl(
-      this.templatePath("index.ts"),
-      this.destinationPath("index.ts"),
+      this.templatePath("index.ts.ejs"),
+      this.destinationPath(`${this.answers.path}/index.ts`),
       templateData,
     );
     this.fs.copyTpl(
-      this.templatePath("types.ts"),
-      this.destinationPath("types.ts"),
+      this.templatePath("types.ts.ejs"),
+      this.destinationPath(`${this.answers.path}/types.ts`),
       templateData,
     );
 
     if (this.answers.includeStyles) {
       this.fs.copyTpl(
-        this.templatePath("Component.css"),
-        this.destinationPath(`${templateData.componentName}.css`),
+        this.templatePath("Component.css.ejs"),
+        this.destinationPath(
+          `${this.answers.path}/${templateData.componentName}.css`,
+        ),
         templateData,
       );
     }
 
     if (this.answers.includeStorybook) {
       this.fs.copyTpl(
-        this.templatePath(`Component.stories.${this.answers.storyFormat}.tsx`),
-        this.destinationPath(`${templateData.componentName}.stories.tsx`),
+        this.templatePath(
+          `Component.stories.${this.answers.storyFormat}.tsx.ejs`,
+        ),
+        this.destinationPath(
+          `${this.answers.path}/${templateData.componentName}.stories.tsx`,
+        ),
         templateData,
       );
     }
 
     if (this.answers.includeTests) {
       this.fs.copyTpl(
-        this.templatePath(`Component.test.${this.answers.testFramework}.tsx`),
-        this.destinationPath(`${templateData.componentName}.test.tsx`),
+        this.templatePath(
+          `Component.test.${this.answers.testFramework}.tsx.ejs`,
+        ),
+        this.destinationPath(
+          `${this.answers.path}/${templateData.componentName}.test.tsx`,
+        ),
         templateData,
       );
     }

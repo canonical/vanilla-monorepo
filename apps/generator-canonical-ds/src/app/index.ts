@@ -8,9 +8,20 @@ export default class BaseGenerator extends Generator {
 
     // Expose base context to subgenerators
     const pkgJson = require("../../package.json");
-    this.config.set("pkg", pkgJson.name);
-    this.config.set("version", pkgJson.version);
+    this.config.set("generatorPackageName", pkgJson.name);
+    this.config.set("generatorPackageVersion", pkgJson.version);
+    this.config.set("generatorPackageGitRepo", pkgJson.repository.url);
     this.config.set("namespace", "ds");
+  }
+
+  /**
+   * Resolves the path to the destination directory relative to the current working directory.
+   * @param inPath - The path to resolve, relative to the destination directory
+   */
+  destinationPath(...inPath: string[]): string {
+    return super.destinationPath(
+      path.resolve(path.join(process.cwd(), ...inPath)),
+    );
   }
 
   /**
