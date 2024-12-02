@@ -1,19 +1,20 @@
 {
-  "name": "<%= projectName %>",
+  "name": "@canonical/boilerplate-react-vite",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.3.0-experimental.0",
   "type": "module",
+  "license": "GPL-3.0-only",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "biome lint .",
+    "lint": "biome lint src/**/*.{ts,tsx}",
     "format": "bun run format:biome",
-    "format:biome": "biome format .",
+    "format:biome": "biome format src/**/*.{ts,tsx}",
     "check": "bun run check:biome && bun run check:ts",
     "check:fix": "bun run check:biome:fix",
-    "check:biome": "biome check .",
-    "check:biome:fix": "biome check --write .",
+    "check:biome": "biome check src/**/* *.json",
+    "check:biome:fix": "biome check --write src/**/* *.json",
     "check:ts": "tsc --noEmit"
   },
   "dependencies": {
