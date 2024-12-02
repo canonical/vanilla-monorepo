@@ -51,7 +51,7 @@ When using TypeScript's NodeNext module resolution, TypeScript expects files to 
 Best Practices:
 
     Use Explicit File Extensions: With NodeNext, include file extensions (e.g., ./Button/index.js).
-    Maintain an index.ts for Exports: Collect all exports in a single index.ts at the package root for easier imports.
+    Maintain an index.ts.hbs for Exports: Collect all exports in a single index.ts.hbs at the package root for easier imports.
     Consider the Module Type: Use Node resolution if CommonJS is preferred; otherwise, NodeNext for ESM compliance.
 
 This approach maintains compatibility with both Node.js and bundlers.
