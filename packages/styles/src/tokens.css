@@ -1,9 +1,14 @@
+/* TODO: this should potentially be part of the theme definition, as it implements design decisions specific to the theme */
+
 /* base tokens */
 :root {
   /* color tokens */
   /* based on: https://docs.google.com/spreadsheets/d/1AY6BLFU-Cnj48ggHUnNVlWRxwWZ6Z-66s7jxJC1HLSU/edit?gid=1738212977#gid=1738212977 */
-  --color-background-default: #fff;
-  --color-text-default: #000;
+  --color-palette-white: #fff;
+  --color-palette-black: #000;
+
+  --color-background-default: var(--color-palette-white);
+  --color-text-default: var(--color-palette-black);
   --color-background-hover: rgba(242, 242, 242, 1);
   --color-background-active: rgba(235, 235, 235, 1);
   --color-border-high-contrast: rgba(0, 0, 0, 0.56);
@@ -11,7 +16,12 @@
   --color-background-positive-default: rgba(14, 132, 32, 1);
   --color-background-positive-hover: rgba(12, 109, 26, 1);
   --color-background-positive-active: rgba(10, 95, 23, 1);
-  --color-text-button-positive: rgba(255, 255, 255, 1);
+  --color-background-positive-text: var(--color-palette-white); /* text on positive background */
+
+  --color-background-negative-default: rgba(199, 22, 43, 1);
+  --color-background-negative-hover: rgba(176, 19, 38, 1);
+  --color-background-negative-active: rgba(162, 18, 35, 1);
+  --color-background-negative-text: var(--color-palette-white); /* text on positive background */
 
   /* spacing tokens */
   --spacing-horizontal-small: 0.5rem;
@@ -28,4 +38,24 @@
   --font-size-default: 1rem;
   --font-weight-default: 400;
   --line-height-default: 1.5rem;
+}
+
+/* component semantic tokens */
+:root {
+  --button-color-background: var(--color-background-default);
+  --button-color-background-hover: var(--color-background-hover);
+  --button-color-background-active: var(--color-background-active);
+  --button-color-text: var(--color-text-default);
+  --button-color-border: var(--color-border-high-contrast);
+  --button-color-border-hover: var(--button-color-border);
+  --button-color-border-active: var(--button-color-border);
+
+  --button-margin-left: var(--spacing-horizontal-large);
+  --button-margin-bottom: var(--spacing-input-margin-bottom);
+  --button-padding-vertical: var(--spacing-input-padding-vertical);
+  --button-padding-horizontal: var(--spacing-horizontal-large);
+  --button-border-width: var(--spacing-border-width);
+  --button-font-size: var(--font-size-default);
+  --button-font-weight: var(--font-weight-default);
+  --button-line-height: var(--line-height-default);
 }

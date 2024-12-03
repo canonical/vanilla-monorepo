@@ -1,7 +1,29 @@
 .positive {
-  --color: green;
+  --intent-color: var(--color-background-positive-default);
+  --intent-color-hover: var(--color-background-positive-hover);
+  --intent-color-active: var(--color-background-positive-active);
+  --intent-color-text: var(--color-background-positive-text);
+  --intent-color-border: var(--intent-color);
+  --intent-color-border-hover: var(--intent-color-hover);
+  --intent-color-border-active: var(--intent-color-active);
 }
 
 .negative {
-  --color: red;
+  --intent-color: var(--color-background-negative-default);
+  --intent-color-hover: var(--color-background-negative-hover);
+  --intent-color-active: var(--color-background-negative-active);
+  --intent-color-text: var(--color-background-negative-text);
+  --intent-color-border: var(--intent-color);
+  --intent-color-border-hover: var(--intent-color-hover);
+  --intent-color-border-active: var(--intent-color-active);
+}
+
+.neutral {
+  --intent-color: var(--color-background-default);
+  --intent-color-hover: var(--color-background-hover);
+  --intent-color-active: var(--color-background-active);
+  --intent-color-text: var(--color-text-default);
+  --intent-color-border: var(--color-border-high-contrast);
+  --intent-color-border-hover: var(--intent-color-border);
+  --intent-color-border-active: var(--intent-color-border);
 }
