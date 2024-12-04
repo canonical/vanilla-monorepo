@@ -1,3 +1,9 @@
+/*
+TODO
+- add optional character subset version of the font - how to do it conditinoally?
+- reconsider the font-family name - "Ubuntu variable" was a workaround for backwards compatibility with previous "Ubuntu" web font, do we still need this? what would happen if we change it to "Ubuntu"?
+*/
+
 /* Ubuntu font declarations, as per Vanilla */
 @font-face {
   font-family: "Ubuntu variable";
