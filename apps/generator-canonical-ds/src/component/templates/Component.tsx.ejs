@@ -19,8 +19,8 @@ export default function <%= componentName %>({
     <div
       className={
         [
-          "<%= namespace %>",
-          "<%= componentName.toLowerCase() %>",
+          "<%= cssNamespace %>",
+          "<%= componentCssClassName %>",
           className
         ].filter(Boolean)
       }

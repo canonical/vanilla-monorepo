@@ -4,18 +4,12 @@ import globalContext from "../app/global-context.js";
 import casing from "../utils/casing.js";
 
 interface ComponentGeneratorAnswers {
-  /** The path for the component's root directory, relative to the callers, working directory. */
+  /** The path for the component's root directory, relative to the callers working directory. */
   path: string;
   /** Whether to include styles in the component */
   includeStyles: boolean;
-  /** Whether to include tests in the component */
-  includeTests: boolean;
-  /** The test framework to use */
-  testFramework?: "jest" | "playwright" | "vitest";
   /** Whether to include a storybook story in the component */
   includeStorybook: boolean;
-  /** The story format to use */
-  storyFormat?: "csf2" | "csf3";
 }
 
 export default class ComponentGenerator extends Generator {
@@ -25,8 +19,10 @@ export default class ComponentGenerator extends Generator {
     {
       type: "input",
       name: "path",
-      message: "Please enter the path for the component's root directory",
-      default: "MyComponent",
+      message:
+        "Enter the component's name, including its path (ex: `form/input/Checkbox`):",
+      default: ".",
+      filter: (input: string) => path.resolve(path.join(this.env.cwd, input)),
     },
     {
       type: "confirm",
@@ -37,32 +33,17 @@ export default class ComponentGenerator extends Generator {
     {
       type: "confirm",
       name: "includeStorybook",
-      message: "Would you like to include a storybook story?",
+      message: "Would you like to include a story file?",
       default: false,
-    },
-    {
-      type: "list",
-      name: "storyFormat",
-      message: "Which story format would you like to use?",
-      when: (answers) => answers.includeStorybook,
-      choices: ["csf2", "csf3"],
-      default: "csf3",
-    },
-    {
-      type: "confirm",
-      name: "includeTests",
-      message: "Would you like to include tests?",
-      default: false,
-    },
-    {
-      type: "list",
-      name: "testFramework",
-      message: "Which test framework would you like to use?",
-      when: (answers) => answers.includeTests,
-      choices: ["jest", "playwright", "vitest"],
-      default: "vitest",
     },
   ];
+
+  initializing() {
+    this.log("Welcome to the component generator!");
+    this.log(
+      "This generator should be run from the root directory of all your application's components (ex: src/components).",
+    );
+  }
 
   async prompting() {
     this.answers = await this.prompt<ComponentGeneratorAnswers>(this.questions);
@@ -96,10 +77,15 @@ export default class ComponentGenerator extends Generator {
   writing(): void {
     if (!this.answers) return;
 
+    const componentName = casing.toPascalCase(path.basename(this.answers.path));
+
     const templateData = {
       ...globalContext,
-      componentName: casing.toPascalCase(path.basename(this.answers.path)),
+      componentName,
       ...this.answers,
+      ...(this.answers.includeStyles && {
+        componentCssClassName: casing.toKebabCase(componentName),
+      }),
     };
 
     this.fs.copyTpl(
@@ -115,9 +101,18 @@ export default class ComponentGenerator extends Generator {
       this.destinationPath(`${this.answers.path}/index.ts`),
       templateData,
     );
+
     this.fs.copyTpl(
       this.templatePath("types.ts.ejs"),
       this.destinationPath(`${this.answers.path}/types.ts`),
+      templateData,
+    );
+
+    this.fs.copyTpl(
+      this.templatePath("Component.test.tsx.ejs"),
+      this.destinationPath(
+        `${this.answers.path}/${templateData.componentName}.test.tsx`,
+      ),
       templateData,
     );
 
@@ -133,23 +128,9 @@ export default class ComponentGenerator extends Generator {
 
     if (this.answers.includeStorybook) {
       this.fs.copyTpl(
-        this.templatePath(
-          `Component.stories.${this.answers.storyFormat}.tsx.ejs`,
-        ),
+        this.templatePath("Component.stories.tsx.ejs"),
         this.destinationPath(
           `${this.answers.path}/${templateData.componentName}.stories.tsx`,
-        ),
-        templateData,
-      );
-    }
-
-    if (this.answers.includeTests) {
-      this.fs.copyTpl(
-        this.templatePath(
-          `Component.test.${this.answers.testFramework}.tsx.ejs`,
-        ),
-        this.destinationPath(
-          `${this.answers.path}/${templateData.componentName}.test.tsx`,
         ),
         templateData,
       );

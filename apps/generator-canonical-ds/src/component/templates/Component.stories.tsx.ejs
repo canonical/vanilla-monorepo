@@ -1,0 +1,42 @@
+/* <%= generatorPackageName %> <%= generatorPackageVersion %> */
+
+import Component from "./<%= componentName %>.js";
+// import type { <%= componentName %>Props } from './types.js'
+import type { Meta, StoryObj } from "@storybook/react";
+// import { StoryFn } from '@storybook/react'
+
+const meta = {
+  title: "<%= componentName %>",
+  component: Component,
+} satisfies Meta<typeof Component>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    // argName: "argValue",
+  },
+};
+
+/*
+export const Default = (args: <%= componentName %>Props) => <Component {...args} />;
+Default.args = {
+  // argName: "argValue",
+};
+*/
+
+/*
+const Template: StoryFn<typeof Component> = (args) => <Component {...args} />;
+
+export const Default: StoryFn<typeof Component> = Template.bind({});
+Default.args = {
+  // argName: "argValue",
+};
+*/
+
+/*
+export const Default: StoryFn<typeof Component> = () => (
+  <Component/>
+);
+*/

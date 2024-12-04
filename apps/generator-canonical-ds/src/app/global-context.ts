@@ -17,7 +17,7 @@ const GENERATOR_CONTEXT = {
    * This is the identifier name used to call this generator from the command line.
    */
   generatorScriptIdentifer: pkgJson.name.replace("generator-", ""),
-  namespace: "ds",
+  cssNamespace: "ds",
 };
 
 export default GENERATOR_CONTEXT;

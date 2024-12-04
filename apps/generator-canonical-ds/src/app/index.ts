@@ -25,6 +25,7 @@ export default class BaseGenerator extends Generator {
         name: `${subgen.name} (${subgen.description})`,
         value: subgen.name,
       })),
+      when: () => this.subgenerators.length > 1,
       default: this.subgenerators[0].name,
     },
   ];
@@ -33,7 +34,7 @@ export default class BaseGenerator extends Generator {
   async prompting() {
     const answers = await this.prompt(this.questions);
     return this.composeWith(
-      `${globalContext.generatorScriptIdentifer}:${answers.subgenerator}`,
+      `${globalContext.generatorScriptIdentifer}:${answers.subgenerator || this.subgenerators[0].name}`,
     );
   }
 
