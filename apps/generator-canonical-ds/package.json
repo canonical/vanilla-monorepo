@@ -30,7 +30,7 @@
     "check:ts": "tsc --noEmit"
   },
   "dependencies": {
-    "yeoman-generator": "5.9.0"
+    "yeoman-generator": "7.3.3"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
