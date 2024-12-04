@@ -1,34 +1,36 @@
 /* <%= generatorPackageName %> <%= generatorPackageVersion %> */
-import React from 'react'
-import type { <%= componentName %>Props } from './types.js'
+import type React from 'react';
+import type { <%= componentName %>Props } from './types.js';
 
-<% if (includeStyles) { %>
-import './<%= componentName %>.css'
-<% } %>
+<% if (includeStyles) { _%>
+import './<%= componentName %>.css';
+<%_ } _%>
   
 /**
  * description of the <%= componentName %> component
  * @returns {React.ReactElement} - Rendered <%= componentName %>
  */
-export default function <%= componentName %>({
+const <%= componentName %> = ({
+  id,
   children,
   className,
   ...props
-}: React.FC<<%= componentName %>Props>) {
+}: <%= componentName %>Props): React.ReactElement => {
   return (
     <div
-      className={
-        [
-        <% if (includeStyles) { %>
-          "<%= cssNamespace %>",
-          "<%= componentCssClassName %>",
-        <% } %>
-          className
-        ].filter(Boolean)
-      }
+      id={id}
+      className={[
+      <% if (includeStyles) { -%>
+      "<%= cssNamespace %>",
+      "<%= componentCssClassName %>",
+       <%_ } -%>
+        className
+      ].filter(Boolean).join(" ")}
       {...props}
     >
       {children}
     </div>
   )
-}
+};
+
+export default <%= componentName %>;

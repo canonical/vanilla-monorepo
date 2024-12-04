@@ -15,14 +15,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    // argName: "argValue",
+    children: <span>Hello world!</span>
   },
 };
 
 /*
 export const Default = (args: <%= componentName %>Props) => <Component {...args} />;
 Default.args = {
-  // argName: "argValue",
+    children: <span>Hello world!</span>
 };
 */
 
@@ -31,12 +31,12 @@ const Template: StoryFn<typeof Component> = (args) => <Component {...args} />;
 
 export const Default: StoryFn<typeof Component> = Template.bind({});
 Default.args = {
-  // argName: "argValue",
+  children: <span>Hello world!</span>
 };
 */
 
 /*
 export const Default: StoryFn<typeof Component> = () => (
-  <Component/>
+  <Component><span>Hello world!</span></Component>
 );
 */
