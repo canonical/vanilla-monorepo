@@ -1,14 +1,11 @@
 {
   "extends": "@canonical/typescript-config-base",
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "commonjs",
-    "moduleResolution": "node",
     "outDir": "generators",
     "rootDir": "src",
-    "esModuleInterop": true,
-    "types": ["node"]
+    "types": ["node"],
+    "esModuleInterop": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "src/templates", "generators"]
+  "exclude": ["node_modules", "*.ejs", "generators"]
 }

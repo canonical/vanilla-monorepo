@@ -1,9 +1,9 @@
 import path from "node:path";
-import type Generator from "yeoman-generator";
-import BaseGenerator from "../app/index.js";
-import casing from "../app/utils/casing";
+import Generator, { type Question } from "yeoman-generator";
+import globalContext from "../app/global-context.js";
+import casing from "../utils/casing.js";
 
-interface Answers {
+interface ComponentGeneratorAnswers {
   /** The path for the component's root directory, relative to the callers, working directory. */
   path: string;
   /** Whether to include styles in the component */
@@ -18,56 +18,54 @@ interface Answers {
   storyFormat?: "csf2" | "csf3";
 }
 
-export default class ComponentGenerator extends BaseGenerator {
-  answers?: Answers;
+export default class ComponentGenerator extends Generator {
+  answers?: ComponentGeneratorAnswers;
 
-  async prompting(): Promise<void> {
-    this.log("Welcome to the React component generator");
+  questions: Question[] = [
+    {
+      type: "input",
+      name: "path",
+      message: "Please enter the path for the component's root directory",
+      default: "MyComponent",
+    },
+    {
+      type: "confirm",
+      name: "includeStyles",
+      message: "Do you want to include styles?",
+      default: false,
+    },
+    {
+      type: "confirm",
+      name: "includeStorybook",
+      message: "Would you like to include a storybook story?",
+      default: false,
+    },
+    {
+      type: "list",
+      name: "storyFormat",
+      message: "Which story format would you like to use?",
+      when: (answers) => answers.includeStorybook,
+      choices: ["csf2", "csf3"],
+      default: "csf3",
+    },
+    {
+      type: "confirm",
+      name: "includeTests",
+      message: "Would you like to include tests?",
+      default: false,
+    },
+    {
+      type: "list",
+      name: "testFramework",
+      message: "Which test framework would you like to use?",
+      when: (answers) => answers.includeTests,
+      choices: ["jest", "playwright", "vitest"],
+      default: "vitest",
+    },
+  ];
 
-    const prompts: Generator.Question[] = [
-      {
-        type: "input",
-        name: "path",
-        message: "Please enter the path for the component's root directory",
-        default: "MyComponent",
-      },
-      {
-        type: "confirm",
-        name: "includeStyles",
-        message: "Do you want to include styles?",
-        default: false,
-      },
-      {
-        type: "confirm",
-        name: "includeStorybook",
-        message: "Would you like to include a storybook story?",
-        default: false,
-      },
-      {
-        type: "list",
-        name: "storyFormat",
-        message: "Which story format would you like to use?",
-        when: (answers) => answers.includeStorybook,
-        choices: ["csf2", "csf3"],
-        default: "csf3",
-      },
-      {
-        type: "confirm",
-        name: "includeTests",
-        message: "Would you like to include tests?",
-        default: false,
-      },
-      {
-        type: "list",
-        name: "testFramework",
-        message: "Which test framework would you like to use?",
-        when: (answers) => answers.includeTests,
-        choices: ["jest", "playwright", "vitest"],
-        default: "vitest",
-      },
-    ];
-
-    this.answers = await this.prompt<Answers>(prompts);
+  async prompting() {
+    this.answers = await this.prompt<ComponentGeneratorAnswers>(this.questions);
   }
 
   /**
@@ -99,7 +97,7 @@ export default class ComponentGenerator extends BaseGenerator {
     if (!this.answers) return;
 
     const templateData = {
-      ...this.config.getAll(),
+      ...globalContext,
       componentName: casing.toPascalCase(path.basename(this.answers.path)),
       ...this.answers,
     };

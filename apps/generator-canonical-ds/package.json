@@ -15,11 +15,12 @@
   },
   "homepage": "https://github.com/canonical/vanilla-monorepo#readme",
   "files": ["generators"],
+  "type": "module",
   "main": "generators/index.js",
   "scripts": {
     "build": "bun run build:tsc && bun run build:copyfiles",
     "build:tsc": "tsc",
-    "build:copyfiles": "copyfiles -u 1 'src/templates/**/*' generators",
+    "build:copyfiles": "copyfiles -u 1 src/**/templates/**/* generators",
     "lint:biome": "biome lint src/*.ts",
     "format:biome": "biome format src/*.ts",
     "check": "bun run check:biome && bun run check:ts",

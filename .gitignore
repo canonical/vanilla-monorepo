@@ -18,6 +18,7 @@ Thumbs.db
 *.bak
 *.pyc
 *-cache/
+.yo-rc.json
 
 # [data] Local data
 *.sqlite*
