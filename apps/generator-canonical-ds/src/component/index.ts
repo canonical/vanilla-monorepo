@@ -1,5 +1,5 @@
 import path from "node:path";
-import Generator, { type Question } from "yeoman-generator";
+import Generator from "yeoman-generator";
 import globalContext from "../app/global-context.js";
 import casing from "../utils/casing.js";
 
@@ -15,34 +15,6 @@ interface ComponentGeneratorAnswers {
 export default class ComponentGenerator extends Generator {
   answers?: ComponentGeneratorAnswers;
 
-  questions: Question[] = [
-    {
-      type: "input",
-      name: "componentAbsolutePath",
-      message:
-        "Enter the component's name, including its path (ex: `form/input/Checkbox`):",
-      default: ".",
-      filter: (input: string) => {
-        const resolvedInput = path.resolve(this.env.cwd, input);
-        // Force the directory name (the component name) to be PascalCased
-        const dirName = path.basename(resolvedInput);
-        return path.resolve(resolvedInput, "..", casing.toPascalCase(dirName));
-      },
-    },
-    {
-      type: "confirm",
-      name: "includeStyles",
-      message: "Do you want to include styles?",
-      default: true,
-    },
-    {
-      type: "confirm",
-      name: "includeStorybook",
-      message: "Would you like to include a story file?",
-      default: true,
-    },
-  ];
-
   initializing() {
     this.log("Welcome to the component generator!");
     this.log(
@@ -51,7 +23,37 @@ export default class ComponentGenerator extends Generator {
   }
 
   async prompting() {
-    this.answers = await this.prompt<ComponentGeneratorAnswers>(this.questions);
+    this.answers = await this.prompt([
+      {
+        type: "input",
+        name: "componentAbsolutePath",
+        message:
+          "Enter the component's name, including its path (ex: `form/input/Checkbox`):",
+        default: ".",
+        filter: (input: string) => {
+          const resolvedInput = path.resolve(this.env.cwd, input);
+          // Force the directory name (the component name) to be PascalCased
+          const dirName = path.basename(resolvedInput);
+          return path.resolve(
+            resolvedInput,
+            "..",
+            casing.toPascalCase(dirName),
+          );
+        },
+      },
+      {
+        type: "confirm",
+        name: "includeStyles",
+        message: "Do you want to include styles?",
+        default: true,
+      },
+      {
+        type: "confirm",
+        name: "includeStorybook",
+        message: "Would you like to include a story file?",
+        default: true,
+      },
+    ]);
   }
 
   /**
