@@ -33,13 +33,13 @@ export default class ComponentGenerator extends Generator {
       type: "confirm",
       name: "includeStyles",
       message: "Do you want to include styles?",
-      default: false,
+      default: true,
     },
     {
       type: "confirm",
       name: "includeStorybook",
       message: "Would you like to include a story file?",
-      default: false,
+      default: true,
     },
   ];
 
