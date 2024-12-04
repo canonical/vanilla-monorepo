@@ -4,8 +4,8 @@ import globalContext from "../app/global-context.js";
 import casing from "../utils/casing.js";
 
 interface ComponentGeneratorAnswers {
-  /** The path for the component's root directory, relative to the callers working directory. */
-  path: string;
+  /** The path to the component's root directory */
+  componentAbsolutePath: string;
   /** Whether to include styles in the component */
   includeStyles: boolean;
   /** Whether to include a storybook story in the component */
@@ -18,11 +18,16 @@ export default class ComponentGenerator extends Generator {
   questions: Question[] = [
     {
       type: "input",
-      name: "path",
+      name: "componentAbsolutePath",
       message:
         "Enter the component's name, including its path (ex: `form/input/Checkbox`):",
       default: ".",
-      filter: (input: string) => path.resolve(path.join(this.env.cwd, input)),
+      filter: (input: string) => {
+        const resolvedInput = path.resolve(this.env.cwd, input);
+        // Force the directory name (the component name) to be PascalCased
+        const dirName = path.basename(resolvedInput);
+        return path.resolve(resolvedInput, "..", casing.toPascalCase(dirName));
+      },
     },
     {
       type: "confirm",
@@ -77,41 +82,45 @@ export default class ComponentGenerator extends Generator {
   writing(): void {
     if (!this.answers) return;
 
-    const componentName = casing.toPascalCase(path.basename(this.answers.path));
+    const componentName = path.basename(this.answers.componentAbsolutePath);
 
     const templateData = {
       ...globalContext,
-      componentName,
       ...this.answers,
-      ...(this.answers.includeStyles && {
-        componentCssClassName: casing.toKebabCase(componentName),
-      }),
+      componentName,
+      /** The path to the component's directory relative to the current working directory */
+      componentRelativePath: path.relative(
+        this.env.cwd,
+        this.answers.componentAbsolutePath,
+      ),
+      componentCssClassName:
+        this.answers.includeStyles && casing.toKebabCase(componentName),
     };
 
     this.fs.copyTpl(
       this.templatePath("Component.tsx.ejs"),
       this.destinationPath(
-        `${this.answers.path}/${templateData.componentName}.tsx`,
+        `${this.answers.componentAbsolutePath}/${templateData.componentName}.tsx`,
       ),
       templateData,
     );
 
     this.fs.copyTpl(
       this.templatePath("index.ts.ejs"),
-      this.destinationPath(`${this.answers.path}/index.ts`),
+      this.destinationPath(`${this.answers.componentAbsolutePath}/index.ts`),
       templateData,
     );
 
     this.fs.copyTpl(
       this.templatePath("types.ts.ejs"),
-      this.destinationPath(`${this.answers.path}/types.ts`),
+      this.destinationPath(`${this.answers.componentAbsolutePath}/types.ts`),
       templateData,
     );
 
     this.fs.copyTpl(
       this.templatePath("Component.test.tsx.ejs"),
       this.destinationPath(
-        `${this.answers.path}/${templateData.componentName}.test.tsx`,
+        `${this.answers.componentAbsolutePath}/${templateData.componentName}.test.tsx`,
       ),
       templateData,
     );
@@ -120,7 +129,7 @@ export default class ComponentGenerator extends Generator {
       this.fs.copyTpl(
         this.templatePath("Component.css.ejs"),
         this.destinationPath(
-          `${this.answers.path}/${templateData.componentName}.css`,
+          `${this.answers.componentAbsolutePath}/${templateData.componentName}.css`,
         ),
         templateData,
       );
@@ -130,7 +139,7 @@ export default class ComponentGenerator extends Generator {
       this.fs.copyTpl(
         this.templatePath("Component.stories.tsx.ejs"),
         this.destinationPath(
-          `${this.answers.path}/${templateData.componentName}.stories.tsx`,
+          `${this.answers.componentAbsolutePath}/${templateData.componentName}.stories.tsx`,
         ),
         templateData,
       );

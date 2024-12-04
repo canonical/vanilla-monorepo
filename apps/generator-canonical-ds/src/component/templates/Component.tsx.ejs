@@ -19,8 +19,10 @@ export default function <%= componentName %>({
     <div
       className={
         [
+        <% if (includeStyles) { %>
           "<%= cssNamespace %>",
           "<%= componentCssClassName %>",
+        <% } %>
           className
         ].filter(Boolean)
       }
