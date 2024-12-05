@@ -2,10 +2,13 @@
   "cli": {
     "packageManager": "bun"
   },
-  "cacheableOperations": ["build", "test", "check", "check:fix"],
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
+      "cache": true
+    },
+    "test": {
+      "dependsOn": ["^test"],
       "cache": true
     },
     "check": {
@@ -14,6 +17,26 @@
     },
     "check:fix": {
       "dependsOn": ["^check:fix"],
+      "cache": true
+    },
+    "lint": {
+      "dependsOn": ["^lint"],
+      "cache": true
+    },
+    "lint:fix": {
+      "dependsOn": ["^lint:fix"],
+      "cache": true
+    },
+    "format": {
+      "dependsOn": ["^format"],
+      "cache": true
+    },
+    "format:fix": {
+      "dependsOn": ["^format:fix"],
+      "cache": true
+    },
+    "fix": {
+      "dependsOn": ["^fix"],
       "cache": true
     }
   }

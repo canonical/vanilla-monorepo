@@ -12,7 +12,9 @@ Fixes [list issues/bugs if needed]
 
 - [ ] PR should have one of the following labels:
   - `Feature 🎁`, `Breaking Change 💣`, `Bug 🐛`, `Documentation 📝`, `Maintenance 🔨`.
-- [ ] All packages define the required scripts in `package.json`: `build`, `check`, and `check:fix`.
+- [ ] All packages define the required scripts in `package.json`:
+  - [ ] All packages: `check`, `lint`, `format`, and their `:fix` variants.
+  - [ ] Packages with a build step: `build`.
 
 ## Screenshots
 
