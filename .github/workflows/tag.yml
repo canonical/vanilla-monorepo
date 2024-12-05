@@ -59,6 +59,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           ssh-key: ${{ secrets.DEPLOY_KEY }}
+          # Lerna needs *all* the git history to determine which packages have changed
+          fetch-depth: 0
 
       - name: Setup environment
         uses: ./.github/actions/setup-env
@@ -79,7 +81,9 @@ jobs:
         run: |
           git add .
           git commit -m "chore: version bump to ${{ steps.lerna_version.outputs.VERSION }}"
-          git tag "v${{ steps.lerna_version.outputs.VERSION }}"
+          # Create an annotated tag (`-m`) so that lerna can use it to determine which packages have changed
+          # See https://github.com/lerna/lerna/issues/1357#issuecomment-438162152
+          git tag "v${{ steps.lerna_version.outputs.VERSION }}" -m "v${{ steps.lerna_version.outputs.VERSION }}"
           git push && git push --tags
 
   publish:
@@ -90,8 +94,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          # Checkout the tag that was just created
           ref: v${{ needs.version.outputs.VERSION }}
+          # Lerna needs *all* the git history to determine which packages have changed
+          fetch-depth: 0
 
         # "prepare" hook on `bun install` runs `bun run build`
       - name: Setup Environment
