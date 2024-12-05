@@ -28,7 +28,7 @@
     "check:ts": "tsc --noEmit"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.2",
+    "@biomejs/biome": "^1.9.4",
     "@canonical/biome-config": "^0.1.0-experimental.0",
     "@canonical/typescript-config-base": "^0.3.1-experimental.0",
     "typescript": "^5.5.3"
