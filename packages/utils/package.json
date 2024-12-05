@@ -21,17 +21,14 @@
   "homepage": "https://github.com/canonical/ds25#readme",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "lint": "biome lint src/*.{ts,tsx}",
-    "format": "bun run format:biome",
-    "format:biome": "biome format src/*.{ts,tsx}",
     "check": "bun run check:biome && bun run check:ts",
-    "check:fix": "bun run check:biome:fix",
-    "check:biome": "biome check src/* *.json",
-    "check:biome:fix": "biome check --write src/* *.json",
+    "check:fix": "bun run check:biome:fix && bun run check:ts",
+    "check:biome": "biome check src *.json",
+    "check:biome:fix": "biome check --write src *.json",
     "check:ts": "tsc --noEmit"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.2",
+    "@biomejs/biome": "^1.9.4",
     "@canonical/biome-config": "^0.1.0-experimental.0",
     "@canonical/typescript-config-base": "^0.3.1-experimental.0",
     "typescript": "^5.5.3"

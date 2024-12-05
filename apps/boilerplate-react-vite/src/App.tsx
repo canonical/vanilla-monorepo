@@ -1,6 +1,6 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import canonicalLogo from "/canonical.svg";
+import reactLogo from "./assets/react.svg";
 import "./App.css";
 
 import { Button } from "@canonical/ds-react-core";
@@ -15,10 +15,11 @@ function App() {
           href="https://canonical.com"
           target="_blank"
           referrerPolicy="no-referrer"
+          rel="noreferrer"
         >
-          <img src={canonicalLogo} className="logo" alt="Canonical logo"></img>
+          <img src={canonicalLogo} className="logo" alt="Canonical logo" />
         </a>
-        <a href="https://react.dev" target="_blank">
+        <a href="https://react.dev" target="_blank" rel="noreferrer">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
@@ -28,7 +29,7 @@ function App() {
         <Button
           label={`Count: ${count}`}
           onClick={() => setCount((count) => count + 1)}
-        ></Button>
+        />
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>

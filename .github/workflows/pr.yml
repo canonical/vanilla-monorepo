@@ -14,5 +14,5 @@ jobs:
       - name: Setup environment
         uses: ./.github/actions/setup-env
 
-      - name: Run tests
-        run: bun run test
+      - name: Code quality checks
+        run: bun run check

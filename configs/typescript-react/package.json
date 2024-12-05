@@ -17,7 +17,6 @@
 	},
 	"homepage": "https://github.com/canonical/ds25#readme",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
 		"check": "bun run check:biome",
 		"check:fix": "bun run check:biome:fix",
 		"check:biome": "biome check *.json",
