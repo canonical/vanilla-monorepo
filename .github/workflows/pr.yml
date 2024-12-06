@@ -15,6 +15,11 @@ jobs:
           # Lerna needs *all* the git history to determine which packages have changed
           fetch-depth: 0
 
+        # We need to fetch the target so that "lerna run <> --since origin/<>" works
+        # https://github.com/actions/checkout/issues/118#issuecomment-595438258
+      - name: Fetch target branch
+        run:  git fetch --no-tags --prune --depth=1 origin +refs/heads/${{ github.event.pull_request.base.ref }}:refs/remotes/origin/${{ github.event.pull_request.base.ref }}
+
       - name: Setup environment
         uses: ./.github/actions/setup-env
         with:
