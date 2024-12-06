@@ -15,6 +15,11 @@ fi
 # Do not commit or tag as we need to re-format the package files before committing
 bun run lerna version $VERSION_ARGS --no-git-tag-version --no-push --yes
 
+# `lerna version` may cause `package.json` files to fail linting rules.
+# See https://github.com/lerna/lerna/issues/4117
+# We don't run `check:fix` here; passing in previous tag for package filtering makes the API for this action too messy.
+echo "Package versions updated. Run the 'check:fix' command to apply formatting fixes."
+
 # Extract the updated version from lerna.json
 VERSION=$(jq -r '.version' lerna.json)
 echo "VERSION=$VERSION" >> "$GITHUB_OUTPUT"

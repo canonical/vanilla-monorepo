@@ -3,16 +3,26 @@ on:
   pull_request:
     branches:
       - main
+env:
+  PR_TARGET_REF: "refs/remotes/origin/${{ github.event.pull_request.base.ref }}"
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          # Lerna needs *all* the git history to determine which packages have changed
+          fetch-depth: 0
 
-        # "prepare" hook on `bun install` runs `bun run build`
       - name: Setup environment
         uses: ./.github/actions/setup-env
+        with:
+          # Ignore lifecycle scripts to avoid building packages that haven't changed
+          ignore_scripts: true
 
-      - name: Run tests
-        run: bun run test
+      - name: Build changed packages
+        run: bun run lerna run build --since ${{ env.PR_TARGET_REF }}
+
+      - name: Code quality checks
+        run: bun run lerna run check --since ${{ env.PR_TARGET_REF }}

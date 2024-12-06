@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       update_type:
-        description: "Verion update type"
+        description: "Version update type"
         required: true
         # Change to minor once project is stable
         default: "prepatch"
@@ -21,16 +21,19 @@ on:
         required: false
         type: string
 env:
-  MAIN_BRANCH: "refs/heads/main"
+  MAIN_BRANCH_REF: "refs/heads/main"
 
 jobs:
-  build:
-    name: Build & test
+  version:
+    name: Bump package versions
     runs-on: ubuntu-latest
+    outputs:
+      PREV_VERSION: ${{ steps.prev_version.outputs.PREV_VERSION }}
+      VERSION: ${{ steps.lerna_version.outputs.VERSION }}
     steps:
       - name: Validate input
         run: |
-          if [[ "${{ github.ref }}" != "${{ env.MAIN_BRANCH }}" ]]; then
+          if [[ "${{ github.ref }}" != "${{ env.MAIN_BRANCH_REF }}" ]]; then
             echo "This action can only be run on the main branch"
             exit 1
           fi
@@ -38,39 +41,35 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
-
-        # "prepare" hook on `bun install` runs `bun run build`
-      - name: Setup environment
-        uses: ./.github/actions/setup-env
-
-        # TODO add Nx and only test the packages that have changed since last tag
-      - name: Run tests
-        run: bun run test
-
-  version:
-    name: Bump package versions
-    runs-on: ubuntu-latest
-    needs: build
-    outputs:
-      VERSION: ${{ steps.lerna_version.outputs.VERSION }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
           ssh-key: ${{ secrets.DEPLOY_KEY }}
           # Lerna needs *all* the git history to determine which packages have changed
           fetch-depth: 0
 
+      - name: Get previous version
+        id: prev_version
+        run: echo "PREV_VERSION=$(git describe --abbrev=0)" >> $GITHUB_OUTPUT
+
       - name: Setup environment
         uses: ./.github/actions/setup-env
+        with:
+          # Ignore lifecycle scripts to avoid building packages that haven't changed
+          ignore_scripts: true
 
-      - name: Bump package versions
+        # Building changed packages manually since we ignored lifecycle scripts on `bun install`
+      - name: Build changed packages
+        run: bun run lerna run build --since ${{ steps.prev_version.outputs.PREV_VERSION }}
+
+      - name: Update changed package versions
         id: lerna_version
         uses: ./.github/actions/lerna-version
         with:
           update_type: ${{ github.event.inputs.update_type }}
           prerelease_identifier: ${{ github.event.inputs.prerelease_identifier }}
+
+      # `lerna version` may introduce slight formatting changes to the package.json files.
+      # So, we run formatting fixes before running code quality checks and committing the changes.
+      - name: Format files and run code quality checks
+        run: bun run lerna run check:fix --since ${{ steps.prev_version.outputs.PREV_VERSION }}
 
       - name: Setup Git CLI
         uses: ./.github/actions/setup-git
@@ -91,18 +90,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: version
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          # Checkout the tag that was just created
-          ref: v${{ needs.version.outputs.VERSION }}
-          # Lerna needs *all* the git history to determine which packages have changed
-          fetch-depth: 0
-
-        # "prepare" hook on `bun install` runs `bun run build`
-      - name: Setup Environment
-        uses: ./.github/actions/setup-env
-
       - name: Setup Node, authenticate with NPM registry
         uses: actions/setup-node@v4.1.0
         with:
@@ -111,5 +98,24 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Checkout the tag that was just created
+          ref: v${{ needs.version.outputs.VERSION }}
+          # Lerna needs *all* the git history to determine which packages have changed
+          fetch-depth: 0
+
+      - name: Setup environment
+        uses: ./.github/actions/setup-env
+        with:
+          ignore_scripts: true
+
+      - name: Build changed packages
+        run: bun run lerna run build --since ${{ needs.version.outputs.PREV_VERSION }}
+
+        # `lerna publish` does not have a `--since` flag; by default it will run the pre-publish lifecycle
+        #   for all packages, even if they weren't changed.
+        #   `--ignore-scripts` solves this and is safe - the updated packages are built in the env setup step.
       - name: Publish packages
-        run: lerna publish --yes --no-private from-package
+        run: lerna publish from-package --no-private --ignore-scripts --yes
