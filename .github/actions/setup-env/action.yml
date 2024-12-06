@@ -1,18 +1,28 @@
 name: Setup environment
 description: Installs build tools and dependencies
 inputs:
-  bun-version: 
+  bun-version:
     default: latest
     description: Version of Bun to use
+  ignore_scripts:
+    default: "false"
+    description: Skip any lifecycle scripts defined to run on `bun install`
 runs:
   using: composite
   steps:
     - name: Setup Bun
       uses: oven-sh/setup-bun@v2
-      with: 
+      with:
         bun-version: ${{ inputs.bun-version }}
 
-      # "prepare" hook on `bun install` runs `bun run build`
     - name: Install dependencies
       shell: bash
-      run: bun install --frozen-lockfile
+      run: |
+        install_args="--frozen-lockfile"
+        
+        if [ "${{ inputs.ignore_scripts }}" == "true" ]; then
+          echo "Ignoring post-install scripts. If you need built packages, make sure you run 'bun run build'."
+          install_args="$install_args --ignore-scripts"
+        fi
+        
+        bun install $install_args
