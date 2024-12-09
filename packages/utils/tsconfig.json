@@ -2,7 +2,11 @@
   "extends": "@canonical/typescript-config-base",
   "compilerOptions": {
     "baseUrl": "src",
+<<<<<<< HEAD
     "types": ["node"]
+=======
+    "types":["node"]
+>>>>>>> c672041 (Fixed types duplication)
   },
   "include": ["src/**/*.ts"]
 }
