@@ -1,6 +1,6 @@
 {
   "name": "@canonical/generator-canonical-ds",
-  "version": "0.3.2-experimental.0",
+  "version": "0.4.0-experimental.0",
   "license": "GPL-3.0-only",
   "author": {
     "email": "webteam@canonical.com",
@@ -32,11 +32,11 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@canonical/biome-config": "^0.3.1-experimental.0",
-    "@canonical/typescript-config-base": "^0.3.1-experimental.0",
+    "@canonical/biome-config": "^0.4.0-experimental.0",
+    "@canonical/typescript-config-base": "^0.4.0-experimental.0",
     "@types/debug": "^4.1.12",
-    "@types/node": "^22.10.1",
     "@types/json-schema": "^7.0.15",
+    "@types/node": "^22.10.1",
     "copyfiles": "2.4.1",
     "typescript": "5.7.2"
   }
