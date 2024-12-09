@@ -19,7 +19,7 @@
 export default function throttle<
   T extends (...args: Parameters<T>) => ReturnType<T>,
 >(func: T, wait: number): (...args: Parameters<T>) => void {
-  let timer: NodeJS.Timeout | null = null;
+  let timer: ReturnType<typeof setTimeout> | null = null;
   return function (this: unknown, ...args: Parameters<T>) {
     if (timer) clearTimeout(timer);
     timer = setTimeout(() => {
