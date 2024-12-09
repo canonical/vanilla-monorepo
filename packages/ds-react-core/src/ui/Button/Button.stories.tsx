@@ -79,7 +79,7 @@ export const IntentsInheritance: Story = {
         className="positive"
         style={{
           border: "2px solid var(--intent-color)",
-          padding: "1rem",
+          padding: "calc(1rem - 2px)",
         }}
       >
         <p>
