@@ -26,7 +26,7 @@
     "prepare": "bun run build",
     "lerna": "lerna",
     "check": "lerna run check",
-    "check:fix": "lerna run check:fix"
+    "check:fix": "lerna run check:fix",
     "special:clean": "rm -rf node_modules .nx"
   },
   "devDependencies": {
