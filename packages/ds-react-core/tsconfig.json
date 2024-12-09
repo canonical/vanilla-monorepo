@@ -2,13 +2,8 @@
   "extends": "@canonical/typescript-config-react",
   "compilerOptions": {
     "baseUrl": "src",
-<<<<<<< HEAD
     "skipLibCheck": true,
     "types": ["node", "react", "react-dom"]
-=======
-    "types": ["node", "react", "react-dom"],
-    "skipLibCheck": true
->>>>>>> c672041 (Fixed types duplication)
   },
   "include": [
     "src/**/*.ts",
