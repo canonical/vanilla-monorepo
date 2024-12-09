@@ -75,4 +75,5 @@ For this reason, we have opted for explicitly declaring the `@types` dependencie
 
 ## Notes for developers
 
-- To clean dependencies and built artifacts, run `bun run special:clean`, which resolves to `rm -rf node_modules .nx`. In some cases, you might want to reset the build output of packages with `rm -rf ./**/dist`.
+- To clean dependencies and build cache artifacts, run `bun run special:clean` (which resolves to `rm -rf node_modules .nx`). 
+- In some cases, you might want to additionally remove package builds with `rm -rf ./**/dist`.
