@@ -64,3 +64,15 @@ included in the monorepo's CI workflow, helping to avoid build errors later.
 ## Documentation
 
 JavaScript documentation should be written with [TSDoc](https://tsdoc.org/).
+
+## Monorepo & Types
+
+The `@types` dependencies required by the monorepo packages and apps are by default hoisted in the root `node_modules`. However, this behaviour has two downsides : 
+- It can lead to conflicts between the types of different packages, for instance `bun` and `node` export overlapping types.
+- Consumption of types in packages and apps are not explicit, leading to hard to debug issues.
+
+For this reason, we have opted for explicitly declaring the `@types` dependencies both in the `package.json` under `@devDependencies` and in  `tsconfig.json` under `compilerOptions/types` for each package and app. 
+
+## Notes for developers
+
+- A hard-reset of this repo looks like this : `rm -rf node_modules .nx`. In some cases, you might want to reset the build output of packages with `rm -rf ./**/dist`.
