@@ -45,8 +45,8 @@ jobs:
         uses: ./.github/actions/setup-env
 
         # TODO add Nx and only test the packages that have changed since last tag
-      - name: Run tests
-        run: bun run test
+      - name: Code quality checks
+        run: bun run check
 
   version:
     name: Bump package versions

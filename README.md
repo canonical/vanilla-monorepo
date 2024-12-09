@@ -55,8 +55,8 @@ in the monorepo.
 Each package should define the following scripts in `package.json`:
 
 - `build`: Builds the package as preparation for publishing or use by its dependencies.
-- `check`: Lints and type-checks the package.
-- `check:fix`: Lints and type-checks the package, and applies fixes where possible.
+- `check`: Lints, formats, and (if applicable) type-checks the package.
+- `check:fix`: Lints, formats, type-checks, and fixes issues where possible.
 
 By creating these scripts in each package, the build and check tasks will be
 included in the monorepo's CI workflow, helping to avoid build errors later.
