@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "generators",
     "rootDir": "src",
-    "types": ["node"]
+    "types": ["node", "debug", "json-schema"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "*.ejs", "generators"]

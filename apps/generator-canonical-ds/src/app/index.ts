@@ -1,14 +1,7 @@
-import Generator, { type Question } from "yeoman-generator";
+import Generator from "yeoman-generator";
 import globalContext from "./global-context.js";
 
 export default class BaseGenerator extends Generator {
-  constructor(args: string | string[], options: Generator.GeneratorOptions) {
-    super(args, options);
-
-    // Set the current working directory for the generator to the caller's working directory
-    this.env.cwd = process.cwd();
-  }
-
   private subgenerators = [
     {
       name: "component",
@@ -16,23 +9,21 @@ export default class BaseGenerator extends Generator {
     },
   ];
 
-  private questions: Question[] = [
-    {
-      type: "list",
-      name: "subgenerator",
-      message: "Please select a subgenerator",
-      choices: this.subgenerators.map((subgen) => ({
-        name: `${subgen.name} (${subgen.description})`,
-        value: subgen.name,
-      })),
-      when: () => this.subgenerators.length > 1,
-      default: this.subgenerators[0].name,
-    },
-  ];
-
   // In prompting mode, prompt the user to select a subgenerator and run that generator
   async prompting() {
-    const answers = await this.prompt(this.questions);
+    const answers = await this.prompt([
+      {
+        type: "list",
+        name: "subgenerator",
+        message: "Please select a subgenerator",
+        choices: this.subgenerators.map((subgen) => ({
+          name: `${subgen.name} (${subgen.description})`,
+          value: subgen.name,
+        })),
+        when: () => this.subgenerators.length > 1,
+        default: this.subgenerators[0].name,
+      },
+    ]);
     return this.composeWith(
       `${globalContext.generatorScriptIdentifer}:${answers.subgenerator || this.subgenerators[0].name}`,
     );
