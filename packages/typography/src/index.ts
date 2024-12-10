@@ -5,48 +5,48 @@ const baselineHeight = 0.5;
 
 // Define a function to calculate the nudges based on font metrics
 function calculateNudges(fontPath: string, cssLineHeight: number): void {
-  // Load and parse the font
-  const fontBuffer = readFileSync(fontPath);
-  const font = opentype.parse(fontBuffer.buffer);
+	// Load and parse the font
+	const fontBuffer = readFileSync(fontPath);
+	const font = opentype.parse(fontBuffer.buffer);
 
-  // Check if the font loaded correctly
-  if (!font) {
-    console.error("Could not parse the font.");
-    return;
-  }
+	// Check if the font loaded correctly
+	if (!font) {
+		console.error("Could not parse the font.");
+		return;
+	}
 
-  // Extract required font metrics
-  const ascender = font.ascender;
-  const descender = font.descender;
-  const unitsPerEm = font.unitsPerEm;
+	// Extract required font metrics
+	const ascender = font.ascender;
+	const descender = font.descender;
+	const unitsPerEm = font.unitsPerEm;
 
-  console.log("ascender", ascender);
-  console.log("descender", descender);
-  console.log("unitsPerEm", unitsPerEm);
+	console.log("ascender", ascender);
+	console.log("descender", descender);
+	console.log("unitsPerEm", unitsPerEm);
 
-  // Calculations
-  const naturalLineHeight = ascender - descender;
-  const lineHeightScale = naturalLineHeight / unitsPerEm;
-  const ascenderScale = ascender / unitsPerEm;
-  console.log("naturalLineHeight", naturalLineHeight);
-  console.log("lineHeightScale", lineHeightScale);
-  console.log("ascenderScale", ascenderScale);
+	// Calculations
+	const naturalLineHeight = ascender - descender;
+	const lineHeightScale = naturalLineHeight / unitsPerEm;
+	const ascenderScale = ascender / unitsPerEm;
+	console.log("naturalLineHeight", naturalLineHeight);
+	console.log("lineHeightScale", lineHeightScale);
+	console.log("ascenderScale", ascenderScale);
 
-  const baselinePos = (cssLineHeight - lineHeightScale) / 2 + ascenderScale;
+	const baselinePos = (cssLineHeight - lineHeightScale) / 2 + ascenderScale;
 
-  const topNudge = baselineHeight - (baselinePos % baselineHeight);
+	const topNudge = baselineHeight - (baselinePos % baselineHeight);
 
-  console.log("baselinePos", baselinePos);
-  console.log("topNudge", topNudge);
-  // TODO bottom nudge
+	console.log("baselinePos", baselinePos);
+	console.log("topNudge", topNudge);
+	// TODO bottom nudge
 }
 
 // Read font path from command line arguments and call the function
 const fontPath = process.argv[2];
 const cssLineHeight = process.argv[3] || 1.2;
 if (!fontPath) {
-  console.error("Please provide a path to a .ttf font file.");
-  process.exit(1);
+	console.error("Please provide a path to a .ttf font file.");
+	process.exit(1);
 }
 
 calculateNudges(fontPath, cssLineHeight);
