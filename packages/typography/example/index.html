@@ -14,7 +14,7 @@
         --font-size: 32px;
 
         /* Given or set via external means */
-        --baseline-height: 0.8em;
+        --baseline-height: 0.8rem;
         --line-height: 2.4rem;
 
         /* Raw font metrics as integers (dimensionless) */
@@ -25,9 +25,9 @@
         /* Agnostic values */
         --natural-line-height: calc((var(--ascender) - var(--descender)));
         --line-height-scale: calc(
-          var(--natural-line-height) * 1em / var(--units-per-em)
+          var(--natural-line-height) * 1rem / var(--units-per-em)
         );
-        --ascender-scale: calc(var(--ascender) * 1em / var(--units-per-em));
+        --ascender-scale: calc(var(--ascender) * 1rem / var(--units-per-em));
       }
 
       :root {
@@ -44,7 +44,6 @@
         height: 100%;
       }
       main {
-        height: 100%;
         background-image: linear-gradient(
           to bottom,
           #df1f00 1px,
@@ -58,7 +57,8 @@
       h3,
       h4,
       h5,
-      h6 {
+      h6,
+      p {
         margin: 0;
       }
 
@@ -68,6 +68,14 @@
         line-height: var(--line-height);
         font-size: var(--font-size);
         background: #fededebb;
+
+        --line-height-scale: calc(
+          var(--natural-line-height) * var(--font-size) / var(--units-per-em)
+        );
+        --ascender-scale: calc(
+          var(--ascender) * var(--font-size) / var(--units-per-em)
+        );
+
         --baseline-position: calc(
           ((var(--line-height) - var(--line-height-scale)) / 2) +
             var(--ascender-scale)
@@ -88,13 +96,15 @@
 
       h1 {
         --line-height: 4rem;
+        --font-size: 1.9rem;
         font-size: var(--font-size);
         padding-top: var(--top-nudge);
         margin-bottom: var(--bottom-nudge);
       }
 
       h2 {
-        --line-height: 1.6rem;
+        --line-height: 2.4rem;
+        --font-size: 1.4rem;
         font-size: var(--font-size);
         padding-top: var(--top-nudge);
         margin-bottom: var(--bottom-nudge);
@@ -105,8 +115,22 @@
   <body>
     <main>
       <p>This is a text aligned on the baseline</p>
+      <p>Another paragraph</p>
+      <p>Another paragraph</p>
+      <p>Another paragraph</p>
       <h1>This is a title aligned on the grid</h1>
-      <h2>This is a subtitle aligned on the grid</h2>
+      <p>Another paragraph</p>
+      <h1>Another title</h1>
+      <p>Another piece of content</p>
+      <h2>A h2 title - it should not shift the alignment</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+        scelerisque, nunc nec lacinia ultricies, nunc nunc ultricies sapien, nec
+        lacinia sapien nunc nec nunc. Nullam scelerisque, nunc nec lacinia
+        ultricies, nunc nunc ultricies sapien, nec lacinia sapien nunc nec nunc.
+        Nullam scelerisque, nunc nec lacinia ultricies, nunc nunc ultricies
+        sapien, nec lacinia
+      </p>
     </main>
   </body>
 </html>
