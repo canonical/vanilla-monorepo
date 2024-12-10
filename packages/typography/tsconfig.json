@@ -1,8 +1,8 @@
 {
-  "extends": "@canonical/typescript-config-base",
-  "compilerOptions": {
-    "baseUrl": "src",
-    "types":["bun"]
-  },
-  "include": ["src/**/*.ts"]
+	"extends": "@canonical/typescript-config-base",
+	"compilerOptions": {
+		"baseUrl": "src",
+		"types": ["bun"]
+	},
+	"include": ["src/**/*.ts"]
 }
