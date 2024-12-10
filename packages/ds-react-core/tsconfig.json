@@ -2,8 +2,8 @@
   "extends": "@canonical/typescript-config-react",
   "compilerOptions": {
     "baseUrl": "src",
-    "skipLibCheck": true,
-    "types": ["node", "react", "react-dom"]
+    "types": ["node", "react", "react-dom"],
+    "skipLibCheck": true
   },
   "include": [
     "src/**/*.ts",
