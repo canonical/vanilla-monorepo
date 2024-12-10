@@ -28,6 +28,9 @@ function calculateNudges(fontPath: string, cssLineHeight: number): void {
   const naturalLineHeight = ascender - descender;
   const lineHeightScale = naturalLineHeight / unitsPerEm;
   const ascenderScale = ascender / unitsPerEm;
+  console.log("naturalLineHeight", naturalLineHeight);
+  console.log("lineHeightScale", lineHeightScale);
+  console.log("ascenderScale", ascenderScale);
 
   const baselinePos = (cssLineHeight - lineHeightScale) / 2 + ascenderScale;
 
