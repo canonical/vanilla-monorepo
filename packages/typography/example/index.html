@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en" class="">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CodePen Demo</title>
+
+    <meta name="robots" content="noindex" />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+      :root {
+        /* base */
+        --font-size: 32px;
+
+        /* Given or set via external means */
+        --baseline-height: 0.8rem;
+        --line-height: 2.4rem;
+
+        /* Raw font metrics as integers (dimensionless) */
+        --ascender: 940;
+        --descender: -240;
+        --units-per-em: 1000;
+
+        /* Agnostic values */
+        --natural-line-height: calc((var(--ascender) - var(--descender)));
+        --line-height-scale: calc(
+          var(--natural-line-height) * 1rem / var(--units-per-em)
+        );
+        --ascender-scale: calc(var(--ascender) * 1rem / var(--units-per-em));
+      }
+
+      :root {
+        /* Derived values */
+      }
+
+      html {
+        font-size: var(--font-size);
+        height: 100%;
+        font-family: "Lato";
+      }
+
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      main {
+        background-image: linear-gradient(
+          to bottom,
+          #df1f00 1px,
+          transparent 1px
+        );
+        background-size: 100% var(--baseline-height);
+        background-position: 0 1px;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        margin: 0;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      p {
+        line-height: var(--line-height);
+        font-size: var(--font-size);
+        background: #fededebb;
+
+        --line-height-scale: calc(
+          var(--natural-line-height) * var(--font-size) / var(--units-per-em)
+        );
+        --ascender-scale: calc(
+          var(--ascender) * var(--font-size) / var(--units-per-em)
+        );
+
+        --baseline-position: calc(
+          ((var(--line-height) - var(--line-height-scale)) / 2) +
+            var(--ascender-scale)
+        );
+        /*--top-nudge: 0.41em;*/
+        --top-nudge: calc(
+          var(--baseline-height) -
+            mod(var(--baseline-position), var(--baseline-height))
+        );
+        --bottom-nudge: calc(var(--baseline-height) - var(--top-nudge));
+        padding-top: var(--top-nudge);
+        margin-bottom: var(--bottom-nudge);
+      }
+
+      p {
+        --font-size: 1rem;
+      }
+
+      h1 {
+        --line-height: 4rem;
+        --font-size: 1.9rem;
+      }
+
+      h2 {
+        --line-height: 2.4rem;
+        --font-size: 1.4rem;
+      }
+
+      h4 {
+        --line-height: 2.4rem;
+        --font-size: 1.2rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <p>This is a text aligned on the baseline</p>
+      <p>Another paragraph</p>
+      <p>Another paragraph</p>
+      <p>Another paragraph</p>
+      <h1>This is a title aligned on the grid</h1>
+      <p>Another paragraph</p>
+      <h1>Another title</h1>
+      <p>Another piece of content</p>
+      <h2>A h2 title - it should not shift the alignment</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+        scelerisque, nunc nec lacinia ultricies, nunc nunc ultricies sapien, nec
+        lacinia sapien nunc nec nunc. Nullam scelerisque, nunc nec lacinia
+        ultricies, nunc nunc ultricies sapien, nec lacinia sapien nunc nec nunc.
+        Nullam scelerisque, nunc nec lacinia ultricies, nunc nunc ultricies
+        sapien, nec lacinia
+      </p>
+      <h4>Test of h4</h4>
+    </main>
+  </body>
+</html>
