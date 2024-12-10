@@ -64,6 +64,8 @@
 
       h1,
       h2,
+      h3,
+      h4,
       p {
         line-height: var(--line-height);
         font-size: var(--font-size);
@@ -86,28 +88,27 @@
             mod(var(--baseline-position), var(--baseline-height))
         );
         --bottom-nudge: calc(var(--baseline-height) - var(--top-nudge));
+        padding-top: var(--top-nudge);
+        margin-bottom: var(--bottom-nudge);
       }
 
       p {
-        font-size: var(--font-size);
-        padding-top: var(--top-nudge);
-        margin-bottom: var(--bottom-nudge);
+        --font-size: 1rem;
       }
 
       h1 {
         --line-height: 4rem;
         --font-size: 1.9rem;
-        font-size: var(--font-size);
-        padding-top: var(--top-nudge);
-        margin-bottom: var(--bottom-nudge);
       }
 
       h2 {
         --line-height: 2.4rem;
         --font-size: 1.4rem;
-        font-size: var(--font-size);
-        padding-top: var(--top-nudge);
-        margin-bottom: var(--bottom-nudge);
+      }
+
+      h4 {
+        --line-height: 2.4rem;
+        --font-size: 1.2rem;
       }
     </style>
   </head>
@@ -131,6 +132,7 @@
         Nullam scelerisque, nunc nec lacinia ultricies, nunc nunc ultricies
         sapien, nec lacinia
       </p>
+      <h4>Test of h4</h4>
     </main>
   </body>
 </html>
