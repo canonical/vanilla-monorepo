@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en" class="">
   <head>
     <meta charset="UTF-8" />
@@ -9,11 +10,36 @@
       @import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
       :root {
+        /* Given or set via external means */
         --baseline-height: 0.5em;
-        --top-nudge: 0.41em;
         --line-height: 1.5rem;
-        --font-size: 32px;
+
+        /* Raw font metrics as integers (dimensionless) */
+        --ascender: 940;
+        --descender: -240;
+        --units-per-em: 1000;
+
+        /* Agnostic values */
+        --natural-line-height: calc((var(--ascender) - var(--descender)));
+        --line-height-scale: calc(
+          var(--natural-line-height) * 1em / var(--units-per-em)
+        );
+        --ascender-scale: calc(var(--ascender) * 1em / var(--units-per-em));
+      }
+      :root {
+        /* Derived values */
+        --baseline-position: calc(
+          ((var(--line-height) - var(--line-height-scale)) / 2) +
+            var(--ascender-scale)
+        );
+        /*--top-nudge: 0.41em;*/
+        --top-nudge: calc(
+          var(--baseline-height) -
+            mod(var(--baseline-position), var(--baseline-height))
+        );
         --bottom-nudge: calc(var(--baseline-height) - var(--top-nudge));
+
+        --font-size: 32px;
       }
 
       html {
