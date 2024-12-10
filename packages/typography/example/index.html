@@ -10,9 +10,12 @@
       @import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
       :root {
+        /* base */
+        --font-size: 32px;
+
         /* Given or set via external means */
-        --baseline-height: 0.5em;
-        --line-height: 1.5rem;
+        --baseline-height: 0.8em;
+        --line-height: 2.4rem;
 
         /* Raw font metrics as integers (dimensionless) */
         --ascender: 940;
@@ -26,20 +29,9 @@
         );
         --ascender-scale: calc(var(--ascender) * 1em / var(--units-per-em));
       }
+
       :root {
         /* Derived values */
-        --baseline-position: calc(
-          ((var(--line-height) - var(--line-height-scale)) / 2) +
-            var(--ascender-scale)
-        );
-        /*--top-nudge: 0.41em;*/
-        --top-nudge: calc(
-          var(--baseline-height) -
-            mod(var(--baseline-position), var(--baseline-height))
-        );
-        --bottom-nudge: calc(var(--baseline-height) - var(--top-nudge));
-
-        --font-size: 32px;
       }
 
       html {
@@ -61,21 +53,44 @@
         background-size: 100% var(--baseline-height);
         top: var(--baseline-height);
       }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin: 0;
+      }
 
-      p,
-      h1 {
-        margin-top: 0;
+      h1,
+      h2,
+      p {
+        line-height: var(--line-height);
+        font-size: var(--font-size);
+        background: #fededebb;
+        --baseline-position: calc(
+          ((var(--line-height) - var(--line-height-scale)) / 2) +
+            var(--ascender-scale)
+        );
+        /*--top-nudge: 0.41em;*/
+        --top-nudge: calc(
+          var(--baseline-height) -
+            mod(var(--baseline-position), var(--baseline-height))
+        );
+        --bottom-nudge: calc(var(--baseline-height) - var(--top-nudge));
+      }
+
+      p {
+        font-size: var(--font-size);
         padding-top: var(--top-nudge);
         margin-bottom: var(--bottom-nudge);
-        line-height: var(--line-height);
-        background: #fededebb;
-      }
-      p {
       }
 
       h1 {
-        font-size: 2.5rem;
-        line-height: var(--line-height);
+        --line-height: 4;
+        font-size: var(--font-size);
+        padding-top: var(--top-nudge);
+        margin-bottom: var(--bottom-nudge);
       }
     </style>
   </head>
@@ -83,7 +98,7 @@
   <body>
     <main>
       <p>This is a text aligned on the baseline</p>
-      <!-- <h1>This is a title aligned on the grid</h1> -->
+      <h1>This is a title aligned on the grid</h1>
     </main>
   </body>
 </html>
