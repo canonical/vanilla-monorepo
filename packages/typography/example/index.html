@@ -87,7 +87,14 @@
       }
 
       h1 {
-        --line-height: 4;
+        --line-height: 4rem;
+        font-size: var(--font-size);
+        padding-top: var(--top-nudge);
+        margin-bottom: var(--bottom-nudge);
+      }
+
+      h2 {
+        --line-height: 1.6rem;
         font-size: var(--font-size);
         padding-top: var(--top-nudge);
         margin-bottom: var(--bottom-nudge);
@@ -99,6 +106,7 @@
     <main>
       <p>This is a text aligned on the baseline</p>
       <h1>This is a title aligned on the grid</h1>
+      <h2>This is a subtitle aligned on the grid</h2>
     </main>
   </body>
 </html>
