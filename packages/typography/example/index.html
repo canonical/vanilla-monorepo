@@ -1,62 +1,63 @@
-<html lang="en" class=""><head>
+<html lang="en" class="">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CodePen Demo</title>
 
-  <meta charset="UTF-8">
-  <title>CodePen Demo</title>
+    <meta name="robots" content="noindex" />
 
-  <meta name="robots" content="noindex">
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+      :root {
+        --baseline-height: 0.5em;
+        --top-nudge: 0.41em;
+        --line-height: 1.5rem;
+        --font-size: 32px;
+        --bottom-nudge: calc(var(--baseline-height) - var(--top-nudge));
+      }
 
-:root {
-  --baseline-height:.4em;
-  --top-nudge: .06em;
-  --line-height:1.6rem;
-  --font-size:16px;
-  --bottom-nudge:calc(var(--baseline-height) - var(--top-nudge));
-}
+      html {
+        font-size: var(--font-size);
+        height: 100%;
+        font-family: "Lato";
+      }
 
-html {
-  font-size:var(--font-size);
-  height:100%;
-  font-family:"Lato";
-}
+      body {
+        height: 100%;
+      }
+      main {
+        height: 100%;
+        background-image: linear-gradient(
+          to bottom,
+          #df1f00 1px,
+          transparent 1px
+        );
+        background-size: 100% var(--baseline-height);
+        top: var(--baseline-height);
+      }
 
-body {
-  height:100%;
-}
-main {
-  height:100%;
-  background-image: linear-gradient(to bottom, #DF1F00 1px, transparent 1px);
-  background-size: 100% var(--baseline-height);
-  top:var(--baseline-height);
-}
+      p,
+      h1 {
+        margin-top: 0;
+        padding-top: var(--top-nudge);
+        margin-bottom: var(--bottom-nudge);
+        line-height: var(--line-height);
+        background: #fededebb;
+      }
+      p {
+      }
 
-p, h1 {
-  margin-top:0;
-  padding-top:var(--top-nudge);
-  margin-bottom:var(--bottom-nudge);
-  line-height:var(--line-height);
-  background:#FEDEDEBB;
-}
-p {
-}
+      h1 {
+        font-size: 2.5rem;
+        line-height: var(--line-height);
+      }
+    </style>
+  </head>
 
-h1 {
-  font-size:2.5rem;
-  line-height:var(--line-height);
-}
-  </style>
-
-  
-</head>
-
-<body>
-  <main>
-<p>This is a text aligned on the baseline</p>
-<h1>This is a title aligned on the grid</h1>
-</main>
-  
-
-
-</body></html>
+  <body>
+    <main>
+      <p>This is a text aligned on the baseline</p>
+      <!-- <h1>This is a title aligned on the grid</h1> -->
+    </main>
+  </body>
+</html>
