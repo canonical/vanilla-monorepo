@@ -7,8 +7,10 @@
   --color-palette-white: #fff;
   --color-palette-black: #000;
 
-  --color-background-default: var(--color-palette-white);
   --color-text-default: var(--color-palette-black);
+  --color-icon-default: var(--color-text-default);
+
+  --color-background-default: var(--color-palette-white);
   --color-background-hover: rgba(242, 242, 242, 1);
   --color-background-active: rgba(235, 235, 235, 1);
   --color-border-high-contrast: rgba(0, 0, 0, 0.56);

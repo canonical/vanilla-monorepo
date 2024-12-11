@@ -1,0 +1,14 @@
+/* @canonical/generator-canonical-ds 0.4.0-experimental.0 */
+
+
+.ds.icon {
+  --color-icon: var(--color-icon-default);
+
+  /* TODO: restrict width, height, inline block, etc */
+  /* considerations for animation (spinning icons) */
+  /* transforms: rotated chevrons */
+
+  &:not(.colored) path[fill] {
+    fill: var(--color-icon);
+  }
+}
