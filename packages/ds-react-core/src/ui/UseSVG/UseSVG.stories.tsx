@@ -32,7 +32,7 @@ export const Default: Story = {
 export const ApertureIcon: Story = {
   args: {
     // href: "/sprite.svg",
-    className: "negative",
+    className: "loading",
     spriteTarget: "aperture",
   },
 };
@@ -42,7 +42,24 @@ export const ApertureIconAnimated: Story = {
     // href: "/sprite.svg",
     className: "positive",
     spriteTarget: "aperture",
+  },
+};
+
+export const CaretIcon: Story = {
+  args: {
+    // href: "/sprite.svg",
+    className: "negative",
+    spriteTarget: "caret",
     animated: true,
+  },
+};
+
+export const IllustrationTest: Story = {
+  args: {
+    spritePathname: "/illustration.svg",
+    className: "positive",
+    spriteTarget: "illu",
+    viewBox: "0 0 1207.97 1080",
   },
 };
 

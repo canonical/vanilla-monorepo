@@ -15,6 +15,7 @@ const UseSVG = ({
   spritePathname = "/sprite.svg",
   spriteTarget,
   animated = false,
+  viewBox = "0 0 16 16",
   // do....
 }: UseSVGProps): React.ReactElement => {
   return (
@@ -23,7 +24,7 @@ const UseSVG = ({
       version="1.1"
       width="512"
       height="512"
-      viewBox="0 0 16 16"
+      viewBox={viewBox}
       className={["ds", "svg", className, animated && "animated"]
         .filter(Boolean)
         .join(" ")}
