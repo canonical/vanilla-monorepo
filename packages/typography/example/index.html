@@ -14,8 +14,7 @@
         --font-size: 32px;
 
         /* Given or set via external means */
-        --baseline-height: 0.8rem;
-        --line-height: 2.4rem;
+        --baseline-height: 0.6rem;
 
         /* Raw font metrics as integers (dimensionless) */
         --ascender: 940;
@@ -68,7 +67,10 @@
       h3,
       h4,
       p {
-        line-height: var(--line-height);
+        line-height: var(
+          --line-height,
+          calc(var(--baseline-height) * var(--line-height-multiple))
+        );
         font-size: var(--font-size);
         background: #fededebb;
 
@@ -95,30 +97,105 @@
 
       p {
         --font-size: 1rem;
+        --line-height: 2.4rem;
       }
 
       h1 {
-        --line-height: 4rem;
-        --font-size: 1.9rem;
+        --line-height: calc(var(--baseline-height) * 10);
+        --font-size: 4.2rem;
       }
 
       h2 {
-        --line-height: 2.4rem;
-        --font-size: 1.4rem;
+        --line-height: calc(var(--baseline-height) * 8);
+        --font-size: 3.3rem;
+      }
+
+      h3 {
+        --line-height: calc(var(--baseline-height) * 6);
+        --font-size: 2.7rem;
       }
 
       h4 {
-        --line-height: 2.4rem;
-        --font-size: 1.2rem;
+        --line-height: calc(var(--baseline-height) * 3);
+        --font-size: 1.7rem;
+      }
+
+      .controls {
+        display: flex;
+        gap: 1rem;
+        background: #f0f0f0;
+        padding: 1rem;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .control {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      label {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+      }
+      input[type="range"] {
+        width: 200px;
       }
     </style>
   </head>
 
   <body>
+    <div class="controls">
+      <div class="control">
+        <label for="h1-font-size">H1 Font Size</label>
+        <input
+          type="range"
+          id="h1-font-size"
+          min="2"
+          max="6"
+          step="0.1"
+          value="4.2"
+        />
+      </div>
+      <div class="control">
+        <label for="h1-line-height">H1 Line Height</label>
+        <input
+          type="range"
+          id="h1-line-height"
+          min="1"
+          max="10"
+          step="0.6"
+          value="10"
+        />
+      </div>
+      <div class="control">
+        <label for="p-font-size">P Font Size</label>
+        <input
+          type="range"
+          id="p-font-size"
+          min="0.8"
+          max="2"
+          step="0.1"
+          value="1"
+        />
+      </div>
+      <div class="control">
+        <label for="p-line-height">P Line Height</label>
+        <input
+          type="range"
+          id="p-line-height"
+          min="1.5"
+          max="4"
+          step="0.6"
+          value="2.4"
+        />
+      </div>
+    </div>
     <main>
       <p>This is a text aligned on the baseline</p>
       <p>Another paragraph</p>
       <p>Another paragraph</p>
+      <h3>This is a H3 aligned on the grid</h3>
       <p>Another paragraph</p>
       <h1>This is a title aligned on the grid</h1>
       <p>Another paragraph</p>
@@ -135,5 +212,51 @@
       </p>
       <h4>Test of h4</h4>
     </main>
+
+    <script>
+      function updateCSSVariableForSelector(
+        element,
+        selector,
+        property,
+        unit = "rem",
+      ) {
+        element.addEventListener("input", (event) => {
+          const stylesheet = [...document.styleSheets].find(
+            (sheet) => !sheet.href || sheet.href.startsWith(location.origin),
+          );
+          const rule = [...stylesheet.cssRules].find(
+            (r) => r.selectorText === selector,
+          );
+          if (rule) {
+            rule.style.setProperty(property, event.target.value + unit);
+          }
+        });
+      }
+
+      updateCSSVariableForSelector(
+        document.getElementById("h1-font-size"),
+        "h1",
+        "--font-size",
+        "rem",
+      );
+      updateCSSVariableForSelector(
+        document.getElementById("h1-line-height"),
+        "h1",
+        "--line-height",
+        "rem",
+      );
+      updateCSSVariableForSelector(
+        document.getElementById("p-font-size"),
+        "p",
+        "--font-size",
+        "rem",
+      );
+      updateCSSVariableForSelector(
+        document.getElementById("p-line-height"),
+        "p",
+        "--line-height",
+        "rem",
+      );
+    </script>
   </body>
 </html>
