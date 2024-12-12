@@ -16,4 +16,6 @@ export interface UseSVGProps {
   spriteTarget: string;
   /* Whether the sprite should animate */
   animated?: boolean;
+  /* The viewBox of the SVG */
+  viewBox?: string;
 }
