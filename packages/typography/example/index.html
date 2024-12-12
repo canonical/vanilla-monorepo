@@ -67,10 +67,11 @@
       h3,
       h4,
       p {
-        line-height: var(
+        --computed-line-height: var(
           --line-height,
-          calc(var(--baseline-height) * var(--line-height-multiple))
+          calc(var(--baseline-height) * var(--line-height-multiplier))
         );
+        line-height: var(--computed-line-height);
         font-size: var(--font-size);
         background: #fededebb;
 
@@ -82,7 +83,7 @@
         );
 
         --baseline-position: calc(
-          ((var(--line-height) - var(--line-height-scale)) / 2) +
+          ((var(--computed-line-height) - var(--line-height-scale)) / 2) +
             var(--ascender-scale)
         );
         /*--top-nudge: 0.41em;*/
@@ -97,111 +98,123 @@
 
       p {
         --font-size: 1rem;
-        --line-height: 2.4rem;
+        --line-height-multiplier: 2;
       }
 
       h1 {
-        --line-height: calc(var(--baseline-height) * 10);
-        --font-size: 4.2rem;
+        --line-height-multiplier: 6;
+        --font-size: 4rem;
       }
 
       h2 {
-        --line-height: calc(var(--baseline-height) * 8);
-        --font-size: 3.3rem;
+        --line-height-multiplier: 5;
+        --font-size: 3rem;
       }
 
       h3 {
-        --line-height: calc(var(--baseline-height) * 6);
-        --font-size: 2.7rem;
+        --line-height-multiplier: 4;
+        --font-size: 2rem;
       }
 
       h4 {
         --line-height: calc(var(--baseline-height) * 3);
-        --font-size: 1.7rem;
+        --font-size: 2rem;
       }
 
       .controls {
         display: flex;
         gap: 1rem;
         background: #f0f0f0;
-        padding: 1rem;
+        height: calc(var(--baseline-height) * 6);
         position: sticky;
         top: 0;
         z-index: 10;
-      }
-      .control {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      label {
-        font-size: 0.8rem;
-        margin-bottom: 0.5rem;
-      }
-      input[type="range"] {
-        width: 200px;
+        font-size: 0.7rem; /* Smaller font size for controls */
       }
     </style>
   </head>
 
   <body>
-    <div class="controls">
-      <div class="control">
-        <label for="h1-font-size">H1 Font Size</label>
-        <input
-          type="range"
-          id="h1-font-size"
+    <main>
+      <div class="controls">
+        <control-slider
+          label="H1 Font Size"
           min="2"
           max="6"
           step="0.1"
           value="4.2"
-        />
-      </div>
-      <div class="control">
-        <label for="h1-line-height">H1 Line Height</label>
-        <input
-          type="range"
-          id="h1-line-height"
+          target-selector="h1"
+          css-variable="--font-size"
+          unit="rem"
+        >
+        </control-slider>
+
+        <control-slider
+          label="H1 Line Height"
           min="1"
-          max="10"
-          step="0.6"
-          value="10"
-        />
-      </div>
-      <div class="control">
-        <label for="p-font-size">P Font Size</label>
-        <input
-          type="range"
-          id="p-font-size"
+          max="12"
+          step="1"
+          value="6"
+          target-selector="h1"
+          css-variable="--line-height-multiplier"
+        >
+        </control-slider>
+
+        <control-slider
+          label="P Font Size"
           min="0.8"
           max="2"
           step="0.1"
           value="1"
-        />
+          target-selector="p"
+          css-variable="--font-size"
+          unit="rem"
+        >
+        </control-slider>
+
+        <control-slider
+          label="P Line Height"
+          min="1"
+          max="10"
+          step="1"
+          value="2"
+          target-selector="p"
+          css-variable="--line-height-multiplier"
+        >
+        </control-slider>
+
+        <control-slider
+          label="Baseline Height"
+          min="0.4"
+          max="1.2"
+          step="0.1"
+          value="0.6"
+          target-selector=":root"
+          css-variable="--baseline-height"
+          unit="rem"
+        >
+        </control-slider>
       </div>
-      <div class="control">
-        <label for="p-line-height">P Line Height</label>
-        <input
-          type="range"
-          id="p-line-height"
-          min="1.5"
-          max="4"
-          step="0.6"
-          value="2.4"
-        />
-      </div>
-    </div>
-    <main>
+
       <p>This is a text aligned on the baseline</p>
-      <p>Another paragraph</p>
-      <p>Another paragraph</p>
-      <h3>This is a H3 aligned on the grid</h3>
+      <p>
+        The jellyfish is a very interesting creature. It doesn't have a brain,
+        heart, bones, or eyes. It's made up of a smooth, bag-like body and
+        tentacles armed with tiny, stinging cells. The jellyfish uses these
+        cells to sting or paralyze its prey before eating it. Some jellyfish are
+        harmless to humans, but others have a very painful sting. The box
+        jellyfish is one of the most venomous creatures in the world. It has
+        tentacles that can grow up to 10 feet long and contain enough venom to
+        harm other animals, including humans.
+      </p>
       <p>Another paragraph</p>
       <h1>This is a title aligned on the grid</h1>
       <p>Another paragraph</p>
-      <h1>Another title</h1>
-      <p>Another piece of content</p>
+      <p>Another paragraph</p>
       <h2>A h2 title - it should not shift the alignment</h2>
+      <p>Another piece of content</p>
+      <p>Another piece of content</p>
+      <h3>This is a H3 aligned on the grid</h3>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
         scelerisque, nunc nec lacinia ultricies, nunc nunc ultricies sapien, nec
@@ -211,52 +224,55 @@
         sapien, nec lacinia
       </p>
       <h4>Test of h4</h4>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+        scelerisque, nunc nec lacinia ultricies, nunc nunc ultricies sapien, nec
+        lacinia sapien nunc nec nunc. Nullam scelerisque, nunc nec lacinia
+      </p>
     </main>
 
     <script>
-      function updateCSSVariableForSelector(
-        element,
-        selector,
-        property,
-        unit = "rem",
-      ) {
-        element.addEventListener("input", (event) => {
-          const stylesheet = [...document.styleSheets].find(
-            (sheet) => !sheet.href || sheet.href.startsWith(location.origin),
-          );
-          const rule = [...stylesheet.cssRules].find(
-            (r) => r.selectorText === selector,
-          );
-          if (rule) {
-            rule.style.setProperty(property, event.target.value + unit);
-          }
-        });
+      class ControlSlider extends HTMLElement {
+        connectedCallback() {
+          const label = this.getAttribute("label");
+          const min = this.getAttribute("min");
+          const max = this.getAttribute("max");
+          const step = this.getAttribute("step");
+          const value = this.getAttribute("value");
+          const targetSelector = this.getAttribute("target-selector");
+          const cssVariable = this.getAttribute("css-variable");
+          const unit = this.getAttribute("unit") || "";
+
+          this.innerHTML = `
+            <div class="control">
+              <label>${label}</label>
+              <input 
+                type="range" 
+                min="${min}" 
+                max="${max}" 
+                step="${step}" 
+                value="${value}" 
+              />
+            </div>
+          `;
+
+          const input = this.querySelector("input");
+          input.addEventListener("input", (event) => {
+            const stylesheet = [...document.styleSheets].find(
+              (sheet) => !sheet.href || sheet.href.startsWith(location.origin),
+            );
+            const rule = [...stylesheet.cssRules].find(
+              (r) => r.selectorText === targetSelector,
+            );
+            if (rule) {
+              rule.style.setProperty(cssVariable, event.target.value + unit);
+            }
+          });
+        }
       }
 
-      updateCSSVariableForSelector(
-        document.getElementById("h1-font-size"),
-        "h1",
-        "--font-size",
-        "rem",
-      );
-      updateCSSVariableForSelector(
-        document.getElementById("h1-line-height"),
-        "h1",
-        "--line-height",
-        "rem",
-      );
-      updateCSSVariableForSelector(
-        document.getElementById("p-font-size"),
-        "p",
-        "--font-size",
-        "rem",
-      );
-      updateCSSVariableForSelector(
-        document.getElementById("p-line-height"),
-        "p",
-        "--line-height",
-        "rem",
-      );
+      customElements.define("control-slider", ControlSlider);
     </script>
   </body>
 </html>
+cont

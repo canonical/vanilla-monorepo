@@ -1,4 +1,5 @@
-import { readFileSync } from "fs";
+import { readFileSync } from "node:fs";
+// @ts-ignore
 import * as opentype from "opentype.js";
 
 const baselineHeight = 0.5;
@@ -43,7 +44,7 @@ function calculateNudges(fontPath: string, cssLineHeight: number): void {
 
 // Read font path from command line arguments and call the function
 const fontPath = process.argv[2];
-const cssLineHeight = process.argv[3] || 1.2;
+const cssLineHeight = Number(process.argv[3]) || 1.2;
 if (!fontPath) {
   console.error("Please provide a path to a .ttf font file.");
   process.exit(1);
