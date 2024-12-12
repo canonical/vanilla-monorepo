@@ -6,11 +6,18 @@
   /* based on: https://docs.google.com/spreadsheets/d/1AY6BLFU-Cnj48ggHUnNVlWRxwWZ6Z-66s7jxJC1HLSU/edit?gid=1738212977#gid=1738212977 */
   --color-palette-white: #fff;
   --color-palette-black: #000;
+  --color-palette-blue: #24598f;
+  --color-palette-yellow: #cc7900;
 
   --color-background-default: var(--color-palette-white);
   --color-text-default: var(--color-palette-black);
   --color-background-hover: rgba(242, 242, 242, 1);
   --color-background-active: rgba(235, 235, 235, 1);
+
+  --color-background-neutral-default: rgb(242, 242, 242);
+  --color-background-neutral-hover: rgb(229, 229, 229);
+  --color-background-neutral-active: rgb(222, 222, 222);
+
   --color-border-high-contrast: rgba(0, 0, 0, 0.56);
 
   --color-background-positive-default: rgba(14, 132, 32, 1);
@@ -18,15 +25,36 @@
   --color-background-positive-active: rgba(10, 95, 23, 1);
   --color-background-positive-text: var(--color-palette-white); /* text on positive background */
 
+  --color-background-positive-tinted-default: rgba(10, 189, 37, 0.1);
+  --color-background-positive-tinted-hover: rgba(0, 199, 30, 0.15);
+  --color-background-positive-tinted-active: rgba(0, 199, 30, 0.18);
+
+  --color-background-negative-tinted-default: rgba(199, 0, 20, 0.1);
+  --color-background-negative-tinted-hover: rgba(199, 0, 20, 0.15);
+  --color-background-negative-tinted-active: rgba(199, 0, 20, 0.18);
+
   --color-background-negative-default: rgba(199, 22, 43, 1);
   --color-background-negative-hover: rgba(176, 19, 38, 1);
   --color-background-negative-active: rgba(162, 18, 35, 1);
   --color-background-negative-text: var(--color-palette-white); /* text on positive background */
 
+  --color-background-information-default: var(--color-palette-blue);
+  --color-background-information-tinted-default: rgba(0, 99, 199, 0.1);
+  --color-background-information-tinted-hover: rgba(0, 99, 199, 0.15);
+  --color-background-information-tinted-active: rgba(0, 99, 199, 0.18);
+
+  --color-background-caution-default: var(--color-palette-yellow);
+  --color-background-caution-tinted-default: rgba(199, 90, 0, 0.1);
+  --color-background-caution-tinted-hover: rgba(199, 90, 0, 0.15);
+  --color-background-caution-tinted-active: rgba(199, 90, 0, 0.18);
+
   /* spacing tokens */
+  --spacing-horizontal-xsmall: 0.25rem;
   --spacing-horizontal-small: 0.5rem;
+  --spacing-horizontal-medium: 1.25rem;
   --spacing-horizontal-large: 1.5rem;
 
+  --spacing-vertical-xsmall: 0.25rem;
   --spacing-vertical-small: 0.5rem;
 
   --spacing-input-margin-bottom: 0.5rem; /* TODO: needs baseline alignment https://github.com/canonical/vanilla-framework/blob/main/scss/_settings_spacing.scss#L122 */
@@ -36,8 +64,10 @@
 
   /* font tokens */
   --font-size-default: 1rem;
+  --font-size-small: 0.875rem;
   --font-weight-default: 400;
   --line-height-default: 1.5rem;
+  --line-height-small: 1.25rem;
 }
 
 /* component semantic tokens */
@@ -58,4 +88,20 @@
   --button-font-size: var(--font-size-default);
   --button-font-weight: var(--font-weight-default);
   --button-line-height: var(--line-height-default);
+
+  --chip-color-background: var(--color-background-neutral-default);
+  --chip-color-background-hover: var(--color-background-neutral-hover);
+  --chip-color-background-active: var(--color-background-neutral-active);
+  --chip-color-border: var(--color-border-high-contrast);
+  --chip-color-text: var(--color-text-default);
+
+  --chip-border-radius: 1rem;
+  --chip-font-size: var(--font-size-small);
+  --chip-font-weight: var(--font-weight-default);
+  --chip-line-height: var(--line-height-small);
+  --chip-border-width: var(--spacing-border-width);
+  --chip-padding-vertical: var(--spacing-vertical-xsmall);
+  --chip-padding-horizontal: var(--spacing-horizontal-small);
+  --chip-margin-bottom: var(--spacing-vertical-small);
+  --chip-margin-left: var(--spacing-horizontal-medium);
 }
