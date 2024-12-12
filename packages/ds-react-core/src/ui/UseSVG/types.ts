@@ -14,4 +14,6 @@ export interface UseSVGProps {
   spritePathname?: string;
   /* The target sprite to use */
   spriteTarget: string;
+  /* Whether the sprite should animate */
+  animated?: boolean;
 }

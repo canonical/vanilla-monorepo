@@ -37,6 +37,15 @@ export const ApertureIcon: Story = {
   },
 };
 
+export const ApertureIconAnimated: Story = {
+  args: {
+    // href: "/sprite.svg",
+    className: "positive",
+    spriteTarget: "aperture",
+    animated: true,
+  },
+};
+
 /*
   Function-based story
   Direct arguments passed to the component

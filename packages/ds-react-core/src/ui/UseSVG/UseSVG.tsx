@@ -2,6 +2,8 @@
 import type React from "react";
 import type { UseSVGProps } from "./types.js";
 
+import "./styles.css";
+
 /**
  * description of the UseSVG component
  * @returns {React.ReactElement} - Rendered UseSVG
@@ -12,6 +14,7 @@ const UseSVG = ({
   style,
   spritePathname = "/sprite.svg",
   spriteTarget,
+  animated = false,
   // do....
 }: UseSVGProps): React.ReactElement => {
   return (
@@ -21,7 +24,9 @@ const UseSVG = ({
       width="512"
       height="512"
       viewBox="0 0 16 16"
-      className={[className].filter(Boolean).join(" ")}
+      className={["ds", "svg", className, animated && "animated"]
+        .filter(Boolean)
+        .join(" ")}
       id={id}
       style={style}
     >
