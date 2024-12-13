@@ -15,8 +15,7 @@ const <%= componentName %> = ({
   id,
   children,
   className,
-  style,
-  ...props
+  style
 }: <%= componentName %>Props): React.ReactElement => {
   return (
     <div
@@ -28,7 +27,6 @@ const <%= componentName %> = ({
         <%_ } _%>
         className
       ].filter(Boolean).join(" ")}
-      {...props}
     >
       {children}
     </div>
