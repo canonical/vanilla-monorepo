@@ -16,9 +16,9 @@ interface ComponentGeneratorAnswers extends PromptAnswers {
   /** The path to the component's root directory */
   componentPath: string;
   /** Whether to include styles in the component */
-  includeStyles: boolean;
+  withStyles: boolean;
   /** Whether to include a storybook story in the component */
-  includeStory: boolean;
+  withStories: boolean;
 }
 
 type ComponentGeneratorOptions = GeneratorOptionsWithAnswers<
@@ -45,13 +45,13 @@ export default class ComponentGenerator extends Generator<ComponentGeneratorOpti
   private optionSpecs: ComponentGeneratorCLIOptionAnswer[] = [
     {
       type: Boolean,
-      name: "includeStyles",
+      name: "withStyles",
       description: "Include styles in the component",
       default: false,
     },
     {
       type: Boolean,
-      name: "includeStory",
+      name: "withStories",
       description: "Include a storybook story in the component",
       default: false,
     },
@@ -120,7 +120,7 @@ export default class ComponentGenerator extends Generator<ComponentGeneratorOpti
         this.answers.componentPath,
       ),
       componentCssClassName:
-        this.answers.includeStyles && casing.toKebabCase(componentName),
+        this.answers.withStyles && casing.toKebabCase(componentName),
     };
 
     this.fs.copyTpl(
@@ -151,7 +151,7 @@ export default class ComponentGenerator extends Generator<ComponentGeneratorOpti
       templateData,
     );
 
-    if (this.answers.includeStyles) {
+    if (this.answers.withStyles) {
       this.fs.copyTpl(
         this.templatePath("Component.css.ejs"),
         this.destinationPath(
@@ -161,7 +161,7 @@ export default class ComponentGenerator extends Generator<ComponentGeneratorOpti
       );
     }
 
-    if (this.answers.includeStory) {
+    if (this.answers.withStories) {
       this.fs.copyTpl(
         this.templatePath("Component.stories.tsx.ejs"),
         this.destinationPath(

@@ -1,7 +1,7 @@
 /* <%= generatorPackageName %> <%= generatorPackageVersion %> */
 import type React from 'react';
 import type { <%= componentName %>Props } from './types.js';
-<% if (includeStyles) { _%>
+<% if (withStyles) { _%>
 import './<%= componentName %>.css';
 
 const componentCssClassName = "<%= cssNamespace %> <%= componentCssClassName %>";
@@ -23,7 +23,7 @@ const <%= componentName %> = ({
       id={id}
       style={style}
       className={[
-        <% if (includeStyles) { _%>
+        <% if (withStyles) { _%>
         componentCssClassName,
         <%_ } _%>
         className
