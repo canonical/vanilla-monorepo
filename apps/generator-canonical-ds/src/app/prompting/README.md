@@ -7,10 +7,7 @@ It is currently configured to support CLI input.
 ## Usage
 Create a new subgenerator (`src/<generatorName>/index.ts`) and copy the following template:
 ```typescript
-import Generator, {
-  type BaseOptions,
-  type PromptAnswers,
-} from "yeoman-generator";
+import Generator, { type BaseOptions } from "yeoman-generator";
 import {
   type CLIArgumentAnswer,
   type CLIOptionAnswer,
@@ -22,7 +19,7 @@ import {
   Define structure of the answers object
   The keys of this type will define the valid "name" values for arguments and options
 */
-interface Answers extends PromptAnswers {
+interface Answers {
   argumentName: string;
   optionName: boolean;
 }
@@ -33,54 +30,45 @@ type GeneratorOptions = GeneratorOptionsWithAnswers<
   Answers
 >;
 
-/*  
+/*
    Define types for the arguments and options
    The "name" value for each argument and option must match a key in the Answers type
 */
-type CLIArgumentAnswer =
-  CLIArgumentAnswer<ComponentGeneratorAnswers>;
+type MyGeneratorCLIArgumentAnswer = CLIArgumentAnswer<Answers>;
 
-type CLIOptionAnswer =
-  CLIOptionAnswer<ComponentGeneratorAnswers>;
+type MyGeneratorCLIOptionAnswer = CLIOptionAnswer<Answers>;
 
 // Base the custom generator options type into the Generator class
 export default class MyGenerator extends Generator<GeneratorOptions> {
   // Define arguments and options using the CLIAnswer types
-  private argumentSpecs: CLIArgumentAnswer[] = [
+  private argumentSpecs: MyGeneratorCLIArgumentAnswer[] = [
     {
       type: String,
-      name: "componentPath",
-      description: "The path to the component's root directory",
+      name: "argumentName",
+      description: "Description of your argument",
       required: true,
-      default: ".",
     },
   ];
 
-  private optionSpecs: CLIOptionAnswer[] = [
+  private optionSpecs: MyGeneratorCLIOptionAnswer[] = [
     {
       type: Boolean,
-      name: "includeStyles",
-      description: "Whether to include styles in the component",
-      default: false,
-    },
-    {
-      type: Boolean,
-      name: "includeStory",
-      description: "Whether to include a storybook story in the component",
+      name: "optionName",
+      description: "Description of your option",
       default: false,
     },
   ];
 
-  answers!: ComponentGeneratorAnswers;
+  answers!: Answers;
 
-  constructor(args: string | string[], options: ComponentGeneratorOptions) {
+  constructor(args: string | string[], options: GeneratorOptions) {
     super(args, options);
 
     // Setup CLI arguments and options and store their answers
     // Yeoman will perform CLI input checking and validation for you.
     this.answers = getCLIAnswers(this, this.argumentSpecs, this.optionSpecs);
   }
-  
+
   writing() {
     // consume `this.answers` here...
   }

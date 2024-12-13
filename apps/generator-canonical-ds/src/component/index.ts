@@ -1,8 +1,5 @@
 import path from "node:path";
-import Generator, {
-  type BaseOptions,
-  type PromptAnswers,
-} from "yeoman-generator";
+import Generator, { type BaseOptions } from "yeoman-generator";
 import globalContext from "../app/global-context.js";
 import {
   type CLIArgumentAnswer,
@@ -12,7 +9,7 @@ import {
 } from "../app/prompting/index.js";
 import casing from "../utils/casing.js";
 
-interface ComponentGeneratorAnswers extends PromptAnswers {
+interface ComponentGeneratorAnswers {
   /** The path to the component's root directory */
   componentPath: string;
   /** Whether to include styles in the component */
