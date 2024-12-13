@@ -1,7 +1,7 @@
 import React from "react";
-import Application from "../Application.js";
 
-import htmlString from "../dist/client/index.html?raw";
+import Entrypoint from "./Entrypoint.js";
+import htmlString from "../../dist/client/index.html?raw";
 // import { StaticRouter } from 'react-router-dom/server';
 //
 import { JSXRenderer } from "@canonical/react-ssr";
@@ -10,7 +10,7 @@ export const config = {
   supportsResponseStreaming: true,
 };
 
-const Renderer = new JSXRenderer(Application, {
+const Renderer = new JSXRenderer(Entrypoint, {
   htmlString,
 });
 

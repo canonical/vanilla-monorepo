@@ -18,6 +18,9 @@
   "bugs": {
     "url": "https://github.com/canonical/ds25/issues"
   },
+  "bin":{
+    "serve-ssr": "src/server/serve.ts"
+  },
   "homepage": "https://github.com/canonical/ds25#readme",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
