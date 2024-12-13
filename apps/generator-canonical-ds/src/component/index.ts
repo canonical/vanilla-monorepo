@@ -9,7 +9,7 @@ import {
 } from "../app/prompting/index.js";
 import casing from "../utils/casing.js";
 
-interface ComponentGeneratorAnswers extends PromptAnswers {
+interface ComponentGeneratorAnswers {
   /** The path to the component's root directory */
   componentPath: string;
   /** Whether to include styles in the component */
