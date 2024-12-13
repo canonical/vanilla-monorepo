@@ -1,11 +1,11 @@
 #!/usr/bin/env bun
 
 import path from "path";
-import { serve } from "bun";
-import StaticFilesMiddleware from "./StaticFilesMiddleware.js";
-import { resolve, dirname } from "path";
+import { dirname, resolve } from "path";
 import { fileURLToPath } from "url";
 import { parseArgs } from "util";
+import { serve } from "bun";
+import StaticFilesMiddleware from "./StaticFilesMiddleware.js";
 
 // Parse command-line arguments using util.parseArgs
 const { values, positionals } = parseArgs({

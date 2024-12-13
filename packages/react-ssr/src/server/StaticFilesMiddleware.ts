@@ -1,4 +1,4 @@
-import { statSync, readFileSync } from "fs";
+import { readFileSync, statSync } from "fs";
 import path from "path";
 
 // Class to handle static file serving

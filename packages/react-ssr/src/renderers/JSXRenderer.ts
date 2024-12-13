@@ -1,4 +1,4 @@
-import * as React from "react";
+import type * as React from "react";
 import { createElement } from "react";
 import { renderToReadableStream } from "react-dom/server";
 import Extractor from "./Extractor.js";

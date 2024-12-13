@@ -1,5 +1,5 @@
-import { parseDocument } from "htmlparser2";
 import type { Element } from "domhandler";
+import { parseDocument } from "htmlparser2";
 import React from "react";
 
 /**
