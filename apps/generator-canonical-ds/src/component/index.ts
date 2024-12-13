@@ -30,6 +30,9 @@ export default class ComponentGenerator extends Generator<ComponentGeneratorOpti
       this.log(
         `This generator supports CLI input only. Use yo ${globalContext.generatorScriptIdentifer}:component --help for more information.`,
       );
+      this.log(
+        "This generator has been deprecated. Please use the new generator: https://www.npmjs.com/package/@canonical/generator-ds",
+      );
     }
 
     this.argument("componentPath", {
