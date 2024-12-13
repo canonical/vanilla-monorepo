@@ -6,7 +6,9 @@
   "license": "GPL-3.0-only",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build":"bun run build:client && bun run build:renderer",
+    "build:client": "vite build --ssrManifest --outDir dist/client",
+    "build:renderer": "vite build --ssr src/renderer.ts --outDir api",
     "preview": "vite preview",
     "check": "bun run check:biome && bun run check:ts",
     "check:fix": "bun run check:biome:fix && bun run check:ts",
