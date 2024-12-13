@@ -23,24 +23,24 @@ export default class Renderer {
   ) {
     this.Component = Component;
     this.options = options;
-    this.prepareLocale = this.prepareLocale.bind(this);
+    // this.prepareLocale = this.prepareLocale.bind(this);
     this.render = this.render.bind(this);
     this.extractor = this.options.htmlString
       ? new Extractor(this.options.htmlString)
       : undefined;
   }
 
-  async prepareLocale(header: string | undefined) {
-    if (this.options.loadMessages) {
-      this.locale = header
-        ? header.slice(0, 2)
-        : this.options.defaultLocale || "en";
-      //this.messages = await this.options.loadMessages(this.locale);
-    }
-  }
+  //async prepareLocale(header: string | undefined) {
+  //  if (this.options.loadMessages) {
+  //    this.locale = header
+  //      ? header.slice(0, 2)
+  //      : this.options.defaultLocale || "en";
+  //    //this.messages = await this.options.loadMessages(this.locale);
+  //  }
+  //}
 
   async render(req: Request) {
-    await this.prepareLocale(req.headers.get("accept-language") || undefined);
+    // await this.prepareLocale(req.headers.get("accept-language") || undefined);
     const jsx = createElement(this.Component, {
       locale: this.locale,
       scriptTags: this.extractor?.getScriptTags(),
