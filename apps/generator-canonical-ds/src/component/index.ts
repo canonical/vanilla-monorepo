@@ -52,7 +52,7 @@ export default class ComponentGenerator extends Generator<ComponentGeneratorOpti
     });
 
     this.answers = {
-      componentPath: path.resolve(this.options.componentPath),
+      componentPath: path.resolve(this.env.cwd, this.options.componentPath),
       withStyles: this.options.withStyles,
       withStories: this.options.withStories,
     };
