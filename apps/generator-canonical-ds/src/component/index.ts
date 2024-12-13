@@ -1,12 +1,6 @@
 import path from "node:path";
 import Generator, { type BaseOptions } from "yeoman-generator";
 import globalContext from "../app/global-context.js";
-import {
-  type CLIArgumentAnswer,
-  type CLIOptionAnswer,
-  type GeneratorOptionsWithAnswers,
-  getCLIAnswers,
-} from "../app/prompting/index.js";
 import casing from "../utils/casing.js";
 
 interface ComponentGeneratorAnswers {
