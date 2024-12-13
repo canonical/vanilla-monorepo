@@ -1,9 +1,15 @@
 import path from "node:path";
 import Generator, { type BaseOptions } from "yeoman-generator";
 import globalContext from "../app/global-context.js";
+import {
+  type CLIArgumentAnswer,
+  type CLIOptionAnswer,
+  type GeneratorOptionsWithAnswers,
+  getCLIAnswers,
+} from "../app/prompting/index.js";
 import casing from "../utils/casing.js";
 
-interface ComponentGeneratorAnswers {
+interface ComponentGeneratorAnswers extends PromptAnswers {
   /** The path to the component's root directory */
   componentPath: string;
   /** Whether to include styles in the component */
@@ -68,7 +74,7 @@ export default class ComponentGenerator extends Generator<ComponentGeneratorOpti
    */
   destinationPath(...inPath: string[]): string {
     const rawPath = super.destinationPath(...inPath);
-    const dirName = path.dirname(rawPath);
+    const dirName = casing.toPascalCase(path.dirname(rawPath));
 
     // Replace the last segment of the path with the Pascal-cased version
     const componentFolder = path.resolve(
