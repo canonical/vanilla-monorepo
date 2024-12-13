@@ -74,7 +74,7 @@ export default class ComponentGenerator extends Generator<ComponentGeneratorOpti
    */
   destinationPath(...inPath: string[]): string {
     const rawPath = super.destinationPath(...inPath);
-    const dirName = casing.toPascalCase(path.dirname(rawPath));
+    const dirName = path.dirname(rawPath);
 
     // Replace the last segment of the path with the Pascal-cased version
     const componentFolder = path.resolve(
