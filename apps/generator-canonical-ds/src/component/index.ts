@@ -1,12 +1,6 @@
 import path from "node:path";
 import Generator, { type BaseOptions } from "yeoman-generator";
 import globalContext from "../app/global-context.js";
-import {
-  type CLIArgumentAnswer,
-  type CLIOptionAnswer,
-  type GeneratorOptionsWithAnswers,
-  getCLIAnswers,
-} from "../app/prompting/index.js";
 import casing from "../utils/casing.js";
 
 interface ComponentGeneratorAnswers {
@@ -18,42 +12,9 @@ interface ComponentGeneratorAnswers {
   withStories: boolean;
 }
 
-type ComponentGeneratorOptions = GeneratorOptionsWithAnswers<
-  BaseOptions,
-  ComponentGeneratorAnswers
->;
-
-type ComponentGeneratorCLIArgumentAnswer =
-  CLIArgumentAnswer<ComponentGeneratorAnswers>;
-type ComponentGeneratorCLIOptionAnswer =
-  CLIOptionAnswer<ComponentGeneratorAnswers>;
+type ComponentGeneratorOptions = BaseOptions & ComponentGeneratorAnswers;
 
 export default class ComponentGenerator extends Generator<ComponentGeneratorOptions> {
-  private argumentSpecs: ComponentGeneratorCLIArgumentAnswer[] = [
-    {
-      type: String,
-      name: "componentPath",
-      description: "The path to the component's root directory",
-      required: true,
-      default: this.env.cwd,
-    },
-  ];
-
-  private optionSpecs: ComponentGeneratorCLIOptionAnswer[] = [
-    {
-      type: Boolean,
-      name: "withStyles",
-      description: "Include styles in the component",
-      default: false,
-    },
-    {
-      type: Boolean,
-      name: "withStories",
-      description: "Include a storybook story in the component",
-      default: false,
-    },
-  ];
-
   answers!: ComponentGeneratorAnswers;
 
   constructor(args: string | string[], options: ComponentGeneratorOptions) {
@@ -71,8 +32,30 @@ export default class ComponentGenerator extends Generator<ComponentGeneratorOpti
       );
     }
 
-    this.answers = getCLIAnswers(this, this.argumentSpecs, this.optionSpecs);
-    this.answers.componentPath = path.resolve(this.answers.componentPath);
+    this.argument("componentPath", {
+      type: String,
+      description: "The path to the component's root directory",
+      required: true,
+      default: this.env.cwd,
+    });
+
+    this.option("withStyles", {
+      type: Boolean,
+      description: "Include styles in the component",
+      default: false,
+    });
+
+    this.option("withStories", {
+      type: Boolean,
+      description: "Include a storybook story in the component",
+      default: false,
+    });
+
+    this.answers = {
+      componentPath: path.resolve(this.options.componentPath),
+      withStyles: this.options.withStyles,
+      withStories: this.options.withStories,
+    };
   }
 
   /**
