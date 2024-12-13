@@ -2,7 +2,7 @@
 <html lang="en" class="">
   <head>
     <meta charset="UTF-8" />
-    <title>CodePen Demo</title>
+    <title>Font Baseline Alignment Demo</title>
 
     <meta name="robots" content="noindex" />
 
@@ -18,7 +18,7 @@
 
         /* Raw font metrics as integers (dimensionless) */
         --ascender: 940;
-        --descender: -240;
+        --descender: -260;
         --units-per-em: 1000;
 
         /* Agnostic values */
@@ -50,7 +50,7 @@
           transparent 1px
         );
         background-size: 100% var(--baseline-height);
-        background-position: 0 1px;
+        /*background-position: 0 1px;*/
       }
       h1,
       h2,
@@ -93,7 +93,9 @@
         );
         --bottom-nudge: calc(var(--baseline-height) - var(--top-nudge));
         padding-top: var(--top-nudge);
-        margin-bottom: var(--bottom-nudge);
+        margin-bottom: calc(
+          var(--bottom-nudge) + var(--space-after, 0) * var(--baseline-height)
+        );
       }
 
       p {
@@ -104,6 +106,7 @@
       h1 {
         --line-height-multiplier: 6;
         --font-size: 4rem;
+        /* --space-after:1; */
       }
 
       h2 {
@@ -198,14 +201,12 @@
 
       <p>This is a text aligned on the baseline</p>
       <p>
-        The jellyfish is a very interesting creature. It doesn't have a brain,
-        heart, bones, or eyes. It's made up of a smooth, bag-like body and
-        tentacles armed with tiny, stinging cells. The jellyfish uses these
-        cells to sting or paralyze its prey before eating it. Some jellyfish are
-        harmless to humans, but others have a very painful sting. The box
-        jellyfish is one of the most venomous creatures in the world. It has
-        tentacles that can grow up to 10 feet long and contain enough venom to
-        harm other animals, including humans.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+        scelerisque, nunc nec lacinia ultricies, nunc nunc ultricies sapien, nec
+        lacinia sapien nunc nec nunc. Nullam scelerisque, nunc nec lacinia
+        ultricies, nunc nunc ultricies sapien, nec lacinia sapien nunc nec nunc.
+        Nullam scelerisque, nunc nec lacinia ultricies, nunc nunc ultricies
+        sapien, nec lacinia
       </p>
       <p>Another paragraph</p>
       <h1>This is a title aligned on the grid</h1>
@@ -215,15 +216,17 @@
       <p>Another piece of content</p>
       <p>Another piece of content</p>
       <h3>This is a H3 aligned on the grid</h3>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-        scelerisque, nunc nec lacinia ultricies, nunc nunc ultricies sapien, nec
-        lacinia sapien nunc nec nunc. Nullam scelerisque, nunc nec lacinia
-        ultricies, nunc nunc ultricies sapien, nec lacinia sapien nunc nec nunc.
-        Nullam scelerisque, nunc nec lacinia ultricies, nunc nunc ultricies
-        sapien, nec lacinia
-      </p>
       <h4>Test of h4</h4>
+      <p>
+        The jellyfish is a very interesting creature. It doesn't have a brain,
+        heart, bones, or eyes. It's made up of a smooth, bag-like body and
+        tentacles armed with tiny, stinging cells. The jellyfish uses these
+        cells to sting or paralyze its prey before eating it. Some jellyfish are
+        harmless to humans, but others have a very painful sting. The box
+        jellyfish is one of the most venomous creatures in the world. It has
+        tentacles that can grow up to 10 feet long and contain enough venom to
+        harm other animals. The jellyfish lives in groups called swarms.
+      </p>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
         scelerisque, nunc nec lacinia ultricies, nunc nunc ultricies sapien, nec
