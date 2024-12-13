@@ -1,8 +1,8 @@
 import { useState } from "react";
-import reactLogo from "../assets/react.svg";
 import viteLogo from "/vite.svg";
 //import "./Application.scss";
 import Application from "../Application.js";
+import reactLogo from "../assets/react.svg";
 
 type Props = {
   lang?: string;

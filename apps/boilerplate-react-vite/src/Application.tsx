@@ -1,7 +1,7 @@
 import { useState } from "react";
 import canonicalLogo from "/canonical.svg";
 import reactLogo from "./assets/react.svg";
-import "./App.css";
+import "./Application.css";
 
 import { Button } from "@canonical/ds-react-core";
 
