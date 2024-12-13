@@ -45,6 +45,14 @@ export const ApertureIconAnimated: Story = {
   },
 };
 
+export const NewIconAnimated: Story = {
+  args: {
+    // href: "/sprite.svg",
+    className: "negative",
+    spriteTarget: "new-icon",
+  },
+};
+
 export const CaretIcon: Story = {
   args: {
     // href: "/sprite.svg",
@@ -57,7 +65,7 @@ export const CaretIcon: Story = {
 export const IllustrationTest: Story = {
   args: {
     spritePathname: "/illustration.svg",
-    className: "positive",
+    className: "negative",
     spriteTarget: "illu",
     viewBox: "0 0 1207.97 1080",
   },
