@@ -26,6 +26,11 @@ export default class BaseGenerator extends Generator {
     ]);
     return this.composeWith(
       `${globalContext.generatorScriptIdentifer}:${answers.subgenerator || this.subgenerators[0].name}`,
+      // Pass CLI args to the subgenerator
+      {
+        generatorArgs: this.args,
+        generatorOptions: this.options,
+      },
     );
   }
 

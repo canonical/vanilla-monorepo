@@ -1,59 +1,61 @@
 import path from "node:path";
-import Generator from "yeoman-generator";
+import Generator, { type BaseOptions } from "yeoman-generator";
 import globalContext from "../app/global-context.js";
 import casing from "../utils/casing.js";
 
 interface ComponentGeneratorAnswers {
   /** The path to the component's root directory */
-  componentAbsolutePath: string;
+  componentPath: string;
   /** Whether to include styles in the component */
-  includeStyles: boolean;
+  withStyles: boolean;
   /** Whether to include a storybook story in the component */
-  includeStorybook: boolean;
+  withStories: boolean;
 }
 
-export default class ComponentGenerator extends Generator {
-  answers?: ComponentGeneratorAnswers;
+type ComponentGeneratorOptions = BaseOptions & ComponentGeneratorAnswers;
 
-  initializing() {
-    this.log("Welcome to the component generator!");
-    this.log(
-      "This generator should be run from the root directory of all your application's components (ex: src/components).",
-    );
-  }
+export default class ComponentGenerator extends Generator<ComponentGeneratorOptions> {
+  answers!: ComponentGeneratorAnswers;
 
-  async prompting() {
-    this.answers = await this.prompt([
-      {
-        type: "input",
-        name: "componentAbsolutePath",
-        message:
-          "Enter the component's name, including its path (ex: `form/input/Checkbox`):",
-        default: ".",
-        filter: (input: string) => {
-          const resolvedInput = path.resolve(this.env.cwd, input);
-          // Force the directory name (the component name) to be PascalCased
-          const dirName = path.basename(resolvedInput);
-          return path.resolve(
-            resolvedInput,
-            "..",
-            casing.toPascalCase(dirName),
-          );
-        },
-      },
-      {
-        type: "confirm",
-        name: "includeStyles",
-        message: "Do you want to include styles?",
-        default: true,
-      },
-      {
-        type: "confirm",
-        name: "includeStorybook",
-        message: "Would you like to include a story file?",
-        default: true,
-      },
-    ]);
+  constructor(args: string | string[], options: ComponentGeneratorOptions) {
+    super(args, options);
+
+    // Output introductory logging if help is not requested
+    // If help is requested, the `log()` function is not defined, so this block is skipped
+    if (!this.options.help) {
+      this.log("Welcome to the component generator!");
+      this.log(
+        "This generator should be run from the root directory of all your application's components (ex: src/components).",
+      );
+      this.log(
+        `This generator supports CLI input only. Use yo ${globalContext.generatorScriptIdentifer}:component --help for more information.`,
+      );
+    }
+
+    this.argument("componentPath", {
+      type: String,
+      description: "The path to the component's root directory",
+      required: true,
+      default: this.env.cwd,
+    });
+
+    this.option("withStyles", {
+      type: Boolean,
+      description: "Include styles in the component",
+      default: false,
+    });
+
+    this.option("withStories", {
+      type: Boolean,
+      description: "Include a storybook story in the component",
+      default: false,
+    });
+
+    this.answers = {
+      componentPath: path.resolve(this.env.cwd, this.options.componentPath),
+      withStyles: this.options.withStyles,
+      withStories: this.options.withStories,
+    };
   }
 
   /**
@@ -84,7 +86,9 @@ export default class ComponentGenerator extends Generator {
   writing(): void {
     if (!this.answers) return;
 
-    const componentName = path.basename(this.answers.componentAbsolutePath);
+    const componentName = casing.toPascalCase(
+      path.basename(this.answers.componentPath),
+    );
 
     const templateData = {
       ...globalContext,
@@ -93,55 +97,55 @@ export default class ComponentGenerator extends Generator {
       /** The path to the component's directory relative to the current working directory */
       componentRelativePath: path.relative(
         this.env.cwd,
-        this.answers.componentAbsolutePath,
+        this.answers.componentPath,
       ),
       componentCssClassName:
-        this.answers.includeStyles && casing.toKebabCase(componentName),
+        this.answers.withStyles && casing.toKebabCase(componentName),
     };
 
     this.fs.copyTpl(
       this.templatePath("Component.tsx.ejs"),
       this.destinationPath(
-        `${this.answers.componentAbsolutePath}/${templateData.componentName}.tsx`,
+        `${this.answers.componentPath}/${templateData.componentName}.tsx`,
       ),
       templateData,
     );
 
     this.fs.copyTpl(
       this.templatePath("index.ts.ejs"),
-      this.destinationPath(`${this.answers.componentAbsolutePath}/index.ts`),
+      this.destinationPath(`${this.answers.componentPath}/index.ts`),
       templateData,
     );
 
     this.fs.copyTpl(
       this.templatePath("types.ts.ejs"),
-      this.destinationPath(`${this.answers.componentAbsolutePath}/types.ts`),
+      this.destinationPath(`${this.answers.componentPath}/types.ts`),
       templateData,
     );
 
     this.fs.copyTpl(
       this.templatePath("Component.test.tsx.ejs"),
       this.destinationPath(
-        `${this.answers.componentAbsolutePath}/${templateData.componentName}.test.tsx`,
+        `${this.answers.componentPath}/${templateData.componentName}.test.tsx`,
       ),
       templateData,
     );
 
-    if (this.answers.includeStyles) {
+    if (this.answers.withStyles) {
       this.fs.copyTpl(
         this.templatePath("Component.css.ejs"),
         this.destinationPath(
-          `${this.answers.componentAbsolutePath}/${templateData.componentName}.css`,
+          `${this.answers.componentPath}/${templateData.componentName}.css`,
         ),
         templateData,
       );
     }
 
-    if (this.answers.includeStorybook) {
+    if (this.answers.withStories) {
       this.fs.copyTpl(
         this.templatePath("Component.stories.tsx.ejs"),
         this.destinationPath(
-          `${this.answers.componentAbsolutePath}/${templateData.componentName}.stories.tsx`,
+          `${this.answers.componentPath}/${templateData.componentName}.stories.tsx`,
         ),
         templateData,
       );

@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/canonical/vanilla-monorepo"
+    "url": "https://github.com/canonical/ds25"
   },
   "bugs": {
-    "url": "https://github.com/canonical/vanilla-monorepo/issues"
+    "url": "https://github.com/canonical/ds25/issues"
   },
-  "homepage": "https://github.com/canonical/vanilla-monorepo#readme",
+  "homepage": "https://github.com/canonical/ds25#readme",
   "files": ["generators"],
   "type": "module",
   "main": "generators/index.js",
@@ -28,7 +28,7 @@
     "check:ts": "tsc --noEmit"
   },
   "dependencies": {
-    "yeoman-generator": "7.3.3"
+    "yeoman-generator": "^7.4.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
