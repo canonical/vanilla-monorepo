@@ -1,6 +1,5 @@
 {
-  "name": "@canonical/generator-canonical-ds",
-  "private": true,
+  "name": "@canonical/generator-ds",
   "version": "0.4.0-experimental.0",
   "license": "GPL-3.0-only",
   "author": {

@@ -1,5 +1,9 @@
 # Canonical Generator
 
+## Deprecated
+This package has been deprecated and moved to the [@canonical/generator-ds package](https://www.npmjs.com/package/@canonical/generator-ds). 
+Please use that package instead.
+
 ## Getting Started
 
 1. Install [Yeoman](https://yeoman.io/) and this generator: `npm i -g yo @canonical/generator-canonical-ds`
