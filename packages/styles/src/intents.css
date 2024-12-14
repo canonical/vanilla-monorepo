@@ -18,6 +18,14 @@
   --intent-color-border-active: var(--intent-color-active);
 }
 
+/* loading intent, with blue shades */
+.loading {
+  --intent-color: #f0f4f8;
+  --intent-color-hover: #e3ebf3;
+  --intent-color-active: #d6e3ed;
+  --intent-color-text: #1a2e3b;
+}
+
 .neutral {
   --intent-color: var(--color-background-default);
   --intent-color-hover: var(--color-background-hover);

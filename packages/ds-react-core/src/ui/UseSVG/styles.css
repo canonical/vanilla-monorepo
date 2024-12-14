@@ -1,0 +1,22 @@
+@keyframes draw-stroke {
+  0% {
+    stroke-dashoffset: var(--svg-odo, 1000);
+  }
+
+  100% {
+    stroke-dashoffset: var(--svg-tdo, 0);
+  }
+}
+
+.ds.svg {
+  &.animated {
+    stroke: var(--intent-color-border);
+    stroke-dasharray: 100;
+    stroke-dashoffset: var(--svg-tdo, 0);
+
+    use {
+      /* TODO repeat animation */
+      animation: draw-stroke 5s linear forwards infinite;
+    }
+  }
+}
