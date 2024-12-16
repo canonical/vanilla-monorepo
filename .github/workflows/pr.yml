@@ -15,4 +15,4 @@ jobs:
         uses: ./.github/actions/setup-env
 
       - name: Code quality checks
-        run: bun run check
+        run: bun run check && bun run test
