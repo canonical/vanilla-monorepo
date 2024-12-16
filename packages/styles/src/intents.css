@@ -1,8 +1,12 @@
 .positive {
   --intent-color: var(--color-background-positive-default);
+  --intent-color-tinted: var(--color-background-positive-tinted-default);
   --intent-color-hover: var(--color-background-positive-hover);
+  --intent-color-tinted-hover: var(--color-background-positive-tinted-hover);
   --intent-color-active: var(--color-background-positive-active);
+  --intent-color-tinted-active: var(--color-background-positive-tinted-active);
   --intent-color-text: var(--color-background-positive-text);
+  --intent-color-text-tinted: var(--color-text-default);
   --intent-color-border: var(--intent-color);
   --intent-color-border-hover: var(--intent-color-hover);
   --intent-color-border-active: var(--intent-color-active);
@@ -10,9 +14,34 @@
 
 .negative {
   --intent-color: var(--color-background-negative-default);
+  --intent-color-tinted: var(--color-background-negative-tinted-default);
   --intent-color-hover: var(--color-background-negative-hover);
+  --intent-color-tinted-hover: var(--color-background-negative-tinted-hover);
   --intent-color-active: var(--color-background-negative-active);
+  --intent-color-tinted-active: var(--color-background-negative-tinted-active);
   --intent-color-text: var(--color-background-negative-text);
+  --intent-color-border: var(--intent-color);
+  --intent-color-border-hover: var(--intent-color-hover);
+  --intent-color-border-active: var(--intent-color-active);
+}
+
+.information {
+  --intent-color: var(--color-background-information-default);
+  --intent-color-tinted: var(--color-background-information-tinted-default);
+  --intent-color-tinted-hover: var(--color-background-information-tinted-hover);
+  --intent-color-tinted-active: var(
+    --color-background-information-tinted-active
+  );
+  --intent-color-border: var(--intent-color);
+  --intent-color-border-hover: var(--intent-color-hover);
+  --intent-color-border-active: var(--intent-color-active);
+}
+
+.caution {
+  --intent-color: var(--color-background-caution-default);
+  --intent-color-tinted: var(--color-background-caution-tinted-default);
+  --intent-color-tinted-hover: var(--color-background-caution-tinted-hover);
+  --intent-color-tinted-active: var(--color-background-caution-tinted-active);
   --intent-color-border: var(--intent-color);
   --intent-color-border-hover: var(--intent-color-hover);
   --intent-color-border-active: var(--intent-color-active);
