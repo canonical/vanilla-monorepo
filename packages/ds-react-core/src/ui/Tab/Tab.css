@@ -1,39 +1,59 @@
 /* @canonical/generator-canonical-ds 0.4.0-experimental.0 */
 
+:root {
+  --tab-color-background: var(--color-background-default);
+  --tab-color-background-hover: var(--color-background-default);
+  --tab-color-background-active: var(--color-background-default);
+  --tab-color-text: var(--color-text-default);
+
+  --tab-color-border-default: var(--color-border-default);
+  --tab-color-border-selected: var(--color-border-highlighted);
+  --tab-border-width: var(--spacing-border-width);
+  --tab-border-width-selected: var(--spacing-bar-width);
+}
+
 .ds.tab {
-  border: 1px solid black;
+  border: 0;
+  line-height: var(--line-height-default);
+  font-size: var(--font-size-default);
 
-  padding: .75rem 1rem;
+  padding-block: var(--spacing-vertical-medium);
+  padding-inline: var(--spacing-horizontal-medium);
   display: inline-block;
-
   position: relative;
-  isolation: isolate;
-  z-index: 0;
-  background-color: white;
 
+  z-index: 0;
+  background-color: var(--tab-color-background);
+  color: var(--tab-color-text);
+
+  &:hover {
+    background-color: var(--tab-color-background-hover);
+  }
+
+  &[aria-selected=true],
+  &:active {
+    background-color: var(--tab-color-background-active);
+  }
+
+  /* highlight bar */
   &::before {
     content: "";
     position: absolute;
-    background-color: red;
-    height: 0.1875rem;
+    background-color: transparent;
+    height: var(--tab-border-width-selected);
     width: auto;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 1;
   }
-  &[aria-selected=true]:hover {
 
-  }
   &[aria-selected=true]::before {
-    background-color: blue;
+    background-color: var(--tab-color-border-selected);
   }
 
-  &[aria-selected=false]:hover::before {
-    background-color: green;
-  }
-
+  &[aria-selected=false]:hover::before,
   &[aria-selected=false]:focus::before {
-    background-color: yellow;
+    background-color: var(--tab-color-border-default);
   }
 }

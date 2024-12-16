@@ -18,7 +18,10 @@
   --color-background-neutral-hover: rgb(229, 229, 229);
   --color-background-neutral-active: rgb(222, 222, 222);
 
+  --color-border-default: rgba(0, 0, 0, 0.2);
+  --color-border-low-contrast: rgba(0, 0, 0, 0.1);
   --color-border-high-contrast: rgba(0, 0, 0, 0.56);
+  --color-border-highlighted: var(--color-text-default);
 
   --color-background-positive-default: rgba(14, 132, 32, 1);
   --color-background-positive-hover: rgba(12, 109, 26, 1);
@@ -48,19 +51,23 @@
   --color-background-caution-tinted-hover: rgba(199, 90, 0, 0.15);
   --color-background-caution-tinted-active: rgba(199, 90, 0, 0.18);
 
-  /* spacing tokens */
-  --spacing-horizontal-xsmall: 0.25rem;
-  --spacing-horizontal-small: 0.5rem;
-  --spacing-horizontal-medium: 1.25rem;
-  --spacing-horizontal-large: 1.5rem;
+  --sp-unit: 0.5rem;
 
-  --spacing-vertical-xsmall: 0.25rem;
-  --spacing-vertical-small: 0.5rem;
+  /* spacing tokens */
+  --spacing-horizontal-xsmall: calc(var(--sp-unit) / 2);
+  --spacing-horizontal-small: var(--sp-unit);
+  --spacing-horizontal-medium: calc(var(--sp-unit) * 2);
+  --spacing-horizontal-large: calc(var(--sp-unit) * 3);
+
+  --spacing-vertical-xsmall: calc(var(--sp-unit) / 2);
+  --spacing-vertical-small: var(--sp-unit);
+  --spacing-vertical-medium: calc(var(--sp-unit) * 1.5);
 
   --spacing-input-margin-bottom: 0.5rem; /* TODO: needs baseline alignment https://github.com/canonical/vanilla-framework/blob/main/scss/_settings_spacing.scss#L122 */
   --spacing-input-padding-vertical: 0.5rem; /* TODO: needs to take baseline into account https://github.com/canonical/vanilla-framework/blob/main/scss/_settings_spacing.scss#L124 */
 
   --spacing-border-width: 1.5px; /* TODO: 1.5px was causing some baseline issues in Vanilla */
+  --spacing-bar-width: 0.1875rem; /* 3px on 16px base */
 
   /* font tokens */
   --font-size-default: 1rem;

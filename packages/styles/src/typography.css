@@ -28,7 +28,6 @@ TODO
   --font-weight-h2: 180; /* custom font weight for h2 */
   --font-weight-h4: 275; /* custom font weight for h4 */
 
-  --sp-unit: 0.5rem;
   --spv-x-small: calc(0.5 * var(--sp-unit));
   --spv-small: var(--sp-unit);
   --spv-medium: calc(1.5 * var(--sp-unit));
