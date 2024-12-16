@@ -34,8 +34,8 @@ export default class ComponentGenerator extends Generator<ComponentGeneratorOpti
 
     this.argument("componentPath", {
       type: String,
-      description: "The path to the component's root directory",
-      required: true,
+      description:
+        "The path to the component's root directory. Defaults to your current working directory.",
       default: this.env.cwd,
     });
 
