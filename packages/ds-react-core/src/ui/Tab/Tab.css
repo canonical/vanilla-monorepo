@@ -1,0 +1,39 @@
+/* @canonical/generator-canonical-ds 0.4.0-experimental.0 */
+
+.ds.tab {
+  border: 1px solid black;
+
+  padding: .75rem 1rem;
+  display: inline-block;
+
+  position: relative;
+  isolation: isolate;
+  z-index: 0;
+  background-color: white;
+
+  &::before {
+    content: "";
+    position: absolute;
+    background-color: red;
+    height: 0.1875rem;
+    width: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+  &[aria-selected=true]:hover {
+
+  }
+  &[aria-selected=true]::before {
+    background-color: blue;
+  }
+
+  &[aria-selected=false]:hover::before {
+    background-color: green;
+  }
+
+  &[aria-selected=false]:focus::before {
+    background-color: yellow;
+  }
+}
