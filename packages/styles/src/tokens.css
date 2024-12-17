@@ -62,6 +62,7 @@
   --spacing-vertical-xsmall: calc(var(--sp-unit) / 2);
   --spacing-vertical-small: var(--sp-unit);
   --spacing-vertical-medium: calc(var(--sp-unit) * 1.5);
+  --spacing-vertical-large: calc(var(--sp-unit) * 2);
 
   --spacing-input-margin-bottom: 0.5rem; /* TODO: needs baseline alignment https://github.com/canonical/vanilla-framework/blob/main/scss/_settings_spacing.scss#L122 */
   --spacing-input-padding-vertical: 0.5rem; /* TODO: needs to take baseline into account https://github.com/canonical/vanilla-framework/blob/main/scss/_settings_spacing.scss#L124 */
@@ -79,6 +80,7 @@
 
 /* component semantic tokens */
 :root {
+  /* button tokens */
   --button-color-background: var(--color-background-default);
   --button-color-background-hover: var(--color-background-hover);
   --button-color-background-active: var(--color-background-active);
@@ -96,6 +98,7 @@
   --button-font-weight: var(--font-weight-default);
   --button-line-height: var(--line-height-default);
 
+  /* chip tokens */
   --chip-color-background: var(--color-background-neutral-default);
   --chip-color-background-hover: var(--color-background-neutral-hover);
   --chip-color-background-active: var(--color-background-neutral-active);
@@ -111,4 +114,23 @@
   --chip-padding-horizontal: var(--spacing-horizontal-small);
   --chip-margin-bottom: var(--spacing-vertical-small);
   --chip-margin-left: var(--spacing-horizontal-medium);
+
+  /* tabs tokens */
+  --tab-color-background: var(--color-background-default);
+  --tab-color-background-hover: var(--color-background-default);
+  --tab-color-background-active: var(--color-background-default);
+  --tab-color-text: var(--color-text-default);
+
+  --tab-color-border-default: var(--color-border-default);
+  --tab-color-border-selected: var(--color-border-highlighted);
+  --tab-border-width: var(--spacing-border-width);
+  --tab-border-width-selected: var(--spacing-bar-width);
+
+  --tab-margin-bottom: var(--spacing-vertical-large);
+
+  --tab-font-size: var(--font-size-default);
+  --tab-line-height: var(--line-height-default);
+
+  --tab-padding-vertical: var(--spacing-vertical-medium);
+  --tab-padding-horizontal: var(--spacing-horizontal-medium);
 }

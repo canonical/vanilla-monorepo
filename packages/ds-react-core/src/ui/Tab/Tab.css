@@ -1,24 +1,12 @@
 /* @canonical/generator-canonical-ds 0.4.0-experimental.0 */
 
-:root {
-  --tab-color-background: var(--color-background-default);
-  --tab-color-background-hover: var(--color-background-default);
-  --tab-color-background-active: var(--color-background-default);
-  --tab-color-text: var(--color-text-default);
-
-  --tab-color-border-default: var(--color-border-default);
-  --tab-color-border-selected: var(--color-border-highlighted);
-  --tab-border-width: var(--spacing-border-width);
-  --tab-border-width-selected: var(--spacing-bar-width);
-}
-
 .ds.tab {
   border: 0;
-  line-height: var(--line-height-default);
-  font-size: var(--font-size-default);
+  line-height: var(--tab-line-height);
+  font-size: var(--tab-font-size);
 
-  padding-block: var(--spacing-vertical-medium);
-  padding-inline: var(--spacing-horizontal-medium);
+  padding-block: var(--tab-padding-vertical);
+  padding-inline: var(--tab-padding-horizontal);
   display: inline-block;
   position: relative;
 
@@ -30,7 +18,7 @@
     background-color: var(--tab-color-background-hover);
   }
 
-  &[aria-selected=true],
+  &[aria-selected="true"],
   &:active {
     background-color: var(--tab-color-background-active);
   }
@@ -39,8 +27,8 @@
   &::before {
     content: "";
     position: absolute;
-    background-color: transparent;
-    height: var(--tab-border-width-selected);
+    background-color: var(--tab-color-border-default);
+    height: var(--tab-border-width);
     width: auto;
     bottom: 0;
     left: 0;
@@ -48,12 +36,14 @@
     z-index: 1;
   }
 
-  &[aria-selected=true]::before {
+  &[aria-selected="true"]::before {
     background-color: var(--tab-color-border-selected);
+    height: var(--tab-border-width-selected);
   }
 
-  &[aria-selected=false]:hover::before,
-  &[aria-selected=false]:focus::before {
+  &[aria-selected="false"]:hover::before,
+  &[aria-selected="false"]:focus::before {
     background-color: var(--tab-color-border-default);
+    height: var(--tab-border-width-selected);
   }
 }

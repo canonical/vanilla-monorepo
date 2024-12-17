@@ -1,15 +1,16 @@
 .ds.tabs {
-  margin: 0 auto 1.5rem;
-
+  margin-bottom: var(--tab-margin-bottom);
   position: relative;
+
   &::before {
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 1px;
     width: auto;
-    background-color: gray;
+
+    background-color: var(--tab-color-border-default);
+    height: var(--tab-border-width);
   }
 }
