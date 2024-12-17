@@ -46,7 +46,10 @@ jobs:
 
         # TODO add Nx and only test the packages that have changed since last tag
       - name: Code quality checks
-        run: bun run check && bun run test
+        run: bun run check
+
+      - name: Test
+        run: bun run test
 
   version:
     name: Bump package versions
