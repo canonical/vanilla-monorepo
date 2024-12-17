@@ -1,8 +1,8 @@
 /* @canonical/generator-canonical-ds 0.4.0-experimental.0 */
 import type React from "react";
 import "./Tab.css";
-import type { TabPropsType } from "./types.js";
 import { forwardRef } from "react";
+import type { TabPropsType } from "./types.js";
 
 const componentCssClassName = "ds tab";
 
@@ -13,7 +13,7 @@ const componentCssClassName = "ds tab";
 const Tab = forwardRef(
   (
     { selected, id, className, style, ...props }: TabPropsType,
-    ref: React.Ref<HTMLButtonElement>
+    ref: React.Ref<HTMLButtonElement>,
   ): React.ReactElement => {
     return (
       <button
@@ -27,7 +27,7 @@ const Tab = forwardRef(
         {...props}
       />
     );
-  }
+  },
 );
 
 export default Tab;

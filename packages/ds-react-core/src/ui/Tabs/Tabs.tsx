@@ -1,6 +1,6 @@
 /* @canonical/generator-canonical-ds 0.4.0-experimental.0 */
 import type React from "react";
-import { KeyboardEvent, useRef } from "react";
+import { type KeyboardEvent, useRef } from "react";
 import Tab from "ui/Tab/Tab.js";
 import "./Tabs.css";
 import type { TabsPropsType } from "./types.js";

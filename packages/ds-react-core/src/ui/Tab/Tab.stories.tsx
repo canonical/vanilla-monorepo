@@ -16,8 +16,12 @@ type Story = StoryObj<typeof meta>;
 export const Variants: Story = {
   render: (args) => (
     <div>
-      <Component selected {...args}>Tab 1</Component>
-      <Component selected={false} {...args}>Tab 2</Component>
+      <Component selected {...args}>
+        Tab 1
+      </Component>
+      <Component selected={false} {...args}>
+        Tab 2
+      </Component>
     </div>
   ),
 };
