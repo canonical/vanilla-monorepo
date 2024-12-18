@@ -1,3 +1,4 @@
+import { casing } from "@canonical/utils";
 import type { Element } from "domhandler";
 import { parseDocument } from "htmlparser2";
 import React from "react";
@@ -38,11 +39,24 @@ class Extractor {
     return elements;
   }
 
+  private convertKeyToReactKey(key: string): string {
+    switch (key.toLowerCase()) {
+      case "class":
+        return "className";
+      case "for":
+        return "htmlFor";
+      case "crossorigin":
+        return "crossOrigin";
+      default:
+        return casing.toCamelCase(key);
+    }
+  }
+
   private convertToReactElement(element: Element): React.ReactElement {
     const props: { [key: string]: string } = {};
 
     for (const [key, value] of Object.entries(element.attribs)) {
-      props[key] = value;
+      props[this.convertKeyToReactKey(key)] = value;
     }
 
     return React.createElement(element.name, props);
@@ -50,12 +64,12 @@ class Extractor {
 
   public getLinkTags(): React.ReactElement[] {
     const linkElements = this.getElementsByTagName("link");
-    return linkElements.map(this.convertToReactElement);
+    return linkElements.map(this.convertToReactElement, this);
   }
 
   public getScriptTags(): React.ReactElement[] {
     const scriptElements = this.getElementsByTagName("script");
-    return scriptElements.map(this.convertToReactElement);
+    return scriptElements.map(this.convertToReactElement, this);
   }
 }
 

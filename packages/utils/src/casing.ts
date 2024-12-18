@@ -8,11 +8,8 @@
 const toPascalCase = (s: string): string => {
   if (!s) return "";
 
-  const camelCased = s
-    .replace(/-([a-z])/g, (g) => g[1].toUpperCase())
-    .replaceAll("-", "")
-    .replaceAll("_", "")
-    .replaceAll(" ", "");
+  const camelCased = toCamelCase(s);
+
   return camelCased.charAt(0).toUpperCase() + camelCased.slice(1);
 };
 
@@ -32,7 +29,25 @@ const toKebabCase = (s: string): string => {
     .toLowerCase();
 };
 
+/**
+ * Convert a string to camelCase
+ * @param s - The string to convert
+ * @returns The camelCase string
+ * @example
+ * toCamelCase("my-component") // "myComponent"
+ */
+const toCamelCase = (s: string): string => {
+  if (!s) return "";
+
+  return s
+    .replace(/-([a-z])/g, (g) => g[1].toUpperCase())
+    .replaceAll("-", "")
+    .replaceAll("_", "")
+    .replaceAll(" ", "");
+};
+
 export default {
   toPascalCase,
   toKebabCase,
+  toCamelCase,
 };

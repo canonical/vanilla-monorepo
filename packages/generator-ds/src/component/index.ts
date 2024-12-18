@@ -1,7 +1,7 @@
 import path from "node:path";
+import { casing } from "@canonical/utils";
 import Generator, { type BaseOptions } from "yeoman-generator";
 import globalContext from "../app/global-context.js";
-import casing from "../utils/casing.js";
 
 interface ComponentGeneratorAnswers {
   /** The path to the component's root directory */

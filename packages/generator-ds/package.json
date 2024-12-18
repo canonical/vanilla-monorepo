@@ -28,6 +28,7 @@
     "check:ts": "tsc --noEmit"
   },
   "dependencies": {
+    "@canonical/utils": "^0.4.0-experimental.0",
     "yeoman-generator": "^7.4.0"
   },
   "devDependencies": {
