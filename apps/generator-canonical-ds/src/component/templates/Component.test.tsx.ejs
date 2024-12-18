@@ -6,7 +6,7 @@ import Component from "./<%= componentName %>.js";
 
 describe("<%= componentName %> component", () => {
   it("renders", () => {
-    render(<Component><%= componentName %></Component>);
+  render(<Component><%= componentName %></Component>);
     expect(screen.getByText('<%= componentName %>')).toBeDefined();
   });
 
