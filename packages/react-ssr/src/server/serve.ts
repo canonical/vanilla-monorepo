@@ -1,8 +1,7 @@
 #!/usr/bin/env bun
 
 import path from "path";
-import { dirname, resolve } from "path";
-import { fileURLToPath } from "url";
+import { resolve } from "path";
 import { parseArgs } from "util";
 import { serve } from "bun";
 import StaticFilesMiddleware from "./StaticFilesMiddleware.js";
@@ -54,7 +53,7 @@ serve({
       const handler = await import(resolvedRendererFilePath).then(
         (module) => module.handler,
       );
-      const stream = await handler(req, null);
+      const stream: ReadableStream = await handler(req, null);
       return new Response(stream, {
         headers: { "Content-Type": "text/html" },
       });

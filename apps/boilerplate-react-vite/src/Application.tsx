@@ -1,11 +1,9 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import canonicalLogo from "/canonical.svg";
 import reactLogo from "./assets/react.svg";
 import "./Application.css";
-
 import { Button } from "@canonical/ds-react-core";
 
-import React, { useEffect } from "react";
 const DemoComponent = ({ timeout = 2000 }) => {
   const LazyButton = React.lazy(async () => {
     await new Promise((resolve) => setTimeout(resolve, timeout));
