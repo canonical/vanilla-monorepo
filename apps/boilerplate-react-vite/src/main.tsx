@@ -1,9 +1,10 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { hydrateRoot } from "react-dom/client";
 import Application from "./Application.js";
 import "./index.css";
+import { StrictMode } from "react";
 
-createRoot(document.getElementById("root") as HTMLElement).render(
+hydrateRoot(
+  document.getElementById("root") as HTMLElement,
   <StrictMode>
     <Application />
   </StrictMode>,
