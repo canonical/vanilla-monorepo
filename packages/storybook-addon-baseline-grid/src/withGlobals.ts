@@ -13,8 +13,6 @@ export const withGlobals = (
   const myAddon = globals[KEY];
 
   useEffect(() => {
-    console.log("myAddon", myAddon);
-
     if (myAddon) {
       global.document.body.classList.add("show-baseline-grid");
     } else {
