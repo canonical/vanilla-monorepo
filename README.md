@@ -72,7 +72,7 @@ JavaScript documentation should be written with [TSDoc](https://tsdoc.org/).
 
 The `@types` dependencies required by the monorepo packages and apps are by default hoisted in the root `node_modules`. However, this behaviour has two downsides : 
 - It can lead to conflicts between the types of different packages, for instance `bun` and `node` export overlapping types.
-- Consumption of types in packages and apps are not explicit, leading hard to debug issues.
+- Consumption of types in packages and apps are not explicit, leading to issues that are difficult to debug.
 
 For this reason, we have opted for explicitly declaring the `@types` dependencies both in the `package.json` under `@devDependencies` and in  `tsconfig.json` under `compilerOptions/types` for each package and app. 
 

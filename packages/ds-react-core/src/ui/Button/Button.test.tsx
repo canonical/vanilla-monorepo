@@ -5,11 +5,11 @@ import Component from "./Button.js";
 describe("Button component", () => {
   it("renders", () => {
     render(<Component label={"Hello world!"} />);
-    expect(screen.getByText("Hello world!")).toBeDefined();
+    expect(screen.getByText("Hello world!")).toBeInTheDocument();
   });
 
   it("applies className", () => {
     render(<Component label={"Hello world!"} className="test-class" />);
-    expect(screen.getByText("Hello world!").classList).toContain("test-class");
+    expect(screen.getByText("Hello world!")).toHaveClass("test-class");
   });
 });
