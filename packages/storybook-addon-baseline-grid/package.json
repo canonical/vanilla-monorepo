@@ -41,43 +41,43 @@
     "prerelease": "zx scripts/prepublish-checks.js",
     "release": "npm run build && auto shipit",
     "eject-ts": "zx scripts/eject-typescript.js",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6007",
     "build-storybook": "storybook build"
   },
   "dependencies": {
     "@storybook/icons": "^1.2.10"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "0.0.0-pr-26654-sha-49d01553",
-    "@storybook/addon-interactions": "0.0.0-pr-26654-sha-49d01553",
-    "@storybook/addon-links": "0.0.0-pr-26654-sha-49d01553",
-    "@storybook/blocks": "0.0.0-pr-26654-sha-49d01553",
-    "@storybook/react": "0.0.0-pr-26654-sha-49d01553",
-    "@storybook/react-vite": "0.0.0-pr-26654-sha-49d01553",
-    "@storybook/test": "0.0.0-pr-26654-sha-49d01553",
-    "@types/node": "^18.15.0",
-    "@types/react": "^18.2.65",
-    "@types/react-dom": "^18.2.21",
-    "@vitejs/plugin-react": "^4.2.1",
+    "@storybook/addon-essentials": "^8.4.7",
+    "@storybook/addon-interactions": "^8.4.7",
+    "@storybook/addon-links": "^8.4.7",
+    "@storybook/blocks": "^8.4.7",
+    "@storybook/react": "^8.4.7",
+    "@storybook/react-vite": "^8.4.7",
+    "@storybook/test": "^8.4.7",
+    "@types/node": "^22.10.1",
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.2",
+    "@vitejs/plugin-react": "^4.3.4",
     "auto": "^11.1.1",
     "boxen": "^7.1.1",
     "dedent": "^1.5.1",
     "npm-run-all2": "^6.2.3",
     "prettier": "^3.3.3",
     "prompts": "^2.4.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "storybook": "0.0.0-pr-26654-sha-49d01553",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "storybook": "^8.4.7",
     "tsup": "^8.2.4",
-    "typescript": "^5.5.4",
-    "vite": "^5.3.5",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3",
     "zx": "^7.2.3"
   },
   "peerDependencies": {
-    "storybook": "^8.3.0 || 0.0.0-pr-26654-sha-49d01553"
+    "storybook": "^8.4.7"
   },
   "overrides": {
-    "storybook": "0.0.0-pr-26654-sha-49d01553"
+    "storybook": "^8.4.7"
   },
   "publishConfig": {
     "access": "public"
