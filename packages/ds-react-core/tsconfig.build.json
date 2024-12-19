@@ -7,7 +7,17 @@
     "declarationDir": "dist/types",
     "declarationMap": true,
     "sourceMap": true,
-    "skipLibCheck": false
+    "skipLibCheck": false,
+    "types": ["node", "react", "react-dom"]
   },
-  "exclude": ["src/**/*.stories.ts", "src/**/*.stories.tsx", ".storybook"]
+  "exclude": [
+    "src/**/*.stories.ts",
+    "src/**/*.stories.tsx",
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx",
+    "vite.config.ts",
+    "vitest.setup.ts",
+    "vitest.config.ts",
+    ".storybook"
+  ]
 }

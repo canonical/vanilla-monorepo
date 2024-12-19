@@ -54,9 +54,12 @@ in the monorepo.
 
 Each package should define the following scripts in `package.json`:
 
-- `build`: Builds the package as preparation for publishing or use by its dependencies.
 - `check`: Lints, formats, and (if applicable) type-checks the package.
 - `check:fix`: Lints, formats, type-checks, and fixes issues where possible.
+- `test`: Runs tests for the package.
+
+If a package has a build step, it should also define:
+- `build`: Builds the package as preparation for publishing or use by its dependencies.
 
 By creating these scripts in each package, the build and check tasks will be
 included in the monorepo's CI workflow, helping to avoid build errors later.
@@ -69,7 +72,7 @@ JavaScript documentation should be written with [TSDoc](https://tsdoc.org/).
 
 The `@types` dependencies required by the monorepo packages and apps are by default hoisted in the root `node_modules`. However, this behaviour has two downsides : 
 - It can lead to conflicts between the types of different packages, for instance `bun` and `node` export overlapping types.
-- Consumption of types in packages and apps are not explicit, leading to hard to debug issues.
+- Consumption of types in packages and apps are not explicit, leading to issues that are difficult to debug.
 
 For this reason, we have opted for explicitly declaring the `@types` dependencies both in the `package.json` under `@devDependencies` and in  `tsconfig.json` under `compilerOptions/types` for each package and app. 
 
