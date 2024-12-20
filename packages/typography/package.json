@@ -1,0 +1,29 @@
+{
+  "name": "@canonical/typography",
+  "module": "index.ts",
+  "type": "module",
+  "version": "0.4.0-experimental.0",
+  "main": "src/index.css",
+  "bin": {
+    "extractFontData": "./src/extractFontData.ts"
+  },
+  "scripts": {
+    "extractFontData": "bun run ./src/extractFontData.ts",
+    "check": "bun run check:biome && bun run check:ts",
+    "check:fix": "bun run check:biome:fix && bun run check:ts",
+    "check:biome": "biome check src *.json",
+    "check:biome:fix": "biome check --write src *.json",
+    "check:ts": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@canonical/biome-config": "^0.4.0-experimental.0",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "opentype.js": "^1.3.4"
+  }
+}

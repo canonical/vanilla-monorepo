@@ -19,6 +19,7 @@ export const withBaselineGrid = (StoryFn: StoryFunction<Renderer>) => {
   :root {
     --addon-baseline-grid-color: var(--baseline-grid-color, ${color});
     --addon-baseline-height: var(--baseline-height, ${defaultHeight});
+    --addon-baseline-shift: var(--baseline-shift, 0);
   }
   .${utilityClassName} {
     position: relative;
@@ -32,6 +33,7 @@ export const withBaselineGrid = (StoryFn: StoryFunction<Renderer>) => {
         transparent
       );
       background-size: 100% var(--addon-baseline-height);
+      background-position: 0 var(--addon-baseline-shift);
       bottom: 0;
       content: "";
       display: block;
