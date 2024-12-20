@@ -32,6 +32,7 @@
     "storybook": "storybook dev -p 6006 --no-open --host 0.0.0.0"
   },
   "dependencies": {
+    "@canonical/storybook-addon-baseline-grid": "^0.4.1-experimental.0",
     "@canonical/styles": "^0.4.1-experimental.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

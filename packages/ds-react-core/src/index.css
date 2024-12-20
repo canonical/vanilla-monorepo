@@ -1,1 +1,6 @@
 @import url("@canonical/styles");
+
+:root {
+  --baseline-height: .5rem;
+  --baseline-grid-color: orange;
+}
