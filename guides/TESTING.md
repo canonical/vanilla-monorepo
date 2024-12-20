@@ -16,17 +16,40 @@ This decision is based on its speed, simplicity, and excellent integration with 
 Install Vitest: `bun add -d vitest`
 
 #### Vitest Config (vitest.config.ts)
-Create `vitest.config.ts` in the root of a package:
+Create `vitest.config.ts` in the root of a package. The structure of this file varies based on whether your project is using Vite or not.
+Example configurations for Vite and non-Vite projects are given below. 
+See the [Vitest documentation](https://vitest.dev/config/file.html#managing-vitest-config-file) for more information. 
+
+##### Vite Projects
+Define a test configuration in `vitest.config.ts` that merges your main Vite config with the test configuration.
+Use `defineConfig` from `vitest/config` to define the test configuration, and `mergeConfig` to merge it with the Vite configuration.
+```typescript
+import { defineConfig, mergeConfig } from "vitest/config";
+import viteConfig from "./vite.config";
+
+export default mergeConfig(
+  // Base the test config on the base vite config
+  viteConfig,
+  defineConfig({
+    test: {
+      // use JS DOM for browser-like test environment
+      environment: "jsdom",
+      // include vite globals for terser test code
+      globals: true,
+      include: ["src/**/*.test.ts", "src/**/*.test.tsx"],
+    },
+  }),
+);
+````
+
+##### Non-Vite Projects
+Define a test configuration in `vitest.config.ts` and export it using `defineConfig` from `vitest/config`. 
 ```typescript
 // vitest.config.ts
 import { defineConfig, mergeConfig } from "vitest/config";
 import viteConfig from "./vite.config";
 
 export default defineConfig({
-  build: {
-    // include sourcemaps for easier debugging
-    sourcemap: true,
-  },
   test: {
     // use JS DOM for browser-like test environment
     environment: "jsdom",
@@ -36,6 +59,7 @@ export default defineConfig({
   }
 });
 ```
+
 #### Typescript Configuration (tsconfig.json)
 Add Vite globals and your configuration file to your Typescript configuration.
 These do not have to be included in your build configuration. They are only necessary for type-checking and testing.
