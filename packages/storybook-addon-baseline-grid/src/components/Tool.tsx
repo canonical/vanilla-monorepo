@@ -1,8 +1,8 @@
-import React, { memo, useCallback, useEffect } from "react";
-import { useGlobals, type API } from "storybook/internal/manager-api";
-import { IconButton } from "storybook/internal/components";
-import { KEY, TOOL_ID } from "../constants";
 import { MenuIcon } from "@storybook/icons";
+import React, { memo, useCallback, useEffect } from "react";
+import { IconButton } from "storybook/internal/components";
+import { type API, useGlobals } from "storybook/internal/manager-api";
+import { KEY, TOOL_ID } from "../constants.js";
 
 export const Tool = memo(function MyAddonSelector({ api }: { api: API }) {
   const [globals, updateGlobals, storyGlobals] = useGlobals();

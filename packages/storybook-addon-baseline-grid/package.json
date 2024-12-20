@@ -2,9 +2,7 @@
   "name": "@canonical/storybook-addon-baseline-grid",
   "version": "0.4.1-experimental.0",
   "description": "Displays the baseline grid",
-  "keywords": [
-    "storybook-addons", "storybook-addons"
-  ],
+  "keywords": ["storybook-addons", "storybook-addons"],
   "repository": {
     "type": "git",
     "url": "https://github.com/canonical/ds25"
@@ -27,12 +25,7 @@
     "./manager": "./dist/manager.js",
     "./package.json": "./package.json"
   },
-  "files": [
-    "dist/**/*",
-    "README.md",
-    "*.js",
-    "*.d.ts"
-  ],
+  "files": ["dist/**/*", "README.md", "*.js", "*.d.ts"],
   "scripts": {
     "build": "tsup",
     "build:watch": "npm run build -- --watch",
@@ -41,12 +34,20 @@
     "prerelease": "zx scripts/prepublish-checks.js",
     "release": "npm run build && auto shipit",
     "storybook": "storybook dev -p 6007",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "check": "bun run check:biome && bun run check:ts",
+    "check:fix": "bun run check:biome:fix && bun run check:ts",
+    "check:biome": "biome check src *.json",
+    "check:biome:fix": "biome check --write src *.json",
+    "check:ts": "tsc --noEmit"
   },
   "dependencies": {
     "@storybook/icons": "^1.2.10"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@canonical/biome-config": "^0.4.0-experimental.0",
+    "@canonical/typescript-config-react": "^0.4.0-experimental.0",
     "@storybook/addon-essentials": "^8.4.7",
     "@storybook/addon-interactions": "^8.4.7",
     "@storybook/addon-links": "^8.4.7",
@@ -62,7 +63,6 @@
     "boxen": "^7.1.1",
     "dedent": "^1.5.1",
     "npm-run-all2": "^6.2.3",
-    "prettier": "^3.3.3",
     "prompts": "^2.4.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -82,23 +82,23 @@
     "access": "public"
   },
   "bundler": {
-    "exportEntries": [
-      "src/index.ts"
-    ],
-    "managerEntries": [
-      "src/manager.tsx"
-    ],
-    "previewEntries": [
-      "src/preview.ts"
-    ],
-    "nodeEntries": [
-      "src/preset.ts"
-    ]
+    "exportEntries": ["src/index.ts"],
+    "managerEntries": ["src/manager.tsx"],
+    "previewEntries": ["src/preview.ts"],
+    "nodeEntries": ["src/preset.ts"]
   },
   "storybook": {
     "displayName": "DS Baseline Grid",
     "supportedFrameworks": [
-      "react", "vue", "angular", "web-components", "ember", "html", "svelte", "preact", "react-native"
+      "react",
+      "vue",
+      "angular",
+      "web-components",
+      "ember",
+      "html",
+      "svelte",
+      "preact",
+      "react-native"
     ],
     "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
   }
