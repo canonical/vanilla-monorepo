@@ -6,9 +6,7 @@ import type {
 
 import { KEY } from "./constants";
 
-export const withBaselineGrid = (
-  StoryFn: StoryFunction<Renderer>,
-) => {
+export const withBaselineGrid = (StoryFn: StoryFunction<Renderer>) => {
   const [globals] = useGlobals();
   const myAddon = globals[KEY];
 

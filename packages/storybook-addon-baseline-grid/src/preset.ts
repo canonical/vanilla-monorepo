@@ -3,11 +3,13 @@
 // so often you want to delete this file and remove the reference to it in package.json#exports and package.json#bunder.nodeEntries
 // Read more about presets at https://storybook.js.org/docs/addons/writing-presets
 
+// biome-ignore lint: untouched boilerplate
 export const viteFinal = async (config: any) => {
   console.log("This addon is augmenting the Vite config");
   return config;
 };
 
+// biome-ignore lint: untouched boilerplate
 export const webpack = async (config: any) => {
   console.log("This addon is augmenting the Webpack config");
   return config;

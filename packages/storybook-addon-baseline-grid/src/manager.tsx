@@ -15,7 +15,7 @@ addons.register(ADDON_ID, (api) => {
   addons.add(TOOL_ID, {
     type: types.TOOL,
     title: "Baseline grid addon",
-    match: ({ viewMode }) => !!(viewMode && viewMode.match(/^(story)$/)),
+    match: ({ viewMode }) => !!viewMode?.match(/^(story)$/),
     render: () => <Tool api={api} />,
   });
 });
