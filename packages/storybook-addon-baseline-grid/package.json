@@ -16,21 +16,16 @@
   },
   "license": "LGPL-3.0",
   "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    },
-    "./preview": {
-      "import": "./dist/preview.js",
-      "require": "./dist/preview.cjs"
-    },
-    "./preset": "./dist/preset.cjs",
-    "./manager": "./dist/manager.js",
+    ".": "./dist/esm/index.js",
+    "./preview":"./dist/esm/preview.js",
+    "./preset": "./dist/esm/preset.js",
+    "./manager": "./dist/esm/manager.js",
     "./package.json": "./package.json"
   },
   "scripts": {
     "build": "tsup",
     "build:watch": "npm run build -- --watch",
+    "build:package:tsc": "tsc -p tsconfig.build.json",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "run-p build:watch \"storybook --quiet\"",
     "prerelease": "zx scripts/prepublish-checks.js",
