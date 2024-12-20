@@ -5,76 +5,76 @@ TODO
 - how to make very opinionated styles (heading sizes in pairs, margin collapsing between them, etc) configurable/themable?
 */
 
-  :root {
-    --font-family-sans: "Ubuntu variable", "Ubuntu", -apple-system, "Segoe UI",
-      "Roboto", "Oxygen", "Cantarell", "Fira Sans", "Droid Sans",
-      "Helvetica Neue", sans-serif;
-    --font-family-mono: "Ubuntu Mono variable", "Ubuntu Mono", Consolas, Monaco,
-      Courier, monospace;
-    --text-max-width: 40em;
-  }
+:root {
+  --font-family-sans: "Ubuntu variable", "Ubuntu", -apple-system, "Segoe UI",
+    "Roboto", "Oxygen", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  --font-family-mono: "Ubuntu Mono variable", "Ubuntu Mono", Consolas, Monaco,
+    Courier, monospace;
+  --text-max-width: 40em;
+}
 
-  :root {
-    --baseline-height: .5rem;
-    --ascender: 830;
-    --descender: -170;
-    --units-per-em: 1000;
-  }
+:root {
+  --baseline-height: .5rem;
+  --ascender: 830;
+  --descender: -170;
+  --units-per-em: 1000;
+}
 
-  html {
-    color: #000;
-    font-family: var(--font-family-sans);
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    font-weight: 400;
-    font-size: 1rem;
-    line-height: var(--line-height-default);
-    text-wrap: pretty;
-  }
+html {
+  color: #000;
+  font-family: var(--font-family-sans);
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: var(--line-height-default);
+  text-wrap: pretty;
+}
 
-  /* FIXME: we would need to add many more selectors here, everything that is a heading (in components) */
-  p,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    max-width: var(--text-max-width);
-    font-weight: var(--font-weight);
-  }
+/* FIXME: we would need to add many more selectors here, everything that is a heading (in components) */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  max-width: var(--text-max-width);
+  font-weight: var(--font-weight);
+}
 
-  p {
-    --font-size: 1rem;
-    --line-height-multiplier: 3;
-    --space-after: 3;
-    --font-weight: 400;
-  }
+p {
+  --font-size: 1rem;
+  --line-height-multiplier: 3;
+  --space-after: 3;
+  --font-weight: 400;
+}
 
-  h1 {
-    --line-height-multiplier: 6;
-    --font-size: 2.5rem;
-    --space-after: 3;
-    --font-weight: 550;
-  }
+h1 {
+  --line-height-multiplier: 6;
+  --font-size: 2.5rem;
+  --space-after: 3;
+  --font-weight: 550;
+}
 
-  h2 {
-    --line-height-multiplier: 6;
-    --font-size: 2.5rem;
-    --space-after: 3;
-    --font-weight: 180;
-  }
+h2 {
+  --line-height-multiplier: 6;
+  --font-size: 2.5rem;
+  --space-after: 3;
+  --font-weight: 180;
+}
 
-  h3 {
-    --line-height-multiplier: 4;
-    --font-size: 1.5rem;
-    --space-after: 3;
-    --font-weight: 550;
-  }
+h3 {
+  --line-height-multiplier: 4;
+  --font-size: 1.5rem;
+  --space-after: 3;
+  --font-weight: 550;
+}
 
-  h4 {
-    --line-height-multiplier: 4;
-    --font-size: 1.5rem;
-    --space-after: 3;
-    --font-weight: 275;
-  }
+h4 {
+  --line-height-multiplier: 4;
+  --font-size: 1.5rem;
+  --space-after: 3;
+  --font-weight: 275;
+}
