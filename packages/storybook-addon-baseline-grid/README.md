@@ -18,6 +18,8 @@ module.exports = {
 };
 ```
 
+Please note that this addon does rely on ESM only and does not have a cjs build at all. This means you need a version of node >= 20 and a modern browser to use it.
+
 ### Configuration
 
 By default the baseline uses defaults for the following css variables:
