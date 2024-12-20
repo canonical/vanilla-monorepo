@@ -48,7 +48,7 @@ By providing yours in `:root` you can override these defaults, for instance
 The addon logic lives mostly in following files:
 
 - `src/components/Tool.tsx` - component that renders the addon button in the toolbar and toggles the global variable that enables the baseline grid overlay
-- `src/withBaselineGrid.ts` - decorator that adds a `show-baseline-grid` CSS class name to the story based on global state The grid look is an internally defined css class that is added to the story preview iframe, and defined in this file.
+- `src/withBaselineGrid.ts` - decorator that adds a `with-baseline-grid` CSS class name to the story based on global state The grid look is an internally defined css class that is added to the story preview iframe, and defined in this file.
 - `/src/manager.tsx` - registers the addon with Storybook manager and handles in what state of Storybook addon is enabled
 - `/src/preview.tsx` - registers the decorator with Storybook preview
 
