@@ -7,6 +7,7 @@
 
 const meta = {
   title: "Styles / Typography",
+  parameters: { layout: "fullscreen" },
 };
 
 export default meta;

@@ -1,4 +1,3 @@
-@layer typography {
   :root {
     /* Agnostic values */
     --natural-line-height: calc((var(--ascender) - var(--descender)));
@@ -64,4 +63,3 @@
       var(--baseline-height)
     );
   }
-}

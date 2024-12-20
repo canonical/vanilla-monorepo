@@ -1,6 +1,6 @@
 @import url("@canonical/styles");
 
 :root {
-  --baseline-height: .5rem;
+  /* For debug */
   --baseline-grid-color: orange;
 }

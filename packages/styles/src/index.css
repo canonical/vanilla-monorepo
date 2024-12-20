@@ -1,10 +1,15 @@
+/* Load external files first */
+@import url("./font-faces.css");
+
 /* Reset */
 @import url("normalize.css");
 
 /* Values and settings */
 @import url("./tokens.css");
-@import url("./font-faces.css");
 
 /* Foundations styling */
+@import url("@canonical/typography");
 @import url("./typography.css");
+
+/* Intents */
 @import url("./intents.css");
