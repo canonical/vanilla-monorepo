@@ -1,4 +1,4 @@
-#!/usr/bin/env bunx tsx
+#!/usr/bin/env bun
 
 import { readFileSync } from "node:fs";
 // @ts-ignore – no types for opentype by default
@@ -11,7 +11,9 @@ const fontPath = process.argv[2];
 const showAll = process.argv.includes("--all");
 
 if (!fontPath) {
-  console.error("Usage: calculate-nudges <path-to-font.ttf> [cssLineHeight] [--all]");
+  console.error(
+    "Usage: calculate-nudges <path-to-font.ttf> [cssLineHeight] [--all]",
+  );
   process.exit(1);
 }
 
@@ -21,7 +23,11 @@ if (showAll) {
   cssLineHeight = cssLineHeightArg ? Number(cssLineHeightArg) : cssLineHeight;
 }
 
-function extractFontData(fontPath: string, cssLineHeight: number, showAll: boolean): void {
+function extractFontData(
+  fontPath: string,
+  cssLineHeight: number,
+  showAll: boolean,
+): void {
   const fontBuffer = readFileSync(fontPath);
   const font = opentype.parse(fontBuffer.buffer);
 
@@ -57,7 +63,9 @@ function extractFontData(fontPath: string, cssLineHeight: number, showAll: boole
   }
 
   // Display CSS variables
-  console.log("Add the following variables to your CSS and follow the instructions in the README:");
+  console.log(
+    "Add the following variables to your CSS and follow the instructions in the README:",
+  );
   console.log(`:root {
   --ascender: ${ascender};
   --descender: ${descender};
@@ -72,4 +80,3 @@ function extractFontData(fontPath: string, cssLineHeight: number, showAll: boole
 }
 
 extractFontData(fontPath, cssLineHeight, showAll);
-
