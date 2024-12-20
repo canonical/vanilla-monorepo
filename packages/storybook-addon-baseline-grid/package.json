@@ -77,9 +77,6 @@
   "peerDependencies": {
     "storybook": "^8.4.7"
   },
-  "overrides": {
-    "storybook": "^8.4.7"
-  },
   "publishConfig": {
     "access": "public"
   },
