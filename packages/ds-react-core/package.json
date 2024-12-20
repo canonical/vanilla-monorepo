@@ -1,6 +1,6 @@
 {
   "name": "@canonical/ds-react-core",
-  "version": "0.4.1-experimental.0",
+  "version": "0.5.0-experimental.0",
   "type": "module",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
@@ -32,8 +32,8 @@
     "storybook": "storybook dev -p 6006 --no-open --host 0.0.0.0"
   },
   "dependencies": {
-    "@canonical/storybook-addon-baseline-grid": "^0.4.1-experimental.0",
-    "@canonical/styles": "^0.4.1-experimental.0",
+    "@canonical/storybook-addon-baseline-grid": "^0.5.0-experimental.0",
+    "@canonical/styles": "^0.5.0-experimental.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

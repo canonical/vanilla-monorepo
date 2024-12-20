@@ -1,6 +1,6 @@
 {
   "name": "@canonical/storybook-addon-baseline-grid",
-  "version": "0.4.1-experimental.0",
+  "version": "0.5.0-experimental.0",
   "type": "module",
   "files": ["dist"],
   "types": "dist/types/index.d.ts",
