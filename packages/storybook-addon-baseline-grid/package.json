@@ -62,7 +62,7 @@
     "auto": "^11.1.1",
     "boxen": "^7.1.1",
     "dedent": "^1.5.1",
-    "npm-run-all2": "^6.2.3",
+    "npm-run-all2": "^7.0.0",
     "prompts": "^2.4.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
