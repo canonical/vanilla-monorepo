@@ -4,7 +4,7 @@ import type {
   PartialStoryFn as StoryFunction,
 } from "storybook/internal/types";
 
-import { KEY } from "./constants";
+import { KEY } from "./constants.js";
 
 export const withBaselineGrid = (StoryFn: StoryFunction<Renderer>) => {
   const [globals] = useGlobals();
