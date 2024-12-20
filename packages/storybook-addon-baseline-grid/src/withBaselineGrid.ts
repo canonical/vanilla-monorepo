@@ -6,7 +6,7 @@ import type {
 
 import { KEY } from "./constants";
 
-export const withGlobals = (
+export const withBaselineGrid = (
   StoryFn: StoryFunction<Renderer>,
 ) => {
   const [globals] = useGlobals();

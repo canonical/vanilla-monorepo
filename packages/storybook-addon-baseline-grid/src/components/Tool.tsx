@@ -36,6 +36,7 @@ export const Tool = memo(function MyAddonSelector({ api }: { api: API }) {
       onClick={toggle}
     >
       <MenuIcon />
+      {isActive ? "Baseline visible" : "Baseline hidden"}
     </IconButton>
   );
 });

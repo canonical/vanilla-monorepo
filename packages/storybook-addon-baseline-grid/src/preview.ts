@@ -11,7 +11,7 @@
 import type { ProjectAnnotations, Renderer } from "storybook/internal/types";
 
 import { KEY } from "./constants";
-import { withGlobals } from "./withGlobals";
+import { withBaselineGrid } from "./withBaselineGrid";
 
 /**
  * Note: if you want to use JSX in this file, rename it to `preview.tsx`
@@ -19,7 +19,7 @@ import { withGlobals } from "./withGlobals";
  */
 
 const preview: ProjectAnnotations<Renderer> = {
-  decorators: [withGlobals],
+  decorators: [withBaselineGrid],
   initialGlobals: {
     [KEY]: false,
   },
