@@ -27,7 +27,7 @@ By default the baseline uses defaults for the following css variables:
 ```css
 :root {
   --baseline-grid-color: rgba(255, 0, 0, 0.2);
-  --baseline-grid-height: .5rem;
+  --baseline-height: .5rem;
 }
 ```
 
@@ -36,7 +36,7 @@ By providing yours in `:root` you can override these defaults, for instance
 ```css
 :root {
   --baseline-grid-color: rgba(0, 0, 255, 0.2);
-  --baseline-grid-height: 1rem;
+  --baseline-height: 1rem;
 }
 ```
 
