@@ -6,7 +6,6 @@ import type {
 
 import { KEY } from "./constants.js";
 
-
 export const withBaselineGrid = (StoryFn: StoryFunction<Renderer>) => {
   const [globals] = useGlobals();
   const myAddon = globals[KEY];
@@ -17,19 +16,22 @@ export const withBaselineGrid = (StoryFn: StoryFunction<Renderer>) => {
   const defaultHeight = '0.5rem'
 
   const styleElement = `
+  :root {
+    --addon-baseline-grid-color: var(--baseline-grid-color, ${color});
+    --addon-baseline-height: var(--baseline-height, ${defaultHeight});
+  }
   .${utilityClassName} {
-    --color-baseline-grid: ${color};
     position: relative;
   
     &::after {
       background: linear-gradient(
         to top,
-        var(--color-baseline-grid),
-        var(--color-baseline-grid) 1px,
+        var(--addon-baseline-grid-color),
+        var(--addon-baseline-grid-color) 1px,
         transparent 1px,
         transparent
       );
-      background-size: 100% var(--sp-unit, ${defaultHeight});
+      background-size: 100% var(--addon-baseline-height);
       bottom: 0;
       content: "";
       display: block;
