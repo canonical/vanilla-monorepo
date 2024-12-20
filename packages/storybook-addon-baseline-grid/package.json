@@ -1,40 +1,32 @@
 {
   "name": "@canonical/storybook-addon-baseline-grid",
   "version": "0.4.1-experimental.0",
+  "type": "module",
+  "files": ["dist"],
+  "types": "dist/types/index.d.ts",
+  "author": "Bartek Szopka <bartek.szopka@canonical.com>",
   "description": "Displays the baseline grid",
   "keywords": ["storybook-addons", "storybook-addons"],
   "repository": {
     "type": "git",
     "url": "https://github.com/canonical/ds25"
   },
-  "type": "module",
+  "bugs": {
+    "url": "https://github.com/canonical/ds25/issues"
+  },
   "license": "LGPL-3.0",
-  "author": "Bartek Szopka <bartek.szopka@canonical.com>",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    },
-    "./preview": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/preview.js",
-      "require": "./dist/preview.cjs"
-    },
-    "./preset": "./dist/preset.cjs",
-    "./manager": "./dist/manager.js",
+    ".": "./dist/esm/index.js",
+    "./preview": "./dist/esm/preview.js",
+    "./preset": "./dist/esm/preset.js",
+    "./manager": "./dist/esm/manager.js",
     "./package.json": "./package.json"
   },
-  "files": ["dist/**/*", "README.md", "*.js", "*.d.ts"],
   "scripts": {
-    "build": "tsup",
-    "build:watch": "npm run build -- --watch",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "run-p build:watch \"storybook --quiet\"",
-    "prerelease": "zx scripts/prepublish-checks.js",
-    "release": "npm run build && auto shipit",
-    "storybook": "storybook dev -p 6007",
-    "build-storybook": "storybook build",
+    "build": "bun run build:package",
+    "build:package": "bun run build:package:tsc",
+    "build:package:tsc": "tsc -p tsconfig.build.json",
+    "storybook": "storybook dev -p 6007 --no-open --host 0.0.0.0",
     "check": "bun run check:biome && bun run check:ts",
     "check:fix": "bun run check:biome:fix && bun run check:ts",
     "check:biome": "biome check src *.json",
@@ -59,33 +51,14 @@
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.2",
     "@vitejs/plugin-react": "^4.3.4",
-    "auto": "^11.1.1",
-    "boxen": "^7.1.1",
-    "dedent": "^1.5.1",
-    "npm-run-all2": "^6.2.3",
-    "prompts": "^2.4.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "storybook": "^8.4.7",
-    "tsup": "^8.2.4",
     "typescript": "^5.7.2",
-    "vite": "^6.0.3",
-    "zx": "^7.2.3"
+    "vite": "^6.0.3"
   },
   "peerDependencies": {
     "storybook": "^8.4.7"
-  },
-  "overrides": {
-    "storybook": "^8.4.7"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "bundler": {
-    "exportEntries": ["src/index.ts"],
-    "managerEntries": ["src/manager.tsx"],
-    "previewEntries": ["src/preview.ts"],
-    "nodeEntries": ["src/preset.ts"]
   },
   "storybook": {
     "displayName": "DS Baseline Grid",
