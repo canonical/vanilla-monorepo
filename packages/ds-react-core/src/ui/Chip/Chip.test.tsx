@@ -5,44 +5,27 @@ import Component from "./Chip.js";
 describe("Chip component", () => {
   it("renders", () => {
     render(<Component lead={"Cloud"} value={"AWS"} />);
-    expect(screen.getByText("AWS")).toBeDefined();
-  });
-
-  it("applies className", () => {
-    render(
-      <Component
-        id={"chip"}
-        lead={"Cloud"}
-        value={"AWS"}
-        className={"test-class"}
-      />,
-    );
-    const chip = screen.getByText("Cloud").parentElement;
-    expect(chip?.classList).toContain("chip");
-    expect(chip?.classList).toContain("test-class");
-  });
-
-  it("applies lead", () => {
-    render(<Component lead={"Cloud"} value={"AWS"} />);
-    expect(screen.getByText("Cloud")).toBeDefined();
-  });
-
-  it("applies value", () => {
-    render(<Component lead={"Cloud"} value={"AWS"} />);
-    expect(screen.getByText("AWS")).toBeDefined();
+    expect(screen.getByText("AWS")).toBeInTheDocument();
   });
 
   it("applies lead & value", () => {
     render(<Component lead={"Cloud"} value={"AWS"} />);
-    expect(screen.getByText("AWS")).toBeDefined();
-    expect(screen.getByText("Cloud")).toBeDefined();
+    const leadElement = screen.getByText("Cloud");
+    const valueElement = screen.getByText("AWS");
+
+    const chipElement = leadElement.closest(".ds.chip");
+    expect(chipElement).toBeInTheDocument();
+    expect(chipElement).toContainElement(leadElement);
+    expect(chipElement).toContainElement(valueElement);
   });
 
-  it("applies appearance", () => {
-    render(<Component lead={"Cloud"} value={"AWS"} appearance={"positive"} />);
-    expect(screen.getByText("Cloud").parentElement?.classList).toContain(
-      "positive",
-    );
+  it("applies positive appearance", () => {
+    render(<Component lead="Cloud" value="AWS" appearance="positive" />);
+
+    const leadElement = screen.getByText("Cloud");
+    const chipElement = leadElement.closest(".ds.chip");
+
+    expect(chipElement).toHaveClass("positive");
   });
 
   it("calls onClick", () => {

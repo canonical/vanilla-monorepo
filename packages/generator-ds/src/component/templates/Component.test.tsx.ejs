@@ -7,11 +7,11 @@ import Component from "./<%= componentName %>.js";
 describe("<%= componentName %> component", () => {
   it("renders", () => {
     render(<Component><%= componentName %></Component>);
-    expect(screen.getByText('<%= componentName %>')).toBeDefined();
+    expect(screen.getByText('<%= componentName %>')).toBeInTheDocument();
   });
 
   it("applies className", () => {
     render(<Component className={"test-class"}><%= componentName %></Component>);
-    expect(screen.getByText("<%= componentName %>").classList).toContain("test-class");
+    expect(screen.getByText("<%= componentName %>")).toHaveClass("test-class");
   });
 });

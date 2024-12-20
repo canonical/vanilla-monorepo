@@ -8,13 +8,16 @@
     "declarationMap": true,
     "sourceMap": true,
     "skipLibCheck": false,
-    "types": ["node", "react", "react-dom", "vite/client"]
+    "types": ["node", "react", "react-dom"]
   },
   "exclude": [
     "src/**/*.stories.ts",
     "src/**/*.stories.tsx",
-    ".storybook",
     "src/**/*.test.ts",
-    "src/**/*.test.tsx"
+    "src/**/*.test.tsx",
+    "vite.config.ts",
+    "vitest.setup.ts",
+    "vitest.config.ts",
+    ".storybook"
   ]
 }
