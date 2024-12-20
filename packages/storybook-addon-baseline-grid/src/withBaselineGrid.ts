@@ -12,8 +12,8 @@ export const withBaselineGrid = (StoryFn: StoryFunction<Renderer>) => {
 
   const utilityClassName = "with-baseline-grid";
   const utilityTagId = "baseline-grid-style";
-  const color = `rgba(255, 0, 0, 0.2)`
-  const defaultHeight = '0.5rem'
+  const color = "rgba(255, 0, 0, 0.2)";
+  const defaultHeight = "0.5rem";
 
   const styleElement = `
   :root {
@@ -43,7 +43,7 @@ export const withBaselineGrid = (StoryFn: StoryFunction<Renderer>) => {
       z-index: 200;
     }
   }
-  `
+  `;
 
   useEffect(() => {
     const styleExists = global.document.getElementById(utilityTagId);
