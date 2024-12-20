@@ -33,7 +33,6 @@ p {
   );
   line-height: var(--computed-line-height);
   font-size: var(--font-size);
-  background: #fededebb;
 
   --line-height-scale: calc(
     var(--natural-line-height) *

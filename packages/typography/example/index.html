@@ -12,7 +12,6 @@
       @import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
       /* Configure the baseline height */
-      @layer base {
         :root {
           --baseline-height: 0.6rem;
         }
@@ -29,7 +28,6 @@
           --ascender: 940;
           --descender: -260;
           --units-per-em: 1000;
-        }
       }
 
       p {
@@ -80,6 +78,16 @@
         );
         background-size: 100% var(--baseline-height);
         /*background-position: 0 1px;*/
+      }
+
+      h1,
+      h2,
+      h3,
+      h4, 
+      h5, 
+      h6,
+      p {
+        background: #fededebb;
       }
 
       .controls {
