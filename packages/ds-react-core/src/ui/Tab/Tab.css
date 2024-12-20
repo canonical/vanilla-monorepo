@@ -1,0 +1,49 @@
+/* @canonical/generator-canonical-ds 0.4.0-experimental.0 */
+
+.ds.tab {
+  border: 0;
+  line-height: var(--tab-line-height);
+  font-size: var(--tab-font-size);
+
+  padding-block: var(--tab-padding-vertical);
+  padding-inline: var(--tab-padding-horizontal);
+  display: inline-block;
+  position: relative;
+
+  z-index: 0;
+  background-color: var(--tab-color-background);
+  color: var(--tab-color-text);
+
+  &:hover {
+    background-color: var(--tab-color-background-hover);
+  }
+
+  &[aria-selected="true"],
+  &:active {
+    background-color: var(--tab-color-background-active);
+  }
+
+  /* highlight bar */
+  &::before {
+    content: "";
+    position: absolute;
+    background-color: var(--tab-color-border-default);
+    height: var(--tab-border-width);
+    width: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+
+  &[aria-selected="true"]::before {
+    background-color: var(--tab-color-border-selected);
+    height: var(--tab-border-width-selected);
+  }
+
+  &[aria-selected="false"]:hover::before,
+  &[aria-selected="false"]:focus::before {
+    background-color: var(--tab-color-border-default);
+    height: var(--tab-border-width-selected);
+  }
+}
